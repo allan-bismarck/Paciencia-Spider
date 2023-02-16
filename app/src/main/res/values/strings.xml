@@ -2,4 +2,7 @@
     <string name="app_name">Paciencia-Spider</string>
     <string name="initial_title">Paciência Spider </string>
     <string name="user_name">Digite seu nome</string>
+    <string name="db_user">NAME_USER</string>
+    <string name="db_wins">NUMBER_WINS</string>
+    <string name="db_defeats">NUMBER_DEFEATS</string>
 </resources>
