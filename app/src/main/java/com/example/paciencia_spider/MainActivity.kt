@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         configDataBase = ConfigDataBaseUser(this)
 
         if(configDataBase.existUser()) {
+            finish()
             runIntent(Intent(this, FirstActivity::class.java))
         }
 
@@ -35,6 +36,7 @@ class MainActivity : AppCompatActivity() {
 
             i.putExtra("userName", name)
             userName.text.clear()
+            finish()
             runIntent(i)
         }
     }

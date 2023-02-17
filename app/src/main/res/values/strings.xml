@@ -5,4 +5,10 @@
     <string name="db_user">NAME_USER</string>
     <string name="db_wins">NUMBER_WINS</string>
     <string name="db_defeats">NUMBER_DEFEATS</string>
+    <string-array name="number_naipes">
+        <item>1 naipe</item>
+        <item>2 naipes</item>
+        <item>3 naipes</item>
+        <item>4 naipes</item>
+    </string-array>
 </resources>

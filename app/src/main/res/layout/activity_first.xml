@@ -9,15 +9,104 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center">
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:text="First Activity"
-            tools:layout_editor_absoluteX="181dp"
-            tools:layout_editor_absoluteY="337dp" />
+            android:textAlignment="center" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/label_wins"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Número de Vitórias: "
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/wins"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text=""
+                android:textAlignment="center" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/label_defeats"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Número de Derrotas: "
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/defeats"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text=""
+                android:textAlignment="center" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/label_performance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Aproveitamento: "
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/performance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text=""
+                android:textAlignment="center" />
+
+        </LinearLayout>
+
+        <Spinner
+            android:id="@+id/spinner_number_naipes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dropdown"
+            android:padding="20dp"
+            />
+
+        <Button
+            android:id="@+id/init_game"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Iniciar jogo"
+            tools:layout_editor_absoluteX="77dp"
+            tools:layout_editor_absoluteY="76dp" />
 
         <Button
             android:id="@+id/delete_user"
@@ -26,5 +115,6 @@
             android:text="Apagar Usuário"
             tools:layout_editor_absoluteX="77dp"
             tools:layout_editor_absoluteY="76dp" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
