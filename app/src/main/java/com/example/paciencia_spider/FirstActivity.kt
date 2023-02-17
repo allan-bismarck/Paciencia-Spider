@@ -12,6 +12,7 @@ class FirstActivity : AppCompatActivity() {
     private lateinit var wins: TextView
     private lateinit var defeats: TextView
     private lateinit var performance: TextView
+    private lateinit var btninitGame: Button
     private lateinit var btnDelete: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,11 +20,10 @@ class FirstActivity : AppCompatActivity() {
         setContentView(R.layout.activity_first)
 
         configDataBase = ConfigDataBaseUser(this)
+        var userName = configDataBase.getNameUser().toString().uppercase()
 
-        if(intent != null) {
-            text = findViewById(R.id.textView)
-            text.text = configDataBase.getNameUser().toString()
-        }
+        text = findViewById(R.id.textView)
+        text.text = userName
 
         var numberWins = configDataBase.getWins()
         var numberDefeats = configDataBase.getDefeats()
@@ -53,6 +53,13 @@ class FirstActivity : AppCompatActivity() {
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             // Apply the adapter to the spinner
             spinner.adapter = adapter
+        }
+
+        btninitGame = findViewById(R.id.init_game)
+        btninitGame.setOnClickListener {
+            var i = Intent(this, GameActivity::class.java)
+            i.putExtra("userName", userName)
+            runIntent(i)
         }
 
         btnDelete = findViewById(R.id.delete_user)
