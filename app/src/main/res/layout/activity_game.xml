@@ -21,18 +21,23 @@
 
             <TextView
                 android:id="@+id/player"
-                android:layout_width="371dp"
+                android:layout_width="0dp"
+                android:layout_weight="2"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="" />
 
-            <Space
-                android:layout_width="130dp"
-                android:layout_height="match_parent"/>
+            <Button
+                android:id="@+id/button_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Inserir nome" />
 
             <ImageButton
                 android:id="@+id/button_reload"
-                android:layout_width="60dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:contentDescription="exit"
                 app:srcCompat="@android:drawable/ic_menu_rotate"
@@ -41,20 +46,19 @@
 
             <ImageButton
                 android:id="@+id/button_exit"
-                android:layout_width="60dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:contentDescription="reload"
                 app:srcCompat="@android:drawable/ic_delete" />
         </LinearLayout>
 
-        <LinearLayout
+        <FrameLayout
+            android:id="@+id/frameFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:background="@color/teal_700">
+            android:orientation="horizontal">
 
-
-
-        </LinearLayout>
+        </FrameLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
