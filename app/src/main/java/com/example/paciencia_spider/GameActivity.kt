@@ -44,7 +44,7 @@ class GameActivity : AppCompatActivity() {
         exit = findViewById(R.id.button_exit)
 
         exit.setOnClickListener {
-            showDialog("DELETE", gameFragment)
+            showDialog("EXIT", gameFragment)
         }
 
         loadFragment(gameFragment)
@@ -68,6 +68,8 @@ class GameActivity : AppCompatActivity() {
     fun showDialog(type: String, fragment: GameFragment) {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("AVISO")
+
+        builder.setCancelable(false)
 
         if(type == "RELOAD") {
             builder.setMessage("Tem certeza que deseja reiniciar o jogo?")
