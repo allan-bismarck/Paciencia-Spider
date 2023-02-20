@@ -31,6 +31,146 @@ class GameFragment : Fragment() {
     private lateinit var deck_c4: ImageView
     private lateinit var deck_c5: ImageView
 
+    private lateinit var p1_c1: ImageView
+    private lateinit var p1_c2: ImageView
+    private lateinit var p1_c3: ImageView
+    private lateinit var p1_c4: ImageView
+    private lateinit var p1_c5: ImageView
+    private lateinit var p1_c6: ImageView
+    private lateinit var p1_c7: ImageView
+    private lateinit var p1_c8: ImageView
+    private lateinit var p1_c9: ImageView
+    private lateinit var p1_c10: ImageView
+    private lateinit var p1_c11: ImageView
+    private lateinit var p1_c12: ImageView
+    private lateinit var p1_c13: ImageView
+
+    private lateinit var p2_c1: ImageView
+    private lateinit var p2_c2: ImageView
+    private lateinit var p2_c3: ImageView
+    private lateinit var p2_c4: ImageView
+    private lateinit var p2_c5: ImageView
+    private lateinit var p2_c6: ImageView
+    private lateinit var p2_c7: ImageView
+    private lateinit var p2_c8: ImageView
+    private lateinit var p2_c9: ImageView
+    private lateinit var p2_c10: ImageView
+    private lateinit var p2_c11: ImageView
+    private lateinit var p2_c12: ImageView
+    private lateinit var p2_c13: ImageView
+
+    private lateinit var p3_c1: ImageView
+    private lateinit var p3_c2: ImageView
+    private lateinit var p3_c3: ImageView
+    private lateinit var p3_c4: ImageView
+    private lateinit var p3_c5: ImageView
+    private lateinit var p3_c6: ImageView
+    private lateinit var p3_c7: ImageView
+    private lateinit var p3_c8: ImageView
+    private lateinit var p3_c9: ImageView
+    private lateinit var p3_c10: ImageView
+    private lateinit var p3_c11: ImageView
+    private lateinit var p3_c12: ImageView
+    private lateinit var p3_c13: ImageView
+
+    private lateinit var p4_c1: ImageView
+    private lateinit var p4_c2: ImageView
+    private lateinit var p4_c3: ImageView
+    private lateinit var p4_c4: ImageView
+    private lateinit var p4_c5: ImageView
+    private lateinit var p4_c6: ImageView
+    private lateinit var p4_c7: ImageView
+    private lateinit var p4_c8: ImageView
+    private lateinit var p4_c9: ImageView
+    private lateinit var p4_c10: ImageView
+    private lateinit var p4_c11: ImageView
+    private lateinit var p4_c12: ImageView
+    private lateinit var p4_c13: ImageView
+
+    private lateinit var p5_c1: ImageView
+    private lateinit var p5_c2: ImageView
+    private lateinit var p5_c3: ImageView
+    private lateinit var p5_c4: ImageView
+    private lateinit var p5_c5: ImageView
+    private lateinit var p5_c6: ImageView
+    private lateinit var p5_c7: ImageView
+    private lateinit var p5_c8: ImageView
+    private lateinit var p5_c9: ImageView
+    private lateinit var p5_c10: ImageView
+    private lateinit var p5_c11: ImageView
+    private lateinit var p5_c12: ImageView
+    private lateinit var p5_c13: ImageView
+
+    private lateinit var p6_c1: ImageView
+    private lateinit var p6_c2: ImageView
+    private lateinit var p6_c3: ImageView
+    private lateinit var p6_c4: ImageView
+    private lateinit var p6_c5: ImageView
+    private lateinit var p6_c6: ImageView
+    private lateinit var p6_c7: ImageView
+    private lateinit var p6_c8: ImageView
+    private lateinit var p6_c9: ImageView
+    private lateinit var p6_c10: ImageView
+    private lateinit var p6_c11: ImageView
+    private lateinit var p6_c12: ImageView
+    private lateinit var p6_c13: ImageView
+
+    private lateinit var p7_c1: ImageView
+    private lateinit var p7_c2: ImageView
+    private lateinit var p7_c3: ImageView
+    private lateinit var p7_c4: ImageView
+    private lateinit var p7_c5: ImageView
+    private lateinit var p7_c6: ImageView
+    private lateinit var p7_c7: ImageView
+    private lateinit var p7_c8: ImageView
+    private lateinit var p7_c9: ImageView
+    private lateinit var p7_c10: ImageView
+    private lateinit var p7_c11: ImageView
+    private lateinit var p7_c12: ImageView
+    private lateinit var p7_c13: ImageView
+
+    private lateinit var p8_c1: ImageView
+    private lateinit var p8_c2: ImageView
+    private lateinit var p8_c3: ImageView
+    private lateinit var p8_c4: ImageView
+    private lateinit var p8_c5: ImageView
+    private lateinit var p8_c6: ImageView
+    private lateinit var p8_c7: ImageView
+    private lateinit var p8_c8: ImageView
+    private lateinit var p8_c9: ImageView
+    private lateinit var p8_c10: ImageView
+    private lateinit var p8_c11: ImageView
+    private lateinit var p8_c12: ImageView
+    private lateinit var p8_c13: ImageView
+
+    private lateinit var p9_c1: ImageView
+    private lateinit var p9_c2: ImageView
+    private lateinit var p9_c3: ImageView
+    private lateinit var p9_c4: ImageView
+    private lateinit var p9_c5: ImageView
+    private lateinit var p9_c6: ImageView
+    private lateinit var p9_c7: ImageView
+    private lateinit var p9_c8: ImageView
+    private lateinit var p9_c9: ImageView
+    private lateinit var p9_c10: ImageView
+    private lateinit var p9_c11: ImageView
+    private lateinit var p9_c12: ImageView
+    private lateinit var p9_c13: ImageView
+
+    private lateinit var p10_c1: ImageView
+    private lateinit var p10_c2: ImageView
+    private lateinit var p10_c3: ImageView
+    private lateinit var p10_c4: ImageView
+    private lateinit var p10_c5: ImageView
+    private lateinit var p10_c6: ImageView
+    private lateinit var p10_c7: ImageView
+    private lateinit var p10_c8: ImageView
+    private lateinit var p10_c9: ImageView
+    private lateinit var p10_c10: ImageView
+    private lateinit var p10_c11: ImageView
+    private lateinit var p10_c12: ImageView
+    private lateinit var p10_c13: ImageView
+
     private lateinit var deckId: String
 
     private var qtdNaipes by Delegates.notNull<Int>()
@@ -167,7 +307,6 @@ class GameFragment : Fragment() {
     }
 
     private fun distributeCards(IdDeck: String) {
-        Log.i("IdDeck", IdDeck)
         val BASE_URL = "https://deckofcardsapi.com"
         val serviceClient = Api.getRetrofitInstance(BASE_URL)
         val endpoint = serviceClient.create(Endpoint::class.java)
