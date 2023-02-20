@@ -58,7 +58,11 @@ class FirstActivity : AppCompatActivity() {
         btninitGame = findViewById(R.id.init_game)
         btninitGame.setOnClickListener {
             var i = Intent(this, GameActivity::class.java)
-            i.putExtra("userName", userName)
+            var b = Bundle()
+            b.putString("userName", userName)
+            var qtdNaipes = spinner.selectedItem.toString().split(" ")
+            b.putInt("qtdNaipes", qtdNaipes[0].toInt())
+            i.putExtras(b)
             runIntent(i)
         }
 

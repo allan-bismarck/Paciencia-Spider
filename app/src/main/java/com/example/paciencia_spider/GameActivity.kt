@@ -13,6 +13,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.create
+import kotlin.properties.Delegates
 
 class GameActivity : AppCompatActivity() {
     private lateinit var player: TextView
@@ -21,6 +22,8 @@ class GameActivity : AppCompatActivity() {
     private lateinit var exit: ImageButton
     private lateinit var userName: String
     private lateinit var gameFragment: GameFragment
+    private var qtdNaipes by Delegates.notNull<Int>()
+    private lateinit var b: Bundle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
@@ -31,7 +34,9 @@ class GameActivity : AppCompatActivity() {
         gameFragment = GameFragment()
 
         if(intent != null) {
-            userName = intent.getStringExtra("userName").toString()
+            b = intent.extras!!
+            userName = b?.getString("userName").toString()
+            qtdNaipes = b?.getInt("qtdNaipes")!!
             player.text = userName.uppercase()
         }
 
@@ -59,6 +64,7 @@ class GameActivity : AppCompatActivity() {
     private fun loadFragment(fragment: Fragment) {
         val fragmentLoad = supportFragmentManager.beginTransaction()
         fragmentLoad.replace(R.id.frameFragment, fragment)
+        fragment.arguments = b
         fragmentLoad.commit()
     }
 

@@ -18,6 +18,7 @@ import com.google.gson.JsonObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import kotlin.properties.Delegates
 
 class GameFragment : Fragment() {
     private var URL_IMAGES = "https://deckofcardsapi.com/static/img/"
@@ -30,8 +31,12 @@ class GameFragment : Fragment() {
     private lateinit var deck_c4: ImageView
     private lateinit var deck_c5: ImageView
 
+    private var qtdNaipes by Delegates.notNull<Int>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        qtdNaipes = arguments?.getInt("qtdNaipes")!!
 
         getDeck()
         Log.i("Ciclo GameFragment", "onCreate")
@@ -46,7 +51,7 @@ class GameFragment : Fragment() {
         userName = view.findViewById(R.id.label)
         deck = view.findViewById(R.id.deck)
         deck.setOnClickListener {
-            Log.i("CLIQUEI", "cliquei no deck")
+
         }
 
         deck_c1 = view.findViewById(R.id.deck_c1)
@@ -108,16 +113,50 @@ class GameFragment : Fragment() {
         val serviceClient = Api.getRetrofitInstance(BASE_URL)
         val endpoint = serviceClient.create(Endpoint::class.java)
 
-        endpoint.getDeck().enqueue(object: Callback<JsonObject> {
-            override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
-                var data = response.body()?.keySet()
-                Log.i("RESPOSTA", data.toString())
+        when(qtdNaipes) {
+            1 -> {
+                endpoint.getDeckOneNaipe().enqueue(object: Callback<JsonObject> {
+                    override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
+                        var data = response.body()
+                        Log.i("RESPOSTA", data.toString())
+                    }
+
+                    override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+                        Log.i("Falha", "Não foi possível obter nenhuma resposta da API")
+                    }
+
+                })
             }
 
-            override fun onFailure(call: Call<JsonObject>, t: Throwable) {
-                Log.i("Falha", "Não foi possível obter nenhuma resposta da API")
+            2 -> {
+                endpoint.getDeckTwoNaipes().enqueue(object: Callback<JsonObject> {
+                    override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
+                        var data = response.body()
+                        Log.i("RESPOSTA", data.toString())
+                    }
+
+                    override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+                        Log.i("Falha", "Não foi possível obter nenhuma resposta da API")
+                    }
+
+                })
             }
 
-        })
+            else -> {
+                endpoint.getDeckFourNaipes().enqueue(object: Callback<JsonObject> {
+                    override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
+                        var data = response.body()
+                        Log.i("RESPOSTA", data.toString())
+                    }
+
+                    override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+                        Log.i("Falha", "Não foi possível obter nenhuma resposta da API")
+                    }
+
+                })
+            }
+        }
+
+
     }
 }

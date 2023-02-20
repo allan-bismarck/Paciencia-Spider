@@ -8,7 +8,6 @@
     <string-array name="number_naipes">
         <item>1 naipe</item>
         <item>2 naipes</item>
-        <item>3 naipes</item>
         <item>4 naipes</item>
     </string-array>
 </resources>
