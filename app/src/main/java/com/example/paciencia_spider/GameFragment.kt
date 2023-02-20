@@ -31,6 +31,8 @@ class GameFragment : Fragment() {
     private lateinit var deck_c4: ImageView
     private lateinit var deck_c5: ImageView
 
+    private lateinit var deckId: String
+
     private var qtdNaipes by Delegates.notNull<Int>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,7 +53,7 @@ class GameFragment : Fragment() {
         userName = view.findViewById(R.id.label)
         deck = view.findViewById(R.id.deck)
         deck.setOnClickListener {
-
+           distributeCards(deckId)
         }
 
         deck_c1 = view.findViewById(R.id.deck_c1)
@@ -119,6 +121,8 @@ class GameFragment : Fragment() {
                     override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
                         var data = response.body()
                         Log.i("RESPOSTA", data.toString())
+                        deckId = data?.get("deck_id").toString()
+                        deckId = deckId.split('"')[1]
                     }
 
                     override fun onFailure(call: Call<JsonObject>, t: Throwable) {
@@ -133,6 +137,8 @@ class GameFragment : Fragment() {
                     override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
                         var data = response.body()
                         Log.i("RESPOSTA", data.toString())
+                        deckId = data?.get("deck_id").toString()
+                        deckId = deckId.split('"')[1]
                     }
 
                     override fun onFailure(call: Call<JsonObject>, t: Throwable) {
@@ -147,6 +153,8 @@ class GameFragment : Fragment() {
                     override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
                         var data = response.body()
                         Log.i("RESPOSTA", data.toString())
+                        deckId = data?.get("deck_id").toString()
+                        deckId = deckId.split('"')[1]
                     }
 
                     override fun onFailure(call: Call<JsonObject>, t: Throwable) {
@@ -156,7 +164,24 @@ class GameFragment : Fragment() {
                 })
             }
         }
+    }
 
+    private fun distributeCards(IdDeck: String) {
+        Log.i("IdDeck", IdDeck)
+        val BASE_URL = "https://deckofcardsapi.com"
+        val serviceClient = Api.getRetrofitInstance(BASE_URL)
+        val endpoint = serviceClient.create(Endpoint::class.java)
 
+        endpoint.distributeCards(IdDeck).enqueue(object: Callback<JsonObject> {
+            override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
+                var data = response.body()
+                Log.i("RESPOSTA", data.toString())
+            }
+
+            override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+                Log.i("Falha", "Não foi possível obter nenhuma resposta da API")
+            }
+
+        })
     }
 }

@@ -16,6 +16,9 @@ interface Endpoint {
     @GET("/api/deck/new/shuffle/?deck_count=2")
     fun getDeckFourNaipes(): Call<JsonObject>
 
+    @GET("/api/deck/{deck_id}/draw/?count=10")
+    fun distributeCards(@Path(value = "deck_id", encoded = true) deck_id: String): Call<JsonObject>
+
     @GET("/static/img/{card}")
     fun getImage(@Path(value = "card", encoded = true) card: String): Call<JsonObject>
 }
