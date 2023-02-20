@@ -2,12 +2,17 @@ package com.example.paciencia_spider
 import android.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import kotlinx.coroutines.*
+import com.google.gson.JsonObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.create
 
 class GameActivity : AppCompatActivity() {
     private lateinit var player: TextView
@@ -18,6 +23,7 @@ class GameActivity : AppCompatActivity() {
     private lateinit var gameFragment: GameFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
 
