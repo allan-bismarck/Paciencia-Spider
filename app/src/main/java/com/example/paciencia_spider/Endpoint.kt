@@ -3,7 +3,9 @@ package com.example.paciencia_spider
 import com.google.gson.JsonObject
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface Endpoint {
 
@@ -16,9 +18,19 @@ interface Endpoint {
     @GET("/api/deck/new/shuffle/?deck_count=2")
     fun getDeckFourNaipes(): Call<JsonObject>
 
-    @GET("/api/deck/{deck_id}/draw/?count=10")
-    fun distributeCards(@Path(value = "deck_id", encoded = true) deck_id: String): Call<JsonObject>
+    @GET("/api/deck/{deckId}/draw/?count=6")
+    fun distributeSixCards(
+        @Path(value = "deckId", encoded = true) deck_id: String,
+    ): Call<JsonObject>
 
-    @GET("/static/img/{card}")
-    fun getImage(@Path(value = "card", encoded = true) card: String): Call<JsonObject>
+    @GET("/api/deck/{deckId}/draw/?count=5")
+    fun distributeFiveCards(
+        @Path(value = "deckId", encoded = true) deck_id: String,
+    ): Call<JsonObject>
+
+    @GET("/api/deck/{deckId}/draw/?count=10")
+    fun distributeTenCards(
+        @Path(value = "deckId", encoded = true) deck_id: String,
+    ): Call<JsonObject>
+
 }

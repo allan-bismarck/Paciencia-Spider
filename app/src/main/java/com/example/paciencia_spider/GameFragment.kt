@@ -1,7 +1,5 @@
 package com.example.paciencia_spider
 
-import android.app.AlertDialog
-import android.app.Dialog
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,9 +9,8 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
-import androidx.fragment.app.DialogFragment
 import com.bumptech.glide.Glide
+import com.google.gson.Gson
 import com.google.gson.JsonObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -171,6 +168,17 @@ class GameFragment : Fragment() {
     private lateinit var p10_c12: ImageView
     private lateinit var p10_c13: ImageView
 
+    private var stackOneCards: MutableList<Card>? = null
+    private var stackTwoCards: MutableList<Card>? = null
+    private var stackTreeCards: MutableList<Card>? = null
+    private var stackFourCards: MutableList<Card>? = null
+    private var stackFiveCards: MutableList<Card>? = null
+    private var stackSixCards: MutableList<Card>? = null
+    private var stackSevenCards: MutableList<Card>? = null
+    private var stackEightCards: MutableList<Card>? = null
+    private var stackNineCards: MutableList<Card>? = null
+    private var stackTenCards: MutableList<Card>? = null
+
     private lateinit var deckId: String
 
     private var qtdNaipes by Delegates.notNull<Int>()
@@ -193,7 +201,7 @@ class GameFragment : Fragment() {
         userName = view.findViewById(R.id.label)
         deck = view.findViewById(R.id.deck)
         deck.setOnClickListener {
-           distributeCards(deckId)
+            distributeCards(deckId, 10)
         }
 
         deck_c1 = view.findViewById(R.id.deck_c1)
@@ -306,21 +314,61 @@ class GameFragment : Fragment() {
         }
     }
 
-    private fun distributeCards(IdDeck: String) {
+    private fun distributeCards(IdDeck: String, numberCards: Int) {
         val BASE_URL = "https://deckofcardsapi.com"
         val serviceClient = Api.getRetrofitInstance(BASE_URL)
         val endpoint = serviceClient.create(Endpoint::class.java)
 
-        endpoint.distributeCards(IdDeck).enqueue(object: Callback<JsonObject> {
-            override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
-                var data = response.body()
-                Log.i("RESPOSTA", data.toString())
+        when(numberCards) {
+            5 -> {
+                endpoint.distributeFiveCards(IdDeck).enqueue(object: Callback<JsonObject> {
+                    override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
+                        var data = response.body()
+                        Log.i("RESPOSTA", data.toString())
+                    }
+
+                    override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+                        Log.i("Falha", "Não foi possível obter nenhuma resposta da API")
+                    }
+
+                })
             }
 
-            override fun onFailure(call: Call<JsonObject>, t: Throwable) {
-                Log.i("Falha", "Não foi possível obter nenhuma resposta da API")
+            6 -> {
+                endpoint.distributeSixCards(IdDeck).enqueue(object: Callback<JsonObject> {
+                    override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
+                        var data = response.body()
+                        Log.i("RESPOSTA", data.toString())
+                    }
+
+                    override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+                        Log.i("Falha", "Não foi possível obter nenhuma resposta da API")
+                    }
+
+                })
             }
 
-        })
+            else -> {
+                endpoint.distributeTenCards(IdDeck).enqueue(object: Callback<JsonObject> {
+                    override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
+                        var data = response.body()
+                        // Log.i("RESPOSTA", data.toString())
+                        getCardsToStacks(data)
+                    }
+
+                    override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+                        Log.i("Falha", "Não foi possível obter nenhuma resposta da API")
+                    }
+
+                })
+            }
+        }
+
+    }
+
+    fun getCardsToStacks(data: JsonObject?) {
+        var gson = Gson()
+        var d = gson.fromJson(data, Model::class.java)
+        Log.i("CARDS", d.cards[0].toString())
     }
 }

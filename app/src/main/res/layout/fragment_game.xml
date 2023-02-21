@@ -61,69 +61,181 @@
 
             </FrameLayout>
 
-            <ImageView
-                android:id="@+id/stack1"
-                android:layout_width="50dp"
-                android:layout_height="70dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginHorizontal="5dp"
-                android:background="@color/white" />
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/stack1Border"
+                    android:layout_width="50dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@color/white"
+                    />
 
-            <ImageView
-                android:id="@+id/stack2"
-                android:layout_width="50dp"
-                android:layout_height="70dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginHorizontal="5dp"
-                android:background="@color/white" />
+                <ImageView
+                    android:id="@+id/stack1"
+                    android:layout_width="47dp"
+                    android:layout_height="67dp"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@color/teal_700"
+                    />
+            </FrameLayout>
 
-            <ImageView
-                android:id="@+id/stack3"
-                android:layout_width="50dp"
-                android:layout_height="70dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginHorizontal="5dp"
-                android:background="@color/white" />
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/stack2Border"
+                    android:layout_width="50dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@color/white"
+                    />
 
-            <ImageView
-                android:id="@+id/stack4"
-                android:layout_width="50dp"
-                android:layout_height="70dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginHorizontal="5dp"
-                android:background="@color/white" />
+                <ImageView
+                    android:id="@+id/stack2"
+                    android:layout_width="47dp"
+                    android:layout_height="67dp"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@color/teal_700"
+                    />
+            </FrameLayout>
 
-            <ImageView
-                android:id="@+id/stack5"
-                android:layout_width="50dp"
-                android:layout_height="70dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginHorizontal="5dp"
-                android:background="@color/white" />
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/stack3Border"
+                    android:layout_width="50dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@color/white"
+                    />
 
-            <ImageView
-                android:id="@+id/stack6"
-                android:layout_width="50dp"
-                android:layout_height="70dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginHorizontal="5dp"
-                android:background="@color/white" />
+                <ImageView
+                    android:id="@+id/stack3"
+                    android:layout_width="47dp"
+                    android:layout_height="67dp"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@color/teal_700"
+                    />
+            </FrameLayout>
 
-            <ImageView
-                android:id="@+id/stack7"
-                android:layout_width="50dp"
-                android:layout_height="70dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginHorizontal="5dp"
-                android:background="@color/white" />
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/stack4Border"
+                    android:layout_width="50dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@color/white"
+                    />
 
-            <ImageView
-                android:id="@+id/stack8"
-                android:layout_width="50dp"
-                android:layout_height="70dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginHorizontal="5dp"
-                android:background="@color/white" />
+                <ImageView
+                    android:id="@+id/stack4"
+                    android:layout_width="47dp"
+                    android:layout_height="67dp"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@color/teal_700"
+                    />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/stack5Border"
+                    android:layout_width="50dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@color/white"
+                    />
+
+                <ImageView
+                    android:id="@+id/stack5"
+                    android:layout_width="47dp"
+                    android:layout_height="67dp"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@color/teal_700"
+                    />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/stack6Border"
+                    android:layout_width="50dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@color/white"
+                    />
+
+                <ImageView
+                    android:id="@+id/stack6"
+                    android:layout_width="47dp"
+                    android:layout_height="67dp"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@color/teal_700"
+                    />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/stack7Border"
+                    android:layout_width="50dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@color/white"
+                    />
+
+                <ImageView
+                    android:id="@+id/stack7"
+                    android:layout_width="47dp"
+                    android:layout_height="67dp"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@color/teal_700"
+                    />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/stack8Border"
+                    android:layout_width="50dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@color/white"
+                    />
+
+                <ImageView
+                    android:id="@+id/stack8"
+                    android:layout_width="47dp"
+                    android:layout_height="67dp"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@color/teal_700"
+                    />
+            </FrameLayout>
 
         </LinearLayout>
 
