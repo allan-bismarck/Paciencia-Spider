@@ -7,6 +7,7 @@
     android:background="@color/teal_700">
 
     <LinearLayout
+        android:id="@+id/game"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -1216,5 +1217,18 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/splash_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/teal_700">
+
+        <ProgressBar
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"/>
+
+    </FrameLayout>
 
 </RelativeLayout>

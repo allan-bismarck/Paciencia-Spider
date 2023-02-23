@@ -15,6 +15,9 @@
         android:theme="@style/Theme.PacienciaSpider"
         tools:targetApi="31">
         <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".GameActivity"
             android:exported="false"
             android:screenOrientation="landscape" />
@@ -22,7 +25,7 @@
             android:name=".FirstActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -21,8 +21,8 @@ class MainActivity : AppCompatActivity() {
         configDataBase = ConfigDataBaseUser(this)
 
         if(configDataBase.existUser()) {
-            finish()
             runIntent(Intent(this, FirstActivity::class.java))
+            finish()
         }
 
         userName = findViewById(R.id.editTextPersonName)
@@ -36,8 +36,8 @@ class MainActivity : AppCompatActivity() {
 
             i.putExtra("userName", name)
             userName.text.clear()
-            finish()
             runIntent(i)
+            finish()
         }
     }
 

@@ -1,14 +1,16 @@
 package com.example.paciencia_spider
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.google.gson.Gson
 import com.google.gson.JsonObject
@@ -183,11 +185,12 @@ class GameFragment : Fragment() {
 
     private var qtdNaipes by Delegates.notNull<Int>()
 
+    private lateinit var splashFragment: FrameLayout
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         qtdNaipes = arguments?.getInt("qtdNaipes")!!
-
         getDeck()
         Log.i("Ciclo GameFragment", "onCreate")
     }
@@ -356,6 +359,8 @@ class GameFragment : Fragment() {
         p10_c12 = view.findViewById(R.id.p10c12)
         p10_c13 = view.findViewById(R.id.p10c13)
 
+        splashFragment = view.findViewById(R.id.splash_fragment)
+
         return view
     }
 
@@ -514,7 +519,7 @@ class GameFragment : Fragment() {
 
     fun getCardsToStacks(data: JsonObject, stack: MutableList<Card>, NumberStack: Int) {
         var gson = Gson()
-        var d = gson.fromJson(data, Model::class.java)
+        var d = gson.fromJson(data, CardModel::class.java)
 
         d.cards.forEach {
             var code = it.get("code").toString()
@@ -668,5 +673,8 @@ class GameFragment : Fragment() {
         distributeCards(deckId, 5, stackEightCards, 8)
         distributeCards(deckId, 5, stackNineCards, 9)
         distributeCards(deckId, 5, stackTenCards, 10)
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            splashFragment.visibility = View.INVISIBLE }, 6000)
     }
 }

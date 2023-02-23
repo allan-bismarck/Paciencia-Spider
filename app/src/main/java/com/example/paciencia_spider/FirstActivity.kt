@@ -2,7 +2,6 @@ package com.example.paciencia_spider
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.*
 
 class FirstActivity : AppCompatActivity() {
@@ -69,8 +68,8 @@ class FirstActivity : AppCompatActivity() {
         btnDelete = findViewById(R.id.delete_user)
         btnDelete.setOnClickListener {
             configDataBase.deleteUser()
-            finish()
             runIntent(Intent(this, MainActivity::class.java))
+            finish()
         }
     }
 

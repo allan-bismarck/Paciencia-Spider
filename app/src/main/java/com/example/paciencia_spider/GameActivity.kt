@@ -9,10 +9,13 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.gson.JsonObject
+import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.create
+import java.lang.Thread.sleep
+import kotlin.coroutines.CoroutineContext
 import kotlin.properties.Delegates
 
 class GameActivity : AppCompatActivity() {
@@ -22,6 +25,7 @@ class GameActivity : AppCompatActivity() {
     private lateinit var exit: ImageButton
     private lateinit var userName: String
     private lateinit var gameFragment: GameFragment
+    private lateinit var splashScreenFragment: SplashFragmentLoading
     private var qtdNaipes by Delegates.notNull<Int>()
     private lateinit var b: Bundle
 
@@ -32,6 +36,7 @@ class GameActivity : AppCompatActivity() {
 
         player = findViewById(R.id.player)
         gameFragment = GameFragment()
+        splashScreenFragment = SplashFragmentLoading()
 
         if(intent != null) {
             b = intent.extras!!
@@ -61,7 +66,8 @@ class GameActivity : AppCompatActivity() {
         loadFragment(gameFragment)
     }
 
-    private fun loadFragment(fragment: Fragment) {
+
+    fun loadFragment(fragment: Fragment) {
         val fragmentLoad = supportFragmentManager.beginTransaction()
         fragmentLoad.replace(R.id.frameFragment, fragment)
         fragment.arguments = b
