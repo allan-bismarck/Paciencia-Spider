@@ -14,7 +14,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:gravity="center"
             android:layout_gravity="clip_horizontal"
             android:orientation="horizontal">
@@ -22,7 +22,7 @@
             <TextView
                 android:id="@+id/player"
                 android:layout_width="0dp"
-                android:layout_weight="2"
+                android:layout_weight="4"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="" />
@@ -39,7 +39,6 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:contentDescription="exit"
                 app:srcCompat="@android:drawable/ic_menu_rotate"
                 android:layout_marginRight="20dp"
                 android:layout_marginLeft="20dp"/>
@@ -49,7 +48,6 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:contentDescription="reload"
                 app:srcCompat="@android:drawable/ic_delete" />
         </LinearLayout>
 

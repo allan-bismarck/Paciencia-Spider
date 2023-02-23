@@ -28,226 +28,170 @@
 
                 <ImageView
                     android:id="@+id/deck_c1"
-                    android:layout_width="60dp"
-                    android:layout_height="80dp"
+                    android:layout_width="@dimen/width_deck"
+                    android:layout_height="@dimen/height_deck"
                     android:layout_gravity="center_vertical" />
 
                 <ImageView
                     android:id="@+id/deck_c2"
-                    android:layout_width="60dp"
-                    android:layout_height="80dp"
+                    android:layout_width="@dimen/width_deck"
+                    android:layout_height="@dimen/height_deck"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="10dp" />
 
                 <ImageView
                     android:id="@+id/deck_c3"
-                    android:layout_width="60dp"
-                    android:layout_height="80dp"
+                    android:layout_width="@dimen/width_deck"
+                    android:layout_height="@dimen/height_deck"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="20dp" />
 
                 <ImageView
                     android:id="@+id/deck_c4"
-                    android:layout_width="60dp"
-                    android:layout_height="80dp"
+                    android:layout_width="@dimen/width_deck"
+                    android:layout_height="@dimen/height_deck"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="30dp" />
 
                 <ImageView
                     android:id="@+id/deck_c5"
-                    android:layout_width="60dp"
-                    android:layout_height="80dp"
+                    android:layout_width="@dimen/width_deck"
+                    android:layout_height="@dimen/height_deck"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="40dp" />
 
             </FrameLayout>
 
             <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/stack1Border"
-                    android:layout_width="50dp"
-                    android:layout_height="70dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginHorizontal="5dp"
-                    android:background="@color/white"
-                    />
+                android:layout_width="@dimen/width_deck"
+                android:layout_height="@dimen/height_deck"
+                android:layout_marginHorizontal="5dp"
+                android:background="@color/white"
+                android:padding="1dp" >
 
                 <ImageView
                     android:id="@+id/stack1"
-                    android:layout_width="47dp"
-                    android:layout_height="67dp"
+                    android:layout_width="@dimen/width_deck"
+                    android:layout_height="@dimen/height_deck"
                     android:layout_gravity="center"
-                    android:layout_marginHorizontal="5dp"
-                    android:background="@color/teal_700"
-                    />
+                    android:background="@color/teal_700" />
             </FrameLayout>
 
             <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/stack2Border"
-                    android:layout_width="50dp"
-                    android:layout_height="70dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginHorizontal="5dp"
-                    android:background="@color/white"
-                    />
+                android:layout_width="@dimen/width_deck"
+                android:layout_height="@dimen/height_deck"
+                android:layout_marginHorizontal="5dp"
+                android:background="@color/white"
+                android:padding="1dp" >
 
                 <ImageView
                     android:id="@+id/stack2"
-                    android:layout_width="47dp"
-                    android:layout_height="67dp"
+                    android:layout_width="@dimen/width_deck"
+                    android:layout_height="@dimen/height_deck"
                     android:layout_gravity="center"
-                    android:layout_marginHorizontal="5dp"
-                    android:background="@color/teal_700"
-                    />
+                    android:background="@color/teal_700" />
             </FrameLayout>
 
             <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/stack3Border"
-                    android:layout_width="50dp"
-                    android:layout_height="70dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginHorizontal="5dp"
-                    android:background="@color/white"
-                    />
+                android:layout_width="@dimen/width_deck"
+                android:layout_height="@dimen/height_deck"
+                android:layout_marginHorizontal="5dp"
+                android:background="@color/white"
+                android:padding="1dp" >
 
                 <ImageView
                     android:id="@+id/stack3"
-                    android:layout_width="47dp"
-                    android:layout_height="67dp"
+                    android:layout_width="@dimen/width_deck"
+                    android:layout_height="@dimen/height_deck"
                     android:layout_gravity="center"
-                    android:layout_marginHorizontal="5dp"
-                    android:background="@color/teal_700"
-                    />
+                    android:background="@color/teal_700" />
             </FrameLayout>
 
             <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/stack4Border"
-                    android:layout_width="50dp"
-                    android:layout_height="70dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginHorizontal="5dp"
-                    android:background="@color/white"
-                    />
+                android:layout_width="@dimen/width_deck"
+                android:layout_height="@dimen/height_deck"
+                android:layout_marginHorizontal="5dp"
+                android:background="@color/white"
+                android:padding="1dp" >
 
                 <ImageView
                     android:id="@+id/stack4"
-                    android:layout_width="47dp"
-                    android:layout_height="67dp"
+                    android:layout_width="@dimen/width_deck"
+                    android:layout_height="@dimen/height_deck"
                     android:layout_gravity="center"
-                    android:layout_marginHorizontal="5dp"
-                    android:background="@color/teal_700"
-                    />
+                    android:background="@color/teal_700" />
             </FrameLayout>
 
             <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/stack5Border"
-                    android:layout_width="50dp"
-                    android:layout_height="70dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginHorizontal="5dp"
-                    android:background="@color/white"
-                    />
+                android:layout_width="@dimen/width_deck"
+                android:layout_height="@dimen/height_deck"
+                android:layout_marginHorizontal="5dp"
+                android:background="@color/white"
+                android:padding="1dp" >
 
                 <ImageView
                     android:id="@+id/stack5"
-                    android:layout_width="47dp"
-                    android:layout_height="67dp"
+                    android:layout_width="@dimen/width_deck"
+                    android:layout_height="@dimen/height_deck"
                     android:layout_gravity="center"
-                    android:layout_marginHorizontal="5dp"
-                    android:background="@color/teal_700"
-                    />
+                    android:background="@color/teal_700" />
             </FrameLayout>
 
             <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/stack6Border"
-                    android:layout_width="50dp"
-                    android:layout_height="70dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginHorizontal="5dp"
-                    android:background="@color/white"
-                    />
+                android:layout_width="@dimen/width_deck"
+                android:layout_height="@dimen/height_deck"
+                android:layout_marginHorizontal="5dp"
+                android:background="@color/white"
+                android:padding="1dp" >
 
                 <ImageView
                     android:id="@+id/stack6"
-                    android:layout_width="47dp"
-                    android:layout_height="67dp"
+                    android:layout_width="@dimen/width_deck"
+                    android:layout_height="@dimen/height_deck"
                     android:layout_gravity="center"
-                    android:layout_marginHorizontal="5dp"
-                    android:background="@color/teal_700"
-                    />
+                    android:background="@color/teal_700" />
             </FrameLayout>
 
             <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/stack7Border"
-                    android:layout_width="50dp"
-                    android:layout_height="70dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginHorizontal="5dp"
-                    android:background="@color/white"
-                    />
+                android:layout_width="@dimen/width_deck"
+                android:layout_height="@dimen/height_deck"
+                android:layout_marginHorizontal="5dp"
+                android:background="@color/white"
+                android:padding="1dp" >
 
                 <ImageView
                     android:id="@+id/stack7"
-                    android:layout_width="47dp"
-                    android:layout_height="67dp"
+                    android:layout_width="@dimen/width_deck"
+                    android:layout_height="@dimen/height_deck"
                     android:layout_gravity="center"
-                    android:layout_marginHorizontal="5dp"
-                    android:background="@color/teal_700"
-                    />
+                    android:background="@color/teal_700" />
             </FrameLayout>
 
             <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/stack8Border"
-                    android:layout_width="50dp"
-                    android:layout_height="70dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginHorizontal="5dp"
-                    android:background="@color/white"
-                    />
+                android:layout_width="@dimen/width_deck"
+                android:layout_height="@dimen/height_deck"
+                android:layout_marginHorizontal="5dp"
+                android:background="@color/white"
+                android:padding="1dp" >
 
                 <ImageView
                     android:id="@+id/stack8"
-                    android:layout_width="47dp"
-                    android:layout_height="67dp"
+                    android:layout_width="@dimen/width_deck"
+                    android:layout_height="@dimen/height_deck"
                     android:layout_gravity="center"
-                    android:layout_marginHorizontal="5dp"
-                    android:background="@color/teal_700"
-                    />
+                    android:background="@color/teal_700" />
+
             </FrameLayout>
 
-        </LinearLayout>
+            <TextView
+                android:id="@+id/label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="GameFragment"
+                android:layout_gravity="center"
+                android:textSize="15sp" />
 
-        <TextView
-            android:id="@+id/label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="GameFragment"
-            android:layout_gravity="center"
-            android:textSize="15sp" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -269,84 +213,84 @@
                     android:id="@+id/p1c2"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="@dimen/space_cards_two"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p1c3"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="@dimen/space_cards_tree"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p1c4"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="36dp"
+                    android:layout_marginTop="@dimen/space_cards_four"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p1c5"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="48dp"
+                    android:layout_marginTop="@dimen/space_cards_five"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p1c6"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="60dp"
+                    android:layout_marginTop="@dimen/space_cards_six"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p1c7"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="72dp"
+                    android:layout_marginTop="@dimen/space_cards_seven"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p1c8"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="84dp"
+                    android:layout_marginTop="@dimen/space_cards_eight"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p1c9"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="96dp"
+                    android:layout_marginTop="@dimen/space_cards_nine"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p1c10"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="108dp"
+                    android:layout_marginTop="@dimen/space_cards_ten"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p1c11"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="120dp"
+                    android:layout_marginTop="@dimen/space_cards_eleven"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p1c12"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="132dp"
+                    android:layout_marginTop="@dimen/space_cards_twelve"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p1c13"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="144dp"
+                    android:layout_marginTop="@dimen/space_cards_thirteen"
                     android:layout_marginHorizontal="5dp" />
 
             </FrameLayout>
@@ -365,84 +309,84 @@
                     android:id="@+id/p2c2"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="@dimen/space_cards_two"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p2c3"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="@dimen/space_cards_tree"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p2c4"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="36dp"
+                    android:layout_marginTop="@dimen/space_cards_four"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p2c5"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="48dp"
+                    android:layout_marginTop="@dimen/space_cards_five"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p2c6"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="60dp"
+                    android:layout_marginTop="@dimen/space_cards_six"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p2c7"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="72dp"
+                    android:layout_marginTop="@dimen/space_cards_seven"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p2c8"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="84dp"
+                    android:layout_marginTop="@dimen/space_cards_eight"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p2c9"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="96dp"
+                    android:layout_marginTop="@dimen/space_cards_nine"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p2c10"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="108dp"
+                    android:layout_marginTop="@dimen/space_cards_ten"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p2c11"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="120dp"
+                    android:layout_marginTop="@dimen/space_cards_eleven"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p2c12"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="132dp"
+                    android:layout_marginTop="@dimen/space_cards_twelve"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p2c13"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="144dp"
+                    android:layout_marginTop="@dimen/space_cards_thirteen"
                     android:layout_marginHorizontal="5dp" />
 
             </FrameLayout>
@@ -461,84 +405,84 @@
                     android:id="@+id/p3c2"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="@dimen/space_cards_two"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p3c3"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="@dimen/space_cards_tree"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p3c4"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="36dp"
+                    android:layout_marginTop="@dimen/space_cards_four"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p3c5"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="48dp"
+                    android:layout_marginTop="@dimen/space_cards_five"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p3c6"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="60dp"
+                    android:layout_marginTop="@dimen/space_cards_six"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p3c7"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="72dp"
+                    android:layout_marginTop="@dimen/space_cards_seven"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p3c8"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="84dp"
+                    android:layout_marginTop="@dimen/space_cards_eight"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p3c9"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="96dp"
+                    android:layout_marginTop="@dimen/space_cards_nine"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p3c10"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="108dp"
+                    android:layout_marginTop="@dimen/space_cards_ten"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p3c11"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="120dp"
+                    android:layout_marginTop="@dimen/space_cards_eleven"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p3c12"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="132dp"
+                    android:layout_marginTop="@dimen/space_cards_twelve"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p3c13"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="144dp"
+                    android:layout_marginTop="@dimen/space_cards_thirteen"
                     android:layout_marginHorizontal="5dp" />
 
             </FrameLayout>
@@ -557,84 +501,84 @@
                     android:id="@+id/p4c2"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="@dimen/space_cards_two"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p4c3"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="@dimen/space_cards_tree"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p4c4"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="36dp"
+                    android:layout_marginTop="@dimen/space_cards_four"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p4c5"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="48dp"
+                    android:layout_marginTop="@dimen/space_cards_five"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p4c6"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="60dp"
+                    android:layout_marginTop="@dimen/space_cards_six"
                     android:layout_marginHorizontal="5dp"  />
 
                 <ImageView
                     android:id="@+id/p4c7"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="72dp"
+                    android:layout_marginTop="@dimen/space_cards_seven"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p4c8"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="84dp"
+                    android:layout_marginTop="@dimen/space_cards_eight"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p4c9"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="96dp"
+                    android:layout_marginTop="@dimen/space_cards_nine"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p4c10"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="108dp"
+                    android:layout_marginTop="@dimen/space_cards_ten"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p4c11"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="120dp"
+                    android:layout_marginTop="@dimen/space_cards_eleven"
                     android:layout_marginHorizontal="5dp"  />
 
                 <ImageView
                     android:id="@+id/p4c12"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="132dp"
+                    android:layout_marginTop="@dimen/space_cards_twelve"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p4c13"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="144dp"
+                    android:layout_marginTop="@dimen/space_cards_thirteen"
                     android:layout_marginHorizontal="5dp" />
 
             </FrameLayout>
@@ -653,84 +597,84 @@
                     android:id="@+id/p5c2"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="@dimen/space_cards_two"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p5c3"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="@dimen/space_cards_tree"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p5c4"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="36dp"
+                    android:layout_marginTop="@dimen/space_cards_four"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p5c5"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="48dp"
+                    android:layout_marginTop="@dimen/space_cards_five"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p5c6"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="60dp"
+                    android:layout_marginTop="@dimen/space_cards_six"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p5c7"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="72dp"
+                    android:layout_marginTop="@dimen/space_cards_seven"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p5c8"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="84dp"
+                    android:layout_marginTop="@dimen/space_cards_eight"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p5c9"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="96dp"
+                    android:layout_marginTop="@dimen/space_cards_nine"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p5c10"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="108dp"
+                    android:layout_marginTop="@dimen/space_cards_ten"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p5c11"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="120dp"
+                    android:layout_marginTop="@dimen/space_cards_eleven"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p5c12"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="132dp"
+                    android:layout_marginTop="@dimen/space_cards_twelve"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p5c13"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="144dp"
+                    android:layout_marginTop="@dimen/space_cards_thirteen"
                     android:layout_marginHorizontal="5dp" />
 
             </FrameLayout>
@@ -749,84 +693,84 @@
                     android:id="@+id/p6c2"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="@dimen/space_cards_two"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p6c3"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="@dimen/space_cards_tree"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p6c4"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="36dp"
+                    android:layout_marginTop="@dimen/space_cards_four"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p6c5"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="48dp"
+                    android:layout_marginTop="@dimen/space_cards_five"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p6c6"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="60dp"
+                    android:layout_marginTop="@dimen/space_cards_six"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p6c7"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="72dp"
+                    android:layout_marginTop="@dimen/space_cards_seven"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p6c8"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="84dp"
+                    android:layout_marginTop="@dimen/space_cards_eight"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p6c9"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="96dp"
+                    android:layout_marginTop="@dimen/space_cards_nine"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p6c10"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="108dp"
+                    android:layout_marginTop="@dimen/space_cards_ten"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p6c11"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="120dp"
+                    android:layout_marginTop="@dimen/space_cards_eleven"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p6c12"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="132dp"
+                    android:layout_marginTop="@dimen/space_cards_twelve"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p6c13"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="144dp"
+                    android:layout_marginTop="@dimen/space_cards_thirteen"
                     android:layout_marginHorizontal="5dp" />
 
             </FrameLayout>
@@ -845,84 +789,84 @@
                     android:id="@+id/p7c2"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="@dimen/space_cards_two"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p7c3"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="@dimen/space_cards_tree"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p7c4"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="36dp"
+                    android:layout_marginTop="@dimen/space_cards_four"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p7c5"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="48dp"
+                    android:layout_marginTop="@dimen/space_cards_five"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p7c6"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="60dp"
+                    android:layout_marginTop="@dimen/space_cards_six"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p7c7"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="72dp"
+                    android:layout_marginTop="@dimen/space_cards_seven"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p7c8"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="84dp"
+                    android:layout_marginTop="@dimen/space_cards_eight"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p7c9"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="96dp"
+                    android:layout_marginTop="@dimen/space_cards_nine"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p7c10"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="108dp"
+                    android:layout_marginTop="@dimen/space_cards_ten"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p7c11"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="120dp"
+                    android:layout_marginTop="@dimen/space_cards_eleven"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p7c12"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="132dp"
+                    android:layout_marginTop="@dimen/space_cards_twelve"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p7c13"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="144dp"
+                    android:layout_marginTop="@dimen/space_cards_thirteen"
                     android:layout_marginHorizontal="5dp" />
 
             </FrameLayout>
@@ -941,84 +885,84 @@
                     android:id="@+id/p8c2"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="@dimen/space_cards_two"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p8c3"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="@dimen/space_cards_tree"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p8c4"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="36dp"
+                    android:layout_marginTop="@dimen/space_cards_four"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p8c5"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="48dp"
+                    android:layout_marginTop="@dimen/space_cards_five"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p8c6"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="60dp"
+                    android:layout_marginTop="@dimen/space_cards_six"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p8c7"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="72dp"
+                    android:layout_marginTop="@dimen/space_cards_seven"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p8c8"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="84dp"
+                    android:layout_marginTop="@dimen/space_cards_eight"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p8c9"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="96dp"
+                    android:layout_marginTop="@dimen/space_cards_nine"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p8c10"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="108dp"
+                    android:layout_marginTop="@dimen/space_cards_ten"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p8c11"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="120dp"
+                    android:layout_marginTop="@dimen/space_cards_eleven"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p8c12"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="132dp"
+                    android:layout_marginTop="@dimen/space_cards_twelve"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p8c13"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="144dp"
+                    android:layout_marginTop="@dimen/space_cards_thirteen"
                     android:layout_marginHorizontal="5dp" />
 
             </FrameLayout>
@@ -1037,84 +981,84 @@
                     android:id="@+id/p9c2"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="@dimen/space_cards_two"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p9c3"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="@dimen/space_cards_tree"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p9c4"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="36dp"
+                    android:layout_marginTop="@dimen/space_cards_four"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p9c5"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="48dp"
+                    android:layout_marginTop="@dimen/space_cards_five"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p9c6"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="60dp"
+                    android:layout_marginTop="@dimen/space_cards_six"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p9c7"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="72dp"
+                    android:layout_marginTop="@dimen/space_cards_seven"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p9c8"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="84dp"
+                    android:layout_marginTop="@dimen/space_cards_eight"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p9c9"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="96dp"
+                    android:layout_marginTop="@dimen/space_cards_nine"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p9c10"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="108dp"
+                    android:layout_marginTop="@dimen/space_cards_ten"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p9c11"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="120dp"
+                    android:layout_marginTop="@dimen/space_cards_eleven"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p9c12"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="132dp"
+                    android:layout_marginTop="@dimen/space_cards_twelve"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p9c13"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="144dp"
+                    android:layout_marginTop="@dimen/space_cards_thirteen"
                     android:layout_marginHorizontal="5dp" />
 
             </FrameLayout>
@@ -1133,84 +1077,84 @@
                     android:id="@+id/p10c2"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="@dimen/space_cards_two"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p10c3"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="@dimen/space_cards_tree"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p10c4"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="36dp"
+                    android:layout_marginTop="@dimen/space_cards_four"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p10c5"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="48dp"
+                    android:layout_marginTop="@dimen/space_cards_five"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p10c6"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="60dp"
+                    android:layout_marginTop="@dimen/space_cards_six"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p10c7"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="72dp"
+                    android:layout_marginTop="@dimen/space_cards_seven"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p10c8"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="84dp"
+                    android:layout_marginTop="@dimen/space_cards_eight"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p10c9"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="96dp"
+                    android:layout_marginTop="@dimen/space_cards_nine"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p10c10"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="108dp"
+                    android:layout_marginTop="@dimen/space_cards_ten"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p10c11"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="120dp"
+                    android:layout_marginTop="@dimen/space_cards_eleven"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p10c12"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="132dp"
+                    android:layout_marginTop="@dimen/space_cards_twelve"
                     android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p10c13"
                     android:layout_width="55dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="144dp"
+                    android:layout_marginTop="@dimen/space_cards_thirteen"
                     android:layout_marginHorizontal="5dp" />
 
             </FrameLayout>

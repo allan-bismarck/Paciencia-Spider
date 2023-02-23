@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="width_deck">40dp</dimen>
+    <dimen name="height_deck">60dp</dimen>
+    <dimen name="space_cards_two">15dp</dimen>
+    <dimen name="space_cards_tree">30dp</dimen>
+    <dimen name="space_cards_four">45dp</dimen>
+    <dimen name="space_cards_five">60dp</dimen>
+    <dimen name="space_cards_six">75dp</dimen>
+    <dimen name="space_cards_seven">90dp</dimen>
+    <dimen name="space_cards_eight">105dp</dimen>
+    <dimen name="space_cards_nine">120dp</dimen>
+    <dimen name="space_cards_ten">135dp</dimen>
+    <dimen name="space_cards_eleven">150dp</dimen>
+    <dimen name="space_cards_twelve">165dp</dimen>
+    <dimen name="space_cards_thirteen">180dp</dimen>
+</resources>

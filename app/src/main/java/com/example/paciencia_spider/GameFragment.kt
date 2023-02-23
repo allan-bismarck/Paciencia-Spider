@@ -170,16 +170,16 @@ class GameFragment : Fragment() {
     private lateinit var p10_c12: ImageView
     private lateinit var p10_c13: ImageView
 
-    private var stackOneCards: MutableList<Card> = ArrayList()
-    private var stackTwoCards: MutableList<Card> = ArrayList()
-    private var stackTreeCards: MutableList<Card> = ArrayList()
-    private var stackFourCards: MutableList<Card> = ArrayList()
-    private var stackFiveCards: MutableList<Card> = ArrayList()
-    private var stackSixCards: MutableList<Card> = ArrayList()
-    private var stackSevenCards: MutableList<Card> = ArrayList()
-    private var stackEightCards: MutableList<Card> = ArrayList()
-    private var stackNineCards: MutableList<Card> = ArrayList()
-    private var stackTenCards: MutableList<Card> = ArrayList()
+    private var stackOneCards: MutableList<Card> = mutableListOf()
+    private var stackTwoCards: MutableList<Card> = mutableListOf()
+    private var stackTreeCards: MutableList<Card> = mutableListOf()
+    private var stackFourCards: MutableList<Card> = mutableListOf()
+    private var stackFiveCards: MutableList<Card> = mutableListOf()
+    private var stackSixCards: MutableList<Card> = mutableListOf()
+    private var stackSevenCards: MutableList<Card> = mutableListOf()
+    private var stackEightCards: MutableList<Card> = mutableListOf()
+    private var stackNineCards: MutableList<Card> = mutableListOf()
+    private var stackTenCards: MutableList<Card> = mutableListOf()
 
     private lateinit var deckId: String
 
@@ -521,6 +521,10 @@ class GameFragment : Fragment() {
         var gson = Gson()
         var d = gson.fromJson(data, CardModel::class.java)
 
+        if(NumberStack == 1) {
+            Log.i("PASSEI AQUI", "passei")
+        }
+
         d.cards.forEach {
             var code = it.get("code").toString()
             code = code.split('"')[1]
@@ -543,6 +547,7 @@ class GameFragment : Fragment() {
                 Glide.with(this).load(stack[3].getImageBack()).into(p1_c4)
                 Glide.with(this).load(stack[4].getImageBack()).into(p1_c5)
                 Glide.with(this).load(stack[5].getImageUrl(stack[5].getCodeC())).into(p1_c6)
+
             }
 
             2-> {
