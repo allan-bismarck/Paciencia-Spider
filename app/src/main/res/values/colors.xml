@@ -12,4 +12,5 @@
     <color name="limegreen">#32CD32</color>
     <color name="red">#FF0000</color>
     <color name="darkorange">#FF8C00</color>
+    <color name="black_transparent">#77000000</color>
 </resources>

@@ -1,5 +1,6 @@
 package com.example.paciencia_spider
 
+import android.media.Image
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -181,7 +182,7 @@ class GameFragment : Fragment() {
     private var stackNineCards: MutableList<Card> = mutableListOf()
     private var stackTenCards: MutableList<Card> = mutableListOf()
 
-    private lateinit var deckId: String
+    private var deckId: String = ""
 
     private var qtdNaipes by Delegates.notNull<Int>()
 
@@ -409,57 +410,74 @@ class GameFragment : Fragment() {
         val serviceClient = Api.getRetrofitInstance(BASE_URL)
         val endpoint = serviceClient.create(Endpoint::class.java)
 
-        when(qtdNaipes) {
-            1 -> {
-                endpoint.getDeckOneNaipe().enqueue(object: Callback<JsonObject> {
-                    override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
-                        var data = response.body()
-                        Log.i("RESPOSTA", data.toString())
-                        deckId = data?.get("deck_id").toString()
-                        deckId = deckId.split('"')[1]
-                        loadCards()
-                    }
+        if(deckId.isEmpty()) {
 
-                    override fun onFailure(call: Call<JsonObject>, t: Throwable) {
-                        Log.i("Falha", "Não foi possível obter nenhuma resposta da API")
-                    }
+            when (qtdNaipes) {
+                1 -> {
+                    endpoint.getDeckOneNaipe().enqueue(object : Callback<JsonObject> {
+                        override fun onResponse(
+                            call: Call<JsonObject>,
+                            response: Response<JsonObject>
+                        ) {
+                            var data = response.body()
+                            Log.i("RESPOSTA", data.toString())
+                            deckId = data?.get("deck_id").toString()
+                            deckId = deckId.split('"')[1]
+                            endpoint.shuffleDeck(deckId)
+                            loadCards()
+                        }
 
-                })
+                        override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+                            Log.i("Falha", "Não foi possível obter nenhuma resposta da API")
+                        }
+
+                    })
+                }
+
+                2 -> {
+                    endpoint.getDeckTwoNaipes().enqueue(object : Callback<JsonObject> {
+                        override fun onResponse(
+                            call: Call<JsonObject>,
+                            response: Response<JsonObject>
+                        ) {
+                            var data = response.body()
+                            Log.i("RESPOSTA", data.toString())
+                            deckId = data?.get("deck_id").toString()
+                            deckId = deckId.split('"')[1]
+                            loadCards()
+                        }
+
+                        override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+                            Log.i("Falha", "Não foi possível obter nenhuma resposta da API")
+                        }
+
+                    })
+                }
+
+                else -> {
+                    endpoint.getDeckFourNaipes().enqueue(object : Callback<JsonObject> {
+                        override fun onResponse(
+                            call: Call<JsonObject>,
+                            response: Response<JsonObject>
+                        ) {
+                            var data = response.body()
+                            Log.i("RESPOSTA", data.toString())
+                            deckId = data?.get("deck_id").toString()
+                            deckId = deckId.split('"')[1]
+                            loadCards()
+                        }
+
+                        override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+                            Log.i("Falha", "Não foi possível obter nenhuma resposta da API")
+                        }
+
+                    })
+                }
             }
-
-            2 -> {
-                endpoint.getDeckTwoNaipes().enqueue(object: Callback<JsonObject> {
-                    override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
-                        var data = response.body()
-                        Log.i("RESPOSTA", data.toString())
-                        deckId = data?.get("deck_id").toString()
-                        deckId = deckId.split('"')[1]
-                        loadCards()
-                    }
-
-                    override fun onFailure(call: Call<JsonObject>, t: Throwable) {
-                        Log.i("Falha", "Não foi possível obter nenhuma resposta da API")
-                    }
-
-                })
-            }
-
-            else -> {
-                endpoint.getDeckFourNaipes().enqueue(object: Callback<JsonObject> {
-                    override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
-                        var data = response.body()
-                        Log.i("RESPOSTA", data.toString())
-                        deckId = data?.get("deck_id").toString()
-                        deckId = deckId.split('"')[1]
-                        loadCards()
-                    }
-
-                    override fun onFailure(call: Call<JsonObject>, t: Throwable) {
-                        Log.i("Falha", "Não foi possível obter nenhuma resposta da API")
-                    }
-
-                })
-            }
+        } else {
+            endpoint.returnDeck(deckId)
+            endpoint.shuffleDeck(deckId)
+            loadCards()
         }
 
     }
@@ -475,7 +493,7 @@ class GameFragment : Fragment() {
                 endpoint.distributeFiveCards(IdDeck).enqueue(object: Callback<JsonObject> {
                     override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
                         data = response.body()!!
-                        Log.i("RESPOSTA", data.toString())
+                        // Log.i("RESPOSTA", data.toString())
                         getCardsToStacks(data, stack, NumberStack)
                     }
 
@@ -490,7 +508,7 @@ class GameFragment : Fragment() {
                 endpoint.distributeSixCards(IdDeck).enqueue(object: Callback<JsonObject> {
                     override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
                         data = response.body()!!
-                        Log.i("RESPOSTA", data.toString())
+                        // Log.i("RESPOSTA", data.toString())
                         getCardsToStacks(data, stack, NumberStack)
                     }
 
@@ -505,7 +523,8 @@ class GameFragment : Fragment() {
                 endpoint.distributeTenCards(IdDeck).enqueue(object: Callback<JsonObject> {
                     override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
                         data = response.body()!!
-                        // Log.i("RESPOSTA", data.toString())
+                        getCardsFromDeck(data)
+                        Log.i("RESPOSTA", data.toString())
                     }
 
                     override fun onFailure(call: Call<JsonObject>, t: Throwable) {
@@ -520,10 +539,6 @@ class GameFragment : Fragment() {
     fun getCardsToStacks(data: JsonObject, stack: MutableList<Card>, NumberStack: Int) {
         var gson = Gson()
         var d = gson.fromJson(data, CardModel::class.java)
-
-        if(NumberStack == 1) {
-            Log.i("PASSEI AQUI", "passei")
-        }
 
         d.cards.forEach {
             var code = it.get("code").toString()
@@ -680,6 +695,241 @@ class GameFragment : Fragment() {
         distributeCards(deckId, 5, stackTenCards, 10)
 
         Handler(Looper.getMainLooper()).postDelayed({
-            splashFragment.visibility = View.INVISIBLE }, 6000)
+            splashFragment.visibility = View.INVISIBLE }, 7000)
+    }
+
+    fun getCardsFromDeck(data: JsonObject) {
+        var gson = Gson()
+        var d = gson.fromJson(data, CardModel::class.java)
+        var cards = mutableListOf<Card>()
+        d.cards.forEach {
+            var code = it.get("code").toString()
+            code = code.split('"')[1]
+            var show = true
+            var value = it.get("value").toString()
+            var suit = it.get("suit").toString()
+            cards.add(Card(code, show, value, suit))
+        }
+
+        stackOneCards.add(cards[0])
+        loadCardsFromDeck(stackOneCards, 1)
+
+        stackTwoCards.add(cards[1])
+        loadCardsFromDeck(stackTwoCards, 2)
+
+        stackTreeCards.add(cards[2])
+        loadCardsFromDeck(stackTreeCards, 3)
+
+        stackFourCards.add(cards[3])
+        loadCardsFromDeck(stackFourCards, 4)
+
+        stackFiveCards.add(cards[4])
+        loadCardsFromDeck(stackFiveCards, 5)
+
+        stackSixCards.add(cards[5])
+        loadCardsFromDeck(stackSixCards, 6)
+
+        stackSevenCards.add(cards[6])
+        loadCardsFromDeck(stackSevenCards, 7)
+
+        stackEightCards.add(cards[7])
+        loadCardsFromDeck(stackEightCards, 8)
+
+        stackNineCards.add(cards[8])
+        loadCardsFromDeck(stackNineCards, 9)
+
+        stackTenCards.add(cards[9])
+        loadCardsFromDeck(stackTenCards, 10)
+
+        var sizeTotal = stackOneCards.size + stackTwoCards.size + stackTreeCards.size + stackFourCards.size + stackFiveCards.size + stackSixCards.size + stackSevenCards.size + stackEightCards.size + stackNineCards.size + stackTenCards.size
+        Log.i("TOTAL", "de cartas = $sizeTotal")
+    }
+
+    private fun loadCardsFromDeck(stack: MutableList<Card>, numberStack: Int) {
+        var imgView: ImageView = p1_c1
+        var size = stack.size
+        size
+        when(numberStack) {
+            1 -> {
+                imgView = when(size) {
+                    1 -> p1_c1
+                    2 -> p1_c2
+                    3 -> p1_c3
+                    4 -> p1_c4
+                    5 -> p1_c5
+                    6 -> p1_c6
+                    7 -> p1_c7
+                    8 -> p1_c8
+                    9 -> p1_c9
+                    10 -> p1_c10
+                    11 -> p1_c11
+                    12 -> p1_c12
+                    else -> p1_c13
+                }
+            }
+
+            2 -> {
+                imgView = when(size) {
+                    1 -> p2_c1
+                    2 -> p2_c2
+                    3 -> p2_c3
+                    4 -> p2_c4
+                    5 -> p2_c5
+                    6 -> p2_c6
+                    7 -> p2_c7
+                    8 -> p2_c8
+                    9 -> p2_c9
+                    10 -> p2_c10
+                    11 -> p2_c11
+                    12 -> p2_c12
+                    else -> p2_c13
+                }
+            }
+
+            3 -> {
+                imgView = when(size) {
+                    1 -> p3_c1
+                    2 -> p3_c2
+                    3 -> p3_c3
+                    4 -> p3_c4
+                    5 -> p3_c5
+                    6 -> p3_c6
+                    7 -> p3_c7
+                    8 -> p3_c8
+                    9 -> p3_c9
+                    10 -> p3_c10
+                    11 -> p3_c11
+                    12 -> p3_c12
+                    else -> p3_c13
+                }
+            }
+
+            4 -> {
+                imgView = when(size) {
+                    1 -> p4_c1
+                    2 -> p4_c2
+                    3 -> p4_c3
+                    4 -> p4_c4
+                    5 -> p4_c5
+                    6 -> p4_c6
+                    7 -> p4_c7
+                    8 -> p4_c8
+                    9 -> p4_c9
+                    10 -> p4_c10
+                    11 -> p4_c11
+                    12 -> p4_c12
+                    else -> p4_c13
+                }
+            }
+
+            5 -> {
+                imgView = when(size) {
+                    1 -> p5_c1
+                    2 -> p5_c2
+                    3 -> p5_c3
+                    4 -> p5_c4
+                    5 -> p5_c5
+                    6 -> p5_c6
+                    7 -> p5_c7
+                    8 -> p5_c8
+                    9 -> p5_c9
+                    10 -> p5_c10
+                    11 -> p5_c11
+                    12 -> p5_c12
+                    else -> p5_c13
+                }
+            }
+
+            6 -> {
+                imgView = when(size) {
+                    1 -> p6_c1
+                    2 -> p6_c2
+                    3 -> p6_c3
+                    4 -> p6_c4
+                    5 -> p6_c5
+                    6 -> p6_c6
+                    7 -> p6_c7
+                    8 -> p6_c8
+                    9 -> p6_c9
+                    10 -> p6_c10
+                    11 -> p6_c11
+                    12 -> p6_c12
+                    else -> p6_c13
+                }
+            }
+
+            7 -> {
+                imgView = when(size) {
+                    1 -> p7_c1
+                    2 -> p7_c2
+                    3 -> p7_c3
+                    4 -> p7_c4
+                    5 -> p7_c5
+                    6 -> p7_c6
+                    7 -> p7_c7
+                    8 -> p7_c8
+                    9 -> p7_c9
+                    10 -> p7_c10
+                    11 -> p7_c11
+                    12 -> p7_c12
+                    else -> p7_c13
+                }
+            }
+
+            8 -> {
+                imgView = when(size) {
+                    1 -> p8_c1
+                    2 -> p8_c2
+                    3 -> p8_c3
+                    4 -> p8_c4
+                    5 -> p8_c5
+                    6 -> p8_c6
+                    7 -> p8_c7
+                    8 -> p8_c8
+                    9 -> p8_c9
+                    10 -> p8_c10
+                    11 -> p8_c11
+                    12 -> p8_c12
+                    else -> p8_c13
+                }
+            }
+
+            9 -> {
+                imgView = when(size) {
+                    1 -> p9_c1
+                    2 -> p9_c2
+                    3 -> p9_c3
+                    4 -> p9_c4
+                    5 -> p9_c5
+                    6 -> p9_c6
+                    7 -> p9_c7
+                    8 -> p9_c8
+                    9 -> p9_c9
+                    10 -> p9_c10
+                    11 -> p9_c11
+                    12 -> p9_c12
+                    else -> p9_c13
+                }
+            }
+
+            10 -> {
+                imgView = when(size) {
+                    1 -> p10_c1
+                    2 -> p10_c2
+                    3 -> p10_c3
+                    4 -> p10_c4
+                    5 -> p10_c5
+                    6 -> p10_c6
+                    7 -> p10_c7
+                    8 -> p10_c8
+                    9 -> p10_c9
+                    10 -> p10_c10
+                    11 -> p10_c11
+                    12 -> p10_c12
+                    else -> p10_c13
+                }
+            }
+        }
+        Glide.with(this).load(stack[size-1].getImageUrl(stack[size-1].getCodeC())).into(imgView)
     }
 }

@@ -25,7 +25,6 @@ class GameActivity : AppCompatActivity() {
     private lateinit var exit: ImageButton
     private lateinit var userName: String
     private lateinit var gameFragment: GameFragment
-    private lateinit var splashScreenFragment: SplashFragmentLoading
     private var qtdNaipes by Delegates.notNull<Int>()
     private lateinit var b: Bundle
 
@@ -36,7 +35,6 @@ class GameActivity : AppCompatActivity() {
 
         player = findViewById(R.id.player)
         gameFragment = GameFragment()
-        splashScreenFragment = SplashFragmentLoading()
 
         if(intent != null) {
             b = intent.extras!!
