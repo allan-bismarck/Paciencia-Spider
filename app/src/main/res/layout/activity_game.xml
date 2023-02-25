@@ -25,14 +25,9 @@
                 android:layout_weight="4"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="" />
-
-            <Button
-                android:id="@+id/button_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Inserir nome" />
+                android:text=""
+                android:textSize="25sp"
+                />
 
             <ImageButton
                 android:id="@+id/button_reload"

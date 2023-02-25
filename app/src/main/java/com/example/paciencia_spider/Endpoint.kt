@@ -26,6 +26,10 @@ interface Endpoint {
     fun shuffleDeck(@Path(value = "deckId", encoded = true) deck_id: String,
     ): Call<JsonObject>
 
+    @GET("/api/deck/{deckId}/shuffle/?remaining=true")
+    fun shuffleDeckWithRemaining(@Path(value = "deckId", encoded = true) deck_id: String,
+    ): Call<JsonObject>
+
     @GET("/api/deck/{deckId}/draw/?count=6")
     fun distributeSixCards(
         @Path(value = "deckId", encoded = true) deck_id: String,

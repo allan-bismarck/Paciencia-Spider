@@ -28,7 +28,6 @@ import kotlin.properties.Delegates
 class GameFragment : Fragment() {
     private var URL_IMAGES = "https://deckofcardsapi.com/static/img/"
 
-    private lateinit var userName: TextView
     private lateinit var deck: FrameLayout
     private lateinit var deck_c1: ImageView
     private lateinit var deck_c2: ImageView
@@ -195,6 +194,8 @@ class GameFragment : Fragment() {
 
     private var numberClick: Int = 0
 
+    private var numberCardsDeck: Int = 0
+
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -212,11 +213,11 @@ class GameFragment : Fragment() {
     ): View? {
         val view: View = inflater.inflate(R.layout.fragment_game, container, false)
 
-        userName = view.findViewById(R.id.label)
         deck = view.findViewById(R.id.deck)
         deck.setOnClickListener {
             CoroutineScope(Dispatchers.Main).launch {
                 var cardFalse = mutableListOf<Card>(Card("", false, 0, ""))
+                animationDeck()
                 distributeCards(deckId, 10, cardFalse)
             }
         }
@@ -813,10 +814,6 @@ class GameFragment : Fragment() {
         Log.i("Ciclo GameFragment", "onDestroy")
     }
 
-    public fun alterLabel() {
-        userName.text = "MUDOU O NOME"
-    }
-
     private fun getDeck() {
         val BASE_URL = "https://deckofcardsapi.com"
         val serviceClient = Api.getRetrofitInstance(BASE_URL)
@@ -899,6 +896,8 @@ class GameFragment : Fragment() {
         val serviceClient = Api.getRetrofitInstance(BASE_URL)
         val endpoint = serviceClient.create(Endpoint::class.java)
         lateinit var data: JsonObject
+
+        endpoint.shuffleDeckWithRemaining(IdDeck)
 
         when(numberCards) {
             5 -> {
@@ -1122,6 +1121,7 @@ class GameFragment : Fragment() {
         }
 
         checkAvaiableCards()
+        numberCardsDeck = 5
     }
 
     fun loadCards() {
@@ -1188,6 +1188,10 @@ class GameFragment : Fragment() {
 
             stackTenCards.add(cards[9])
             loadCardsFromDeck(stackTenCards, 10)
+        }
+
+        if(numberCardsDeck > 0) {
+            numberCardsDeck--
         }
     }
 
@@ -1419,25 +1423,30 @@ class GameFragment : Fragment() {
     @SuppressLint("ResourceAsColor")
     @RequiresApi(Build.VERSION_CODES.M)
     private fun avaiableCardsOnStack(stack: MutableList<Card>, numberStack: Int) {
+        var lastIndex = stack.lastIndex
         if(stack.isNotEmpty()) {
             stack.indices.forEach {
                 var imgView = identifyImgView(numberStack, it+1)
                 imgView?.foreground = ColorDrawable(0)
-                imgView?.isClickable = true
                 stack[it].setAvaiable(false)
             }
 
-            stack[stack.lastIndex].setAvaiable(true)
+            var imgview = identifyImgView(numberStack, lastIndex + 1)
+            imgview?.isClickable = true
+            stack[lastIndex].setAvaiable(true)
+
             stack.indices.reversed().forEach {
                 if (it > 0) {
-                    if (((stack[it].getValue()) == stack[it - 1].getValue()-1) && (stack[it].getSuit() == stack[it-1].getSuit())) {
+                    if (((stack[it].getValue()) == stack[it-1].getValue()-1) && (stack[it].getSuit() == stack[it-1].getSuit())) {
                         stack[it - 1].setAvaiable(true)
+                        var imgView = identifyImgView(numberStack, it)
+                        imgView?.isClickable = true
                     }
                 }
             }
 
             stack.indices.forEach {
-                if(it != stack.lastIndex) {
+                if(it != lastIndex) {
                     if (!stack[it + 1].getAvaiable()) {
                         stack[it].setAvaiable(false)
                     }
@@ -1454,16 +1463,322 @@ class GameFragment : Fragment() {
         }
     }
 
-    fun playWithDoubleClick(imgview: ImageView) {
-        numberClick++
-        Handler(Looper.getMainLooper()).postDelayed({
-            if(numberClick == 1) {
-                Log.i("1 click", "1 click")
-            } else if(numberClick == 2) {
-                Log.i("2 clicks", "2 clicks")
-            }
+    private fun playWithDoubleClick(imgview: ImageView) {
+        if(imgview.drawable != null ) {
+            var stack = identifyStack(imgview)
+            var position = identifyPosition(imgview)
+            numberClick++
+            Handler(Looper.getMainLooper()).postDelayed({
+                if (numberClick == 1) {
+                    Log.i("1 click", "stack: $stack, position: $position")
+                } else if (numberClick == 2) {
+                    Log.i("2 clicks", "stack: $stack, position: $position")
+                }
 
-            numberClick = 0
-        }, 300)
+                numberClick = 0
+            }, 300)
+        }
+    }
+
+    private fun identifyStack(imgView: ImageView): MutableList<Card>? {
+        when(imgView) {
+            p1_c1 -> return stackOneCards
+            p1_c2 -> return stackOneCards
+            p1_c3 -> return stackOneCards
+            p1_c4 -> return stackOneCards
+            p1_c5 -> return stackOneCards
+            p1_c6 -> return stackOneCards
+            p1_c7 -> return stackOneCards
+            p1_c8 -> return stackOneCards
+            p1_c9 -> return stackOneCards
+            p1_c10 -> return stackOneCards
+            p1_c11 -> return stackOneCards
+            p1_c12 -> return stackOneCards
+            p1_c13 -> return stackOneCards
+
+            p2_c1 -> return stackTwoCards
+            p2_c2 -> return stackTwoCards
+            p2_c3 -> return stackTwoCards
+            p2_c4 -> return stackTwoCards
+            p2_c5 -> return stackTwoCards
+            p2_c6 -> return stackTwoCards
+            p2_c7 -> return stackTwoCards
+            p2_c8 -> return stackTwoCards
+            p2_c9 -> return stackTwoCards
+            p2_c10 -> return stackTwoCards
+            p2_c11 -> return stackTwoCards
+            p2_c12 -> return stackTwoCards
+            p2_c13 -> return stackTwoCards
+
+            p3_c1 -> return stackTreeCards
+            p3_c2 -> return stackTreeCards
+            p3_c3 -> return stackTreeCards
+            p3_c4 -> return stackTreeCards
+            p3_c5 -> return stackTreeCards
+            p3_c6 -> return stackTreeCards
+            p3_c7 -> return stackTreeCards
+            p3_c8 -> return stackTreeCards
+            p3_c9 -> return stackTreeCards
+            p3_c10 -> return stackTreeCards
+            p3_c11 -> return stackTreeCards
+            p3_c12 -> return stackTreeCards
+            p3_c13 -> return stackTreeCards
+
+            p4_c1 -> return stackFourCards
+            p4_c2 -> return stackFourCards
+            p4_c3 -> return stackFourCards
+            p4_c4 -> return stackFourCards
+            p4_c5 -> return stackFourCards
+            p4_c6 -> return stackFourCards
+            p4_c7 -> return stackFourCards
+            p4_c8 -> return stackFourCards
+            p4_c9 -> return stackFourCards
+            p4_c10 -> return stackFourCards
+            p4_c11 -> return stackFourCards
+            p4_c12 -> return stackFourCards
+            p4_c13 -> return stackFourCards
+
+            p5_c1 -> return stackFiveCards
+            p5_c2 -> return stackFiveCards
+            p5_c3 -> return stackFiveCards
+            p5_c4 -> return stackFiveCards
+            p5_c5 -> return stackFiveCards
+            p5_c6 -> return stackFiveCards
+            p5_c7 -> return stackFiveCards
+            p5_c8 -> return stackFiveCards
+            p5_c9 -> return stackFiveCards
+            p5_c10 -> return stackFiveCards
+            p5_c11 -> return stackFiveCards
+            p5_c12 -> return stackFiveCards
+            p5_c13 -> return stackFiveCards
+
+            p6_c1 -> return stackSixCards
+            p6_c2 -> return stackSixCards
+            p6_c3 -> return stackSixCards
+            p6_c4 -> return stackSixCards
+            p6_c5 -> return stackSixCards
+            p6_c6 -> return stackSixCards
+            p6_c7 -> return stackSixCards
+            p6_c8 -> return stackSixCards
+            p6_c9 -> return stackSixCards
+            p6_c10 -> return stackSixCards
+            p6_c11 -> return stackSixCards
+            p6_c12 -> return stackSixCards
+            p6_c13 -> return stackSixCards
+
+            p7_c1 -> return stackSevenCards
+            p7_c2 -> return stackSevenCards
+            p7_c3 -> return stackSevenCards
+            p7_c4 -> return stackSevenCards
+            p7_c5 -> return stackSevenCards
+            p7_c6 -> return stackSevenCards
+            p7_c7 -> return stackSevenCards
+            p7_c8 -> return stackSevenCards
+            p7_c9 -> return stackSevenCards
+            p7_c10 -> return stackSevenCards
+            p7_c11 -> return stackSevenCards
+            p7_c12 -> return stackSevenCards
+            p7_c13 -> return stackSevenCards
+
+            p8_c1 -> return stackEightCards
+            p8_c2 -> return stackEightCards
+            p8_c3 -> return stackEightCards
+            p8_c4 -> return stackEightCards
+            p8_c5 -> return stackEightCards
+            p8_c6 -> return stackEightCards
+            p8_c7 -> return stackEightCards
+            p8_c8 -> return stackEightCards
+            p8_c9 -> return stackEightCards
+            p8_c10 -> return stackEightCards
+            p8_c11 -> return stackEightCards
+            p8_c12 -> return stackEightCards
+            p8_c13 -> return stackEightCards
+
+            p9_c1 -> return stackNineCards
+            p9_c2 -> return stackNineCards
+            p9_c3 -> return stackNineCards
+            p9_c4 -> return stackNineCards
+            p9_c5 -> return stackNineCards
+            p9_c6 -> return stackNineCards
+            p9_c7 -> return stackNineCards
+            p9_c8 -> return stackNineCards
+            p9_c9 -> return stackNineCards
+            p9_c10 -> return stackNineCards
+            p9_c11 -> return stackNineCards
+            p9_c12 -> return stackNineCards
+            p9_c13 -> return stackNineCards
+
+            p10_c1 -> return stackTenCards
+            p10_c2 -> return stackTenCards
+            p10_c3 -> return stackTenCards
+            p10_c4 -> return stackTenCards
+            p10_c5 -> return stackTenCards
+            p10_c6 -> return stackTenCards
+            p10_c7 -> return stackTenCards
+            p10_c8 -> return stackTenCards
+            p10_c9 -> return stackTenCards
+            p10_c10 -> return stackTenCards
+            p10_c11 -> return stackTenCards
+            p10_c12 -> return stackTenCards
+            p10_c13 -> return stackTenCards
+
+            else -> return null
+        }
+    }
+
+    private fun identifyPosition(imgView: ImageView): Int? {
+        when(imgView) {
+            p1_c1 -> return 0
+            p1_c2 -> return 1
+            p1_c3 -> return 2
+            p1_c4 -> return 3
+            p1_c5 -> return 4
+            p1_c6 -> return 5
+            p1_c7 -> return 6
+            p1_c8 -> return 7
+            p1_c9 -> return 8
+            p1_c10 -> return 9
+            p1_c11 -> return 10
+            p1_c12 -> return 11
+            p1_c13 -> return 12
+
+            p2_c1 -> return 0
+            p2_c2 -> return 1
+            p2_c3 -> return 2
+            p2_c4 -> return 3
+            p2_c5 -> return 4
+            p2_c6 -> return 5
+            p2_c7 -> return 6
+            p2_c8 -> return 7
+            p2_c9 -> return 8
+            p2_c10 -> return 9
+            p2_c11 -> return 10
+            p2_c12 -> return 11
+            p2_c13 -> return 12
+
+            p3_c1 -> return 0
+            p3_c2 -> return 1
+            p3_c3 -> return 2
+            p3_c4 -> return 3
+            p3_c5 -> return 4
+            p3_c6 -> return 5
+            p3_c7 -> return 6
+            p3_c8 -> return 7
+            p3_c9 -> return 8
+            p3_c10 -> return 9
+            p3_c11 -> return 10
+            p3_c12 -> return 11
+            p3_c13 -> return 12
+
+            p4_c1 -> return 0
+            p4_c2 -> return 1
+            p4_c3 -> return 2
+            p4_c4 -> return 3
+            p4_c5 -> return 4
+            p4_c6 -> return 5
+            p4_c7 -> return 6
+            p4_c8 -> return 7
+            p4_c9 -> return 8
+            p4_c10 -> return 9
+            p4_c11 -> return 10
+            p4_c12 -> return 11
+            p4_c13 -> return 12
+
+            p5_c1 -> return 0
+            p5_c2 -> return 1
+            p5_c3 -> return 2
+            p5_c4 -> return 3
+            p5_c5 -> return 4
+            p5_c6 -> return 5
+            p5_c7 -> return 6
+            p5_c8 -> return 7
+            p5_c9 -> return 8
+            p5_c10 -> return 9
+            p5_c11 -> return 10
+            p5_c12 -> return 11
+            p5_c13 -> return 12
+
+            p6_c1 -> return 0
+            p6_c2 -> return 1
+            p6_c3 -> return 2
+            p6_c4 -> return 3
+            p6_c5 -> return 4
+            p6_c6 -> return 5
+            p6_c7 -> return 6
+            p6_c8 -> return 7
+            p6_c9 -> return 8
+            p6_c10 -> return 9
+            p6_c11 -> return 10
+            p6_c12 -> return 11
+            p6_c13 -> return 12
+
+            p7_c1 -> return 0
+            p7_c2 -> return 1
+            p7_c3 -> return 2
+            p7_c4 -> return 3
+            p7_c5 -> return 4
+            p7_c6 -> return 5
+            p7_c7 -> return 6
+            p7_c8 -> return 7
+            p7_c9 -> return 8
+            p7_c10 -> return 9
+            p7_c11 -> return 10
+            p7_c12 -> return 11
+            p7_c13 -> return 12
+
+            p8_c1 -> return 0
+            p8_c2 -> return 1
+            p8_c3 -> return 2
+            p8_c4 -> return 3
+            p8_c5 -> return 4
+            p8_c6 -> return 5
+            p8_c7 -> return 6
+            p8_c8 -> return 7
+            p8_c9 -> return 8
+            p8_c10 -> return 9
+            p8_c11 -> return 10
+            p8_c12 -> return 11
+            p8_c13 -> return 12
+
+            p9_c1 -> return 0
+            p9_c2 -> return 1
+            p9_c3 -> return 2
+            p9_c4 -> return 3
+            p9_c5 -> return 4
+            p9_c6 -> return 5
+            p9_c7 -> return 6
+            p9_c8 -> return 7
+            p9_c9 -> return 8
+            p9_c10 -> return 9
+            p9_c11 -> return 10
+            p9_c12 -> return 11
+            p9_c13 -> return 12
+
+            p10_c1 -> return 0
+            p10_c2 -> return 1
+            p10_c3 -> return 2
+            p10_c4 -> return 3
+            p10_c5 -> return 4
+            p10_c6 -> return 5
+            p10_c7 -> return 6
+            p10_c8 -> return 7
+            p10_c9 -> return 8
+            p10_c10 -> return 9
+            p10_c11 -> return 10
+            p10_c12 -> return 11
+            p10_c13 -> return 12
+
+            else -> return null
+        }
+    }
+
+    fun animationDeck() {
+        when(numberCardsDeck) {
+            1 -> deck_c1.setImageResource(0)
+            2 -> deck_c2.setImageResource(0)
+            3 -> deck_c3.setImageResource(0)
+            4 -> deck_c4.setImageResource(0)
+            5 -> deck_c5.setImageResource(0)
+        }
     }
 }

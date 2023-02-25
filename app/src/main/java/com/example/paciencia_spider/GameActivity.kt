@@ -20,7 +20,6 @@ import kotlin.properties.Delegates
 
 class GameActivity : AppCompatActivity() {
     private lateinit var player: TextView
-    private lateinit var insertName: Button
     private lateinit var reload: ImageButton
     private lateinit var exit: ImageButton
     private lateinit var userName: String
@@ -41,12 +40,6 @@ class GameActivity : AppCompatActivity() {
             userName = b?.getString("userName").toString()
             qtdNaipes = b?.getInt("qtdNaipes")!!
             player.text = userName.uppercase()
-        }
-
-        insertName = findViewById(R.id.button_name)
-
-        insertName.setOnClickListener {
-            gameFragment.alterLabel()
         }
 
         reload = findViewById(R.id.button_reload)
