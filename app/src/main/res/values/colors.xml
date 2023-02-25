@@ -13,4 +13,5 @@
     <color name="red">#FF0000</color>
     <color name="darkorange">#FF8C00</color>
     <color name="black_transparent">#77000000</color>
+    <color name="black_total_transparent">#00000000</color>
 </resources>

@@ -207,16 +207,14 @@
                     android:id="@+id/p1c1"
                     android:layout_width="@dimen/width_cards_play"
                     android:layout_height="@dimen/height_cards_play"
-                    android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent" />
+                    android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p1c2"
                     android:layout_width="@dimen/width_cards_play"
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginTop="@dimen/space_cards_two"
-                    android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent" />
+                    android:layout_marginHorizontal="5dp" />
 
                 <ImageView
                     android:id="@+id/p1c3"
@@ -224,7 +222,6 @@
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginTop="@dimen/space_cards_tree"
                     android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent"
                     />
 
                 <ImageView
@@ -233,7 +230,6 @@
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginTop="@dimen/space_cards_four"
                     android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent"
                 />
 
                 <ImageView
@@ -242,7 +238,7 @@
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginTop="@dimen/space_cards_five"
                     android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent" />
+                    />
 
                 <ImageView
                     android:id="@+id/p1c6"
@@ -250,8 +246,7 @@
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginTop="@dimen/space_cards_six"
                     android:layout_marginHorizontal="5dp"
-
-
+                    android:backgroundTint="@color/black_transparent"
                     />
 
                 <ImageView
@@ -321,7 +316,6 @@
                     android:layout_width="@dimen/width_cards_play"
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent"
                     />
 
                 <ImageView
@@ -330,7 +324,6 @@
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginTop="@dimen/space_cards_two"
                     android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent"
                     />
 
                 <ImageView
@@ -339,7 +332,6 @@
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginTop="@dimen/space_cards_tree"
                     android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent"
                     />
 
                 <ImageView
@@ -348,7 +340,6 @@
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginTop="@dimen/space_cards_four"
                     android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent"
                     />
 
                 <ImageView
@@ -357,7 +348,6 @@
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginTop="@dimen/space_cards_five"
                     android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent"
                     />
 
                 <ImageView
@@ -435,7 +425,6 @@
                     android:layout_width="@dimen/width_cards_play"
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent"
                     />
 
                 <ImageView
@@ -444,7 +433,6 @@
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginTop="@dimen/space_cards_two"
                     android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent"
                     />
 
                 <ImageView
@@ -453,7 +441,6 @@
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginTop="@dimen/space_cards_tree"
                     android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent"
                     />
 
                 <ImageView
@@ -462,7 +449,6 @@
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginTop="@dimen/space_cards_four"
                     android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent"
                     />
 
                 <ImageView
@@ -471,7 +457,6 @@
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginTop="@dimen/space_cards_five"
                     android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent"
                     />
 
                 <ImageView
@@ -549,7 +534,6 @@
                     android:layout_width="@dimen/width_cards_play"
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent"
                     />
 
                 <ImageView
@@ -558,7 +542,6 @@
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginTop="@dimen/space_cards_two"
                     android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent"
                     />
 
                 <ImageView
@@ -567,7 +550,6 @@
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginTop="@dimen/space_cards_tree"
                     android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent"
                     />
 
                 <ImageView
@@ -576,7 +558,6 @@
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginTop="@dimen/space_cards_four"
                     android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent"
                     />
 
                 <ImageView
@@ -585,7 +566,6 @@
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginTop="@dimen/space_cards_five"
                     android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent"
                     />
 
                 <ImageView
@@ -663,7 +643,6 @@
                     android:layout_width="@dimen/width_cards_play"
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent"
                     />
 
                 <ImageView
@@ -672,7 +651,6 @@
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginTop="@dimen/space_cards_two"
                     android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent"
                     />
 
                 <ImageView
@@ -681,7 +659,6 @@
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginTop="@dimen/space_cards_tree"
                     android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent"
                     />
 
                 <ImageView
@@ -690,7 +667,6 @@
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginTop="@dimen/space_cards_four"
                     android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent"
                     />
 
                 <ImageView
@@ -776,7 +752,6 @@
                     android:layout_width="@dimen/width_cards_play"
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent"
                     />
 
                 <ImageView
@@ -785,7 +760,6 @@
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginTop="@dimen/space_cards_two"
                     android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent"
                     />
 
                 <ImageView
@@ -794,7 +768,6 @@
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginTop="@dimen/space_cards_tree"
                     android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent"
                     />
 
                 <ImageView
@@ -803,7 +776,6 @@
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginTop="@dimen/space_cards_four"
                     android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent"
                     />
 
                 <ImageView
@@ -889,7 +861,6 @@
                     android:layout_width="@dimen/width_cards_play"
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent"
                     />
 
                 <ImageView
@@ -898,7 +869,6 @@
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginTop="@dimen/space_cards_two"
                     android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent"
                     />
 
                 <ImageView
@@ -907,7 +877,6 @@
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginTop="@dimen/space_cards_tree"
                     android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent"
                     />
 
                 <ImageView
@@ -916,7 +885,6 @@
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginTop="@dimen/space_cards_four"
                     android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent"
                     />
 
                 <ImageView
@@ -1002,7 +970,6 @@
                     android:layout_width="@dimen/width_cards_play"
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent"
                     />
 
                 <ImageView
@@ -1011,7 +978,6 @@
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginTop="@dimen/space_cards_two"
                     android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent"
                     />
 
                 <ImageView
@@ -1020,7 +986,6 @@
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginTop="@dimen/space_cards_tree"
                     android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent"
                     />
 
                 <ImageView
@@ -1029,7 +994,6 @@
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginTop="@dimen/space_cards_four"
                     android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent"
                     />
 
                 <ImageView
@@ -1115,7 +1079,6 @@
                     android:layout_width="@dimen/width_cards_play"
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent"
                     />
 
                 <ImageView
@@ -1124,7 +1087,6 @@
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginTop="@dimen/space_cards_two"
                     android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent"
                     />
 
                 <ImageView
@@ -1133,7 +1095,6 @@
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginTop="@dimen/space_cards_tree"
                     android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent"
                     />
 
                 <ImageView
@@ -1142,7 +1103,6 @@
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginTop="@dimen/space_cards_four"
                     android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent"
                     />
 
                 <ImageView
@@ -1228,7 +1188,6 @@
                     android:layout_width="@dimen/width_cards_play"
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent"
                     />
 
                 <ImageView
@@ -1237,7 +1196,6 @@
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginTop="@dimen/space_cards_two"
                     android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent"
                     />
 
                 <ImageView
@@ -1246,7 +1204,6 @@
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginTop="@dimen/space_cards_tree"
                     android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent"
                     />
 
                 <ImageView
@@ -1255,7 +1212,6 @@
                     android:layout_height="@dimen/height_cards_play"
                     android:layout_marginTop="@dimen/space_cards_four"
                     android:layout_marginHorizontal="5dp"
-                    android:foreground="@color/black_transparent"
                     />
 
                 <ImageView
