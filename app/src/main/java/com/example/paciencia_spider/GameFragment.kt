@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
@@ -192,6 +193,8 @@ class GameFragment : Fragment() {
 
     private lateinit var splashFragment: FrameLayout
 
+    private var numberClick: Int = 0
+
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -369,6 +372,406 @@ class GameFragment : Fragment() {
         p10_c12 = view.findViewById(R.id.p10c12)
         p10_c13 = view.findViewById(R.id.p10c13)
 
+        p1_c1.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p1_c2.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p1_c3.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p1_c4.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p1_c5.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p1_c6.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p1_c7.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p1_c8.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p1_c9.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p1_c10.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p1_c11.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p1_c12.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p1_c13.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+
+        p2_c1.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p2_c2.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p2_c3.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p2_c4.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p2_c5.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p2_c6.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p2_c7.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p2_c8.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p2_c9.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p2_c10.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p2_c11.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p2_c12.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p2_c13.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+
+        p3_c1.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p3_c2.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p3_c3.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p3_c4.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p3_c5.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p3_c6.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p3_c7.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p3_c8.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p3_c9.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p3_c10.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p3_c11.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p3_c12.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p3_c13.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+
+        p4_c1.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p4_c2.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p4_c3.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p4_c4.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p4_c5.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p4_c6.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p4_c7.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p4_c8.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p4_c9.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p4_c10.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p4_c11.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p4_c12.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p4_c13.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+
+        p5_c1.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p5_c2.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p5_c3.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p5_c4.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p5_c5.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p5_c6.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p5_c7.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p5_c8.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p5_c9.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p5_c10.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p5_c11.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p5_c12.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p5_c13.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+
+        p6_c1.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p6_c2.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p6_c3.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p6_c4.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p6_c5.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p6_c6.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p6_c7.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p6_c8.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p6_c9.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p6_c10.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p6_c11.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p6_c12.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p6_c13.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+
+        p7_c1.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p7_c2.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p7_c3.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p7_c4.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p7_c5.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p7_c6.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p7_c7.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p7_c8.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p7_c9.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p7_c10.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p7_c11.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p7_c12.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p7_c13.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+
+        p8_c1.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p8_c2.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p8_c3.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p8_c4.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p8_c5.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p8_c6.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p8_c7.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p8_c8.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p8_c9.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p8_c10.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p8_c11.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p8_c12.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p8_c13.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+
+        p9_c1.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p9_c2.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p9_c3.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p9_c4.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p9_c5.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p9_c6.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p9_c7.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p9_c8.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p9_c9.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p9_c10.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p9_c11.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p9_c12.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p9_c13.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+
+        p10_c1.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p10_c2.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p10_c3.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p10_c4.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p10_c5.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p10_c6.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p10_c7.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p10_c8.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p10_c9.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p10_c10.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p10_c11.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p10_c12.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+        p10_c13.setOnClickListener {
+            playWithDoubleClick(it as ImageView)
+        }
+
         splashFragment = view.findViewById(R.id.splash_fragment)
 
         return view
@@ -429,7 +832,6 @@ class GameFragment : Fragment() {
                             response: Response<JsonObject>
                         ) {
                             data = response.body()!!
-                            Log.i("RESPOSTA", data.toString())
                             deckId = data?.get("deck_id").toString()
                             deckId = deckId.split('"')[1]
                             endpoint.shuffleDeck(deckId)
@@ -450,7 +852,6 @@ class GameFragment : Fragment() {
                             response: Response<JsonObject>
                         ) {
                             data = response.body()!!
-                            Log.i("RESPOSTA", data.toString())
                             deckId = data?.get("deck_id").toString()
                             deckId = deckId.split('"')[1]
                             endpoint.shuffleDeck(deckId)
@@ -471,7 +872,6 @@ class GameFragment : Fragment() {
                             response: Response<JsonObject>
                         ) {
                             data = response.body()!!
-                            Log.i("RESPOSTA", data.toString())
                             deckId = data?.get("deck_id").toString()
                             deckId = deckId.split('"')[1]
                             endpoint.shuffleDeck(deckId)
@@ -506,7 +906,6 @@ class GameFragment : Fragment() {
                     @RequiresApi(Build.VERSION_CODES.M)
                     override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
                         data = response.body()!!
-                        Log.i("Remaining 5", data?.get("remaining").toString())
                         getCardsToStacks(data, stack)
                         loadCardImagesStacks(stack, NumberStack)
                     }
@@ -523,7 +922,6 @@ class GameFragment : Fragment() {
                     @RequiresApi(Build.VERSION_CODES.M)
                     override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
                         data = response.body()!!
-                        Log.i("Remaining 6", data?.get("remaining").toString())
                         getCardsToStacks(data, stack)
                         loadCardImagesStacks(stack, NumberStack)
                     }
@@ -541,7 +939,6 @@ class GameFragment : Fragment() {
                     override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
                         data = response.body()!!
                         getCardsFromDeck(data)
-                        Log.i("Remaining 10", data?.get("remaining").toString())
                     }
 
                     override fun onFailure(call: Call<JsonObject>, t: Throwable) {
@@ -792,9 +1189,6 @@ class GameFragment : Fragment() {
             stackTenCards.add(cards[9])
             loadCardsFromDeck(stackTenCards, 10)
         }
-
-        //var sizeTotal = stackOneCards.size + stackTwoCards.size + stackTreeCards.size + stackFourCards.size + stackFiveCards.size + stackSixCards.size + stackSevenCards.size + stackEightCards.size + stackNineCards.size + stackTenCards.size
-        //Log.i("TOTAL", "de cartas = $sizeTotal")
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -1029,14 +1423,14 @@ class GameFragment : Fragment() {
             stack.indices.forEach {
                 var imgView = identifyImgView(numberStack, it+1)
                 imgView?.foreground = ColorDrawable(0)
+                imgView?.isClickable = true
                 stack[it].setAvaiable(false)
             }
 
             stack[stack.lastIndex].setAvaiable(true)
             stack.indices.reversed().forEach {
                 if (it > 0) {
-                    Log.i(it.toString(), stack[it].getValue().toString())
-                    if (((stack[it].getValue()) == stack[it - 1].getValue()-1)) {
+                    if (((stack[it].getValue()) == stack[it - 1].getValue()-1) && (stack[it].getSuit() == stack[it-1].getSuit())) {
                         stack[it - 1].setAvaiable(true)
                     }
                 }
@@ -1054,8 +1448,22 @@ class GameFragment : Fragment() {
                 var imgView = identifyImgView(numberStack, it+1)
                 if(!stack[it].getAvaiable() || stack[it].getShow() == false) {
                     imgView?.foreground = ColorDrawable(R.color.black_transparent)
+                    imgView?.isClickable = false
                 }
             }
         }
+    }
+
+    fun playWithDoubleClick(imgview: ImageView) {
+        numberClick++
+        Handler(Looper.getMainLooper()).postDelayed({
+            if(numberClick == 1) {
+                Log.i("1 click", "1 click")
+            } else if(numberClick == 2) {
+                Log.i("2 clicks", "2 clicks")
+            }
+
+            numberClick = 0
+        }, 300)
     }
 }

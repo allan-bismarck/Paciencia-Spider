@@ -12,7 +12,7 @@ interface Endpoint {
     @GET("/api/deck/new/?cards=AS,2S,3S,4S,5S,6S,7S,8S,9S,0S,JS,QS,KS&deck_count=8")
     fun getDeckOneNaipe(): Call<JsonObject>
 
-    @GET("/api/deck/new/shuffle/?cards=AS,2S,3S,4S,5S,6S,7S,8S,9S,0S,JS,QS,KS,AC,2C,3C,4C,5C,6C,7C,8C,9C,0C,JC,QC,KC&deck_count=4")
+    @GET("/api/deck/new/shuffle/?cards=AS,2S,3S,4S,5S,6S,7S,8S,9S,0S,JS,QS,KS,AH,2H,3H,4H,5H,6H,7H,8H,9H,0H,JH,QH,KH&deck_count=4")
     fun getDeckTwoNaipes(): Call<JsonObject>
 
     @GET("/api/deck/new/shuffle/?deck_count=2")

@@ -15,6 +15,11 @@ class Card {
         this.avaiable = avaiable
     }
 
+    fun getSuit(): String {
+        return suit
+    }
+
+
     fun setAvaiable(avaiable: Boolean) {
         this.avaiable = avaiable
     }
