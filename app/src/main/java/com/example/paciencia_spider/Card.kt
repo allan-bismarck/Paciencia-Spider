@@ -7,7 +7,7 @@ class Card {
     private var suit: String
     private var avaiable: Boolean
 
-    constructor(code: String, show: Boolean, value: Int, suit: String, avaiable: Boolean = false) {
+    constructor(code: String, show: Boolean = false, value: Int, suit: String, avaiable: Boolean = false) {
         this.code = code
         this.show = show
         this.value = value

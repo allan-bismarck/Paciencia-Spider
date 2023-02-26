@@ -194,6 +194,10 @@ class GameFragment : Fragment() {
 
     private var numberCardsDeck: Int = 0
 
+    private var countDistribute: Int = 0
+
+    private var gaming: Boolean = false
+
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -205,6 +209,7 @@ class GameFragment : Fragment() {
         Log.i("Ciclo GameFragment", "onCreate")
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -955,7 +960,7 @@ class GameFragment : Fragment() {
         d.cards.forEach {
             var code = it.get("code").toString()
             code = code.split('"')[1]
-            var show = true
+            var show = false
             var charValue = it.get("value").toString()
             var value = mapValueToInt(charValue)
             var suit = it.get("suit").toString()
@@ -988,133 +993,14 @@ class GameFragment : Fragment() {
 
         var glideCtx = Glide.with(this)
 
-        when (NumberStack) {
-            1 -> {
-                stack[0].setShow(false)
-                stack[1].setShow(false)
-                stack[2].setShow(false)
-                stack[3].setShow(false)
-                stack[4].setShow(false)
-                glideCtx.load(stack[0].getImageBack()).into(p1_c1)
-                glideCtx.load(stack[1].getImageBack()).into(p1_c2)
-                glideCtx.load(stack[2].getImageBack()).into(p1_c3)
-                glideCtx.load(stack[3].getImageBack()).into(p1_c4)
-                glideCtx.load(stack[4].getImageBack()).into(p1_c5)
-                glideCtx.load(stack[5].getImageUrl(stack[5].getCodeC())).into(p1_c6)
-            }
+        stack[stack.lastIndex].setShow(true)
 
-            2 -> {
-                stack[0].setShow(false)
-                stack[1].setShow(false)
-                stack[2].setShow(false)
-                stack[3].setShow(false)
-                stack[4].setShow(false)
-                glideCtx.load(stack[0].getImageBack()).into(p2_c1)
-                glideCtx.load(stack[1].getImageBack()).into(p2_c2)
-                glideCtx.load(stack[2].getImageBack()).into(p2_c3)
-                glideCtx.load(stack[3].getImageBack()).into(p2_c4)
-                glideCtx.load(stack[4].getImageBack()).into(p2_c5)
-                glideCtx.load(stack[5].getImageUrl(stack[5].getCodeC())).into(p2_c6)
-            }
-
-            3 -> {
-                stack[0].setShow(false)
-                stack[1].setShow(false)
-                stack[2].setShow(false)
-                stack[3].setShow(false)
-                stack[4].setShow(false)
-                glideCtx.load(stack[0].getImageBack()).into(p3_c1)
-                glideCtx.load(stack[1].getImageBack()).into(p3_c2)
-                glideCtx.load(stack[2].getImageBack()).into(p3_c3)
-                glideCtx.load(stack[3].getImageBack()).into(p3_c4)
-                glideCtx.load(stack[4].getImageBack()).into(p3_c5)
-                glideCtx.load(stack[5].getImageUrl(stack[5].getCodeC())).into(p3_c6)
-            }
-
-            4 -> {
-                stack[0].setShow(false)
-                stack[1].setShow(false)
-                stack[2].setShow(false)
-                stack[3].setShow(false)
-                stack[4].setShow(false)
-                glideCtx.load(stack[0].getImageBack()).into(p4_c1)
-                glideCtx.load(stack[1].getImageBack()).into(p4_c2)
-                glideCtx.load(stack[2].getImageBack()).into(p4_c3)
-                glideCtx.load(stack[3].getImageBack()).into(p4_c4)
-                glideCtx.load(stack[4].getImageBack()).into(p4_c5)
-                glideCtx.load(stack[5].getImageUrl(stack[5].getCodeC())).into(p4_c6)
-            }
-
-            5 -> {
-                stack[0].setShow(false)
-                stack[1].setShow(false)
-                stack[2].setShow(false)
-                stack[3].setShow(false)
-                glideCtx.load(stack[0].getImageBack()).into(p5_c1)
-                glideCtx.load(stack[1].getImageBack()).into(p5_c2)
-                glideCtx.load(stack[2].getImageBack()).into(p5_c3)
-                glideCtx.load(stack[3].getImageBack()).into(p5_c4)
-                glideCtx.load(stack[4].getImageUrl(stack[4].getCodeC())).into(p5_c5)
-            }
-
-            6 -> {
-                stack[0].setShow(false)
-                stack[1].setShow(false)
-                stack[2].setShow(false)
-                stack[3].setShow(false)
-                glideCtx.load(stack[0].getImageBack()).into(p6_c1)
-                glideCtx.load(stack[1].getImageBack()).into(p6_c2)
-                glideCtx.load(stack[2].getImageBack()).into(p6_c3)
-                glideCtx.load(stack[3].getImageBack()).into(p6_c4)
-                glideCtx.load(stack[4].getImageUrl(stack[4].getCodeC())).into(p6_c5)
-            }
-
-            7 -> {
-                stack[0].setShow(false)
-                stack[1].setShow(false)
-                stack[2].setShow(false)
-                stack[3].setShow(false)
-                glideCtx.load(stack[0].getImageBack()).into(p7_c1)
-                glideCtx.load(stack[1].getImageBack()).into(p7_c2)
-                glideCtx.load(stack[2].getImageBack()).into(p7_c3)
-                glideCtx.load(stack[3].getImageBack()).into(p7_c4)
-                glideCtx.load(stack[4].getImageUrl(stack[4].getCodeC())).into(p7_c5)
-            }
-
-            8 -> {
-                stack[0].setShow(false)
-                stack[1].setShow(false)
-                stack[2].setShow(false)
-                stack[3].setShow(false)
-                glideCtx.load(stack[0].getImageBack()).into(p8_c1)
-                glideCtx.load(stack[1].getImageBack()).into(p8_c2)
-                glideCtx.load(stack[2].getImageBack()).into(p8_c3)
-                glideCtx.load(stack[3].getImageBack()).into(p8_c4)
-                glideCtx.load(stack[4].getImageUrl(stack[4].getCodeC())).into(p8_c5)
-            }
-
-            9 -> {
-                stack[0].setShow(false)
-                stack[1].setShow(false)
-                stack[2].setShow(false)
-                stack[3].setShow(false)
-                glideCtx.load(stack[0].getImageBack()).into(p9_c1)
-                glideCtx.load(stack[1].getImageBack()).into(p9_c2)
-                glideCtx.load(stack[2].getImageBack()).into(p9_c3)
-                glideCtx.load(stack[3].getImageBack()).into(p9_c4)
-                glideCtx.load(stack[4].getImageUrl(stack[4].getCodeC())).into(p9_c5)
-            }
-
-            else -> {
-                stack[0].setShow(false)
-                stack[1].setShow(false)
-                stack[2].setShow(false)
-                stack[3].setShow(false)
-                glideCtx.load(stack[0].getImageBack()).into(p10_c1)
-                glideCtx.load(stack[1].getImageBack()).into(p10_c2)
-                glideCtx.load(stack[2].getImageBack()).into(p10_c3)
-                glideCtx.load(stack[3].getImageBack()).into(p10_c4)
-                glideCtx.load(stack[4].getImageUrl(stack[4].getCodeC())).into(p10_c5)
+        stack.indices.forEach {
+            var imgview = identifyImgView(NumberStack, it+1)
+            if(stack[it].getShow() == false) {
+                glideCtx.load(stack[it].getImageBack()).into(imgview!!)
+            } else {
+                glideCtx.load(stack[it].getImageUrl(stack[it].getCodeC())).into(imgview!!)
             }
         }
 
@@ -1203,7 +1089,6 @@ class GameFragment : Fragment() {
             Glide.with(this).load(stack[size - 1].getImageUrl(stack[size - 1].getCodeC()))
                 .into(imgView)
         }
-
 
         checkAvaiableCards()
     }
@@ -1432,6 +1317,7 @@ class GameFragment : Fragment() {
             var imgview = identifyImgView(numberStack, lastIndex + 1)
             imgview?.isClickable = true
             stack[lastIndex].setAvaiable(true)
+            stack[lastIndex].setShow(true)
 
             stack.indices.reversed().forEach {
                 if (it > 0) {
@@ -1461,6 +1347,7 @@ class GameFragment : Fragment() {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     private fun playWithDoubleClick(imgview: ImageView) {
         if(imgview.drawable != null ) {
             var stack = identifyStack(imgview)
@@ -1471,11 +1358,12 @@ class GameFragment : Fragment() {
                 if (numberClick == 1) {
                     Log.i("1 click", "stack: $stack, position: $position")
                     var moveElements = selectCards(stack, position)
-                    applyModifierInStack(::insertCardsSelecteds, moveElements, numberStack!!)
+                    //applyModifierInStack(::insertCardsSelecteds, moveElements, numberStack!!, imgview)
                 } else if (numberClick == 2) {
                     Log.i("2 clicks", "stack: $stack, position: $position")
                     var moveElements = selectCards(stack, position)
-                    applyModifierInStack(::removeCardsSelecteds, moveElements, numberStack!!)
+                    applyModifierInStack(::removeCardsSelecteds, moveElements, numberStack!!, imgview)
+                    loadCardImagesStacks(stack!!, numberStack)
                 }
 
                 numberClick = 0
@@ -1944,32 +1832,34 @@ class GameFragment : Fragment() {
         return moveElements
     }
 
-    private fun applyModifierInStack(function: (MutableList<Card>, MutableList<Card>) -> Unit, moveElements: MutableList<Card>, numberStack: Int) {
+    private fun applyModifierInStack(function: (MutableList<Card>, MutableList<Card>, Int, ImageView) -> Unit, moveElements: MutableList<Card>, numberStack: Int, imgview: ImageView) {
         when(numberStack) {
-            1 -> function(stackOneCards, moveElements)
-            2 -> function(stackTwoCards, moveElements)
-            3 -> function(stackTreeCards, moveElements)
-            4 -> function(stackFourCards, moveElements)
-            5 -> function(stackFiveCards, moveElements)
-            6 -> function(stackSixCards, moveElements)
-            7 -> function(stackSevenCards, moveElements)
-            8 -> function(stackEightCards, moveElements)
-            9 -> function(stackNineCards, moveElements)
-            10 -> function(stackTenCards, moveElements)
+            1 -> function(stackOneCards, moveElements, numberStack, imgview)
+            2 -> function(stackTwoCards, moveElements, numberStack, imgview)
+            3 -> function(stackTreeCards, moveElements, numberStack, imgview)
+            4 -> function(stackFourCards, moveElements, numberStack, imgview)
+            5 -> function(stackFiveCards, moveElements, numberStack, imgview)
+            6 -> function(stackSixCards, moveElements, numberStack, imgview)
+            7 -> function(stackSevenCards, moveElements, numberStack, imgview)
+            8 -> function(stackEightCards, moveElements, numberStack, imgview)
+            9 -> function(stackNineCards, moveElements, numberStack, imgview)
+            10 -> function(stackTenCards, moveElements, numberStack, imgview)
         }
     }
 
-    private fun removeCardsSelecteds(stackOrigin: MutableList<Card>, moveElements: MutableList<Card>) {
+    private fun removeCardsSelecteds(stackOrigin: MutableList<Card>, moveElements: MutableList<Card>, numberStack: Int, imgView: ImageView) {
         var count = 0
+        lateinit var imgviews: MutableList<ImageView>
         var moveElementsSize = moveElements.size
         while(count != moveElementsSize) {
             stackOrigin.removeLast()
             count++
         }
+
         Log.i("Size updated remove", stackOrigin.size.toString())
     }
 
-    fun insertCardsSelecteds(stackDestiny: MutableList<Card>, moveElements: MutableList<Card>) {
+    private fun insertCardsSelecteds(stackDestiny: MutableList<Card>, moveElements: MutableList<Card>) {
         moveElements.forEach {
             stackDestiny.add(it)
         }
