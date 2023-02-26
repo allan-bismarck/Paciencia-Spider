@@ -12,8 +12,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
@@ -217,8 +215,8 @@ class GameFragment : Fragment() {
         deck.setOnClickListener {
             CoroutineScope(Dispatchers.Main).launch {
                 var cardFalse = mutableListOf<Card>(Card("", false, 0, ""))
-                animationDeck()
                 distributeCards(deckId, 10, cardFalse)
+                animationDeck()
             }
         }
 
@@ -1445,10 +1443,10 @@ class GameFragment : Fragment() {
                 }
             }
 
-            stack.indices.forEach {
-                if(it != lastIndex) {
-                    if (!stack[it + 1].getAvaiable()) {
-                        stack[it].setAvaiable(false)
+            stack.indices.reversed().forEach {
+                if(it != 0) {
+                    if (!stack[it].getAvaiable()) {
+                        stack[it-1].setAvaiable(false)
                     }
                 }
             }
@@ -1466,13 +1464,18 @@ class GameFragment : Fragment() {
     private fun playWithDoubleClick(imgview: ImageView) {
         if(imgview.drawable != null ) {
             var stack = identifyStack(imgview)
+            var numberStack = identifyNumberStack(imgview)
             var position = identifyPosition(imgview)
             numberClick++
             Handler(Looper.getMainLooper()).postDelayed({
                 if (numberClick == 1) {
                     Log.i("1 click", "stack: $stack, position: $position")
+                    var moveElements = selectCards(stack, position)
+                    applyModifierInStack(::insertCardsSelecteds, moveElements, numberStack!!)
                 } else if (numberClick == 2) {
                     Log.i("2 clicks", "stack: $stack, position: $position")
+                    var moveElements = selectCards(stack, position)
+                    applyModifierInStack(::removeCardsSelecteds, moveElements, numberStack!!)
                 }
 
                 numberClick = 0
@@ -1772,7 +1775,153 @@ class GameFragment : Fragment() {
         }
     }
 
-    fun animationDeck() {
+    private fun identifyNumberStack(imgView: ImageView): Int? {
+        when(imgView) {
+            p1_c1 -> return 1
+            p1_c2 -> return 1
+            p1_c3 -> return 1
+            p1_c4 -> return 1
+            p1_c5 -> return 1
+            p1_c6 -> return 1
+            p1_c7 -> return 1
+            p1_c8 -> return 1
+            p1_c9 -> return 1
+            p1_c10 -> return 1
+            p1_c11 -> return 1
+            p1_c12 -> return 1
+            p1_c13 -> return 1
+
+            p2_c1 -> return 2
+            p2_c2 -> return 2
+            p2_c3 -> return 2
+            p2_c4 -> return 2
+            p2_c5 -> return 2
+            p2_c6 -> return 2
+            p2_c7 -> return 2
+            p2_c8 -> return 2
+            p2_c9 -> return 2
+            p2_c10 -> return 2
+            p2_c11 -> return 2
+            p2_c12 -> return 2
+            p2_c13 -> return 2
+
+            p3_c1 -> return 3
+            p3_c2 -> return 3
+            p3_c3 -> return 3
+            p3_c4 -> return 3
+            p3_c5 -> return 3
+            p3_c6 -> return 3
+            p3_c7 -> return 3
+            p3_c8 -> return 3
+            p3_c9 -> return 3
+            p3_c10 -> return 3
+            p3_c11 -> return 3
+            p3_c12 -> return 3
+            p3_c13 -> return 3
+
+            p4_c1 -> return 4
+            p4_c2 -> return 4
+            p4_c3 -> return 4
+            p4_c4 -> return 4
+            p4_c5 -> return 4
+            p4_c6 -> return 4
+            p4_c7 -> return 4
+            p4_c8 -> return 4
+            p4_c9 -> return 4
+            p4_c10 -> return 4
+            p4_c11 -> return 4
+            p4_c12 -> return 4
+            p4_c13 -> return 4
+
+            p5_c1 -> return 5
+            p5_c2 -> return 5
+            p5_c3 -> return 5
+            p5_c4 -> return 5
+            p5_c5 -> return 5
+            p5_c6 -> return 5
+            p5_c7 -> return 5
+            p5_c8 -> return 5
+            p5_c9 -> return 5
+            p5_c10 -> return 5
+            p5_c11 -> return 5
+            p5_c12 -> return 5
+            p5_c13 -> return 5
+
+            p6_c1 -> return 6
+            p6_c2 -> return 6
+            p6_c3 -> return 6
+            p6_c4 -> return 6
+            p6_c5 -> return 6
+            p6_c6 -> return 6
+            p6_c7 -> return 6
+            p6_c8 -> return 6
+            p6_c9 -> return 6
+            p6_c10 -> return 6
+            p6_c11 -> return 6
+            p6_c12 -> return 6
+            p6_c13 -> return 6
+
+            p7_c1 -> return 7
+            p7_c2 -> return 7
+            p7_c3 -> return 7
+            p7_c4 -> return 7
+            p7_c5 -> return 7
+            p7_c6 -> return 7
+            p7_c7 -> return 7
+            p7_c8 -> return 7
+            p7_c9 -> return 7
+            p7_c10 -> return 7
+            p7_c11 -> return 7
+            p7_c12 -> return 7
+            p7_c13 -> return 7
+
+            p8_c1 -> return 8
+            p8_c2 -> return 8
+            p8_c3 -> return 8
+            p8_c4 -> return 8
+            p8_c5 -> return 8
+            p8_c6 -> return 8
+            p8_c7 -> return 8
+            p8_c8 -> return 8
+            p8_c9 -> return 8
+            p8_c10 -> return 8
+            p8_c11 -> return 8
+            p8_c12 -> return 8
+            p8_c13 -> return 8
+
+            p9_c1 -> return 9
+            p9_c2 -> return 9
+            p9_c3 -> return 9
+            p9_c4 -> return 9
+            p9_c5 -> return 9
+            p9_c6 -> return 9
+            p9_c7 -> return 9
+            p9_c8 -> return 9
+            p9_c9 -> return 9
+            p9_c10 -> return 9
+            p9_c11 -> return 9
+            p9_c12 -> return 9
+            p9_c13 -> return 9
+
+            p10_c1 -> return 10
+            p10_c2 -> return 10
+            p10_c3 -> return 10
+            p10_c4 -> return 10
+            p10_c5 -> return 10
+            p10_c6 -> return 10
+            p10_c7 -> return 10
+            p10_c8 -> return 10
+            p10_c9 -> return 10
+            p10_c10 -> return 10
+            p10_c11 -> return 10
+            p10_c12 -> return 10
+            p10_c13 -> return 10
+
+            else -> return null
+        }
+    }
+
+    private fun animationDeck() {
         when(numberCardsDeck) {
             1 -> deck_c1.setImageResource(0)
             2 -> deck_c2.setImageResource(0)
@@ -1780,5 +1929,54 @@ class GameFragment : Fragment() {
             4 -> deck_c4.setImageResource(0)
             5 -> deck_c5.setImageResource(0)
         }
+    }
+
+    private fun selectCards(stack: MutableList<Card>?, position: Int?): MutableList<Card> {
+        var moveElements = mutableListOf<Card>()
+        if(stack?.lastIndex!! >= 0) {
+            moveElements = stack.subList(position!!, stack.lastIndex+1)
+            Log.i("moveElements", moveElements.size.toString())
+
+            moveElements.forEach {
+                Log.i("moveElementsValue", "${it.getValue()}")
+            }
+        }
+        return moveElements
+    }
+
+    private fun applyModifierInStack(function: (MutableList<Card>, MutableList<Card>) -> Unit, moveElements: MutableList<Card>, numberStack: Int) {
+        when(numberStack) {
+            1 -> function(stackOneCards, moveElements)
+            2 -> function(stackTwoCards, moveElements)
+            3 -> function(stackTreeCards, moveElements)
+            4 -> function(stackFourCards, moveElements)
+            5 -> function(stackFiveCards, moveElements)
+            6 -> function(stackSixCards, moveElements)
+            7 -> function(stackSevenCards, moveElements)
+            8 -> function(stackEightCards, moveElements)
+            9 -> function(stackNineCards, moveElements)
+            10 -> function(stackTenCards, moveElements)
+        }
+    }
+
+    private fun removeCardsSelecteds(stackOrigin: MutableList<Card>, moveElements: MutableList<Card>) {
+        var count = 0
+        var moveElementsSize = moveElements.size
+        while(count != moveElementsSize) {
+            stackOrigin.removeLast()
+            count++
+        }
+        Log.i("Size updated remove", stackOrigin.size.toString())
+    }
+
+    fun insertCardsSelecteds(stackDestiny: MutableList<Card>, moveElements: MutableList<Card>) {
+        moveElements.forEach {
+            stackDestiny.add(it)
+        }
+        Log.i("Size updated insert", stackDestiny.size.toString())
+    }
+
+    private fun updateCards() {
+
     }
 }
