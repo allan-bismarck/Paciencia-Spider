@@ -1,7 +1,6 @@
 package com.example.paciencia_spider
 
 import android.annotation.SuppressLint
-import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
@@ -24,6 +23,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import kotlin.properties.Delegates
+import kotlin.reflect.typeOf
 
 class GameFragment : Fragment() {
     private var URL_IMAGES = "https://deckofcardsapi.com/static/img/"
@@ -1112,9 +1112,8 @@ class GameFragment : Fragment() {
 
     @RequiresApi(Build.VERSION_CODES.M)
     private fun loadCardsFromDeck(stack: MutableList<Card>, numberStack: Int) {
-        var imgView: ImageView? = null
+        var imgView: ImageView?
         var size = stack.size
-        size
         imgView = identifyImgView(numberStack, size)
         if(imgView != null) {
             Glide.with(this).load(stack[size - 1].getImageUrl(stack[size - 1].getCodeC()))
@@ -1352,24 +1351,23 @@ class GameFragment : Fragment() {
     @SuppressLint("ResourceAsColor")
     @RequiresApi(Build.VERSION_CODES.M)
     private fun avaiableCardsOnStack(stack: MutableList<Card>, numberStack: Int) {
-        var lastIndex = stack.lastIndex
-        if(stack.isNotEmpty()) {
-            stack.indices.forEach {
-                var imgView = identifyImgView(numberStack, it+1)
-                imgView?.foreground = ColorDrawable(0)
-                stack[it].setAvaiable(false)
-            }
 
-            var imgview = identifyImgView(numberStack, lastIndex + 1)
-            imgview?.isClickable = true
-            stack[lastIndex].setAvaiable(true)
-            stack[lastIndex].setShow(true)
+        if(stack.isNotEmpty()) {
+
+            stack[stack.lastIndex].setAvaiable(true)
+            stack[stack.lastIndex].setShow(true)
+
+            stack.indices.forEach {
+                if(it != stack.lastIndex) {
+                    stack[it].setAvaiable(false)
+                }
+            }
 
             stack.indices.reversed().forEach {
                 if (it > 0) {
+                    var imgView = identifyImgView(numberStack, it)
                     if (((stack[it].getValue()) == stack[it-1].getValue()-1) && (stack[it].getSuit() == stack[it-1].getSuit())) {
                         stack[it - 1].setAvaiable(true)
-                        var imgView = identifyImgView(numberStack, it)
                         imgView?.isClickable = true
                     }
                 }
@@ -1388,6 +1386,12 @@ class GameFragment : Fragment() {
                 if(!stack[it].getAvaiable() || stack[it].getShow() == false) {
                     imgView?.foreground = ColorDrawable(R.color.black_transparent)
                     imgView?.isClickable = false
+                } else {
+                    imgView?.foreground = ColorDrawable(0)
+                    imgView?.isClickable = true
+                    if(stack[it].getShow() == true) {
+                        Glide.with(this).load(stack[it].getImageUrl(stack[it].getCodeC())).into(imgView!!)
+                    }
                 }
             }
         }
@@ -1405,13 +1409,12 @@ class GameFragment : Fragment() {
                     Log.i("1 click", "stack: $stack, position: $position")
                     var moveElements = selectCards(stack, position)
                     applyModifierInStack(::insertCardsSelecteds, moveElements, numberStack!!)
-                    loadCardImagesStacks(stack!!, numberStack)
-                    checkAvaiableCards()
+                    avaiableCardsOnStack(stack!!,numberStack)
                 } else if (numberClick == 2) {
                     Log.i("2 clicks", "stack: $stack, position: $position")
                     var moveElements = selectCards(stack, position)
                     applyModifierInStack(::removeCardsSelecteds, moveElements, numberStack!!)
-                    loadCardImagesStacks(stack!!, numberStack)
+                    avaiableCardsOnStack(stack!!,numberStack)
                 }
 
                 numberClick = 0
@@ -1895,7 +1898,7 @@ class GameFragment : Fragment() {
         }
     }
 
-    fun mapNumberStackToStackFrame(numberStack: Int): FrameLayout {
+    private fun mapNumberStackToStackFrame(numberStack: Int): FrameLayout {
         return when(numberStack) {
             1 -> p1
             2 -> p2
@@ -1923,23 +1926,35 @@ class GameFragment : Fragment() {
         }
     }
 
-    //Resolver problema ao inserir duas cartas ou mais e algum problema ao adicionar varias cartas seguidas e checar avaiable
+    @RequiresApi(Build.VERSION_CODES.M)
     private fun insertCardsSelecteds(stackDestiny: MutableList<Card>, moveElements: MutableList<Card>, numberStack: Int) {
         var p = mapNumberStackToStackFrame(numberStack)
         var count = 0
         var moveElementsSize = moveElements.size
         var stackDestinySize = stackDestiny.size
-        Log.i("moveElements[count]", moveElements.size.toString())
-        while(count != moveElementsSize) {
-            var element = moveElements[count]
-            if((stackDestinySize + moveElementsSize + count) <= 12) {
-                //var element = moveElements[count]
-                stackDestiny.add(element)
+
+        if((stackDestinySize + moveElementsSize) <= 13) {
+            while(count != moveElementsSize) {
+                var element = moveElements[count]
                 Glide.with(this).load(element.getImageUrl(element.getCodeC())).into(p.getChildAt(stackDestinySize + count) as ImageView)
+                count++
             }
-            count++
+
+            var moveCards = mutableListOf<Card>()
+
+            moveElements.indices.forEach {
+                var code = moveElements[it].getCodeC()
+                Log.i("IT $it", "teste")
+                var show = moveElements[it].getShow()
+                var value = moveElements[it].getValue()
+                var suit = moveElements[it].getSuit()
+                var avaiable = moveElements[it].getAvaiable()
+                var card = Card(code, show!!, value, suit, avaiable)
+                moveCards.add(card)
+            }
+            stackDestiny.addAll(moveCards)
         }
-        checkAvaiableCards()
-        Log.i("Size updated insert", stackDestiny.size.toString())
+
+        Log.i("Size updated insert", stackDestiny[stackDestiny.lastIndex].getValue().toString())
     }
 }
