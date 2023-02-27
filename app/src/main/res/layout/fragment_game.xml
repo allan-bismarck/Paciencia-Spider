@@ -199,6 +199,7 @@
             android:gravity="center">
 
             <FrameLayout
+                android:id="@+id/p1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="5dp">
@@ -296,6 +297,7 @@
             </FrameLayout>
 
             <FrameLayout
+                android:id="@+id/p2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="5dp">
@@ -393,6 +395,7 @@
             </FrameLayout>
 
             <FrameLayout
+                android:id="@+id/p3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="5dp">
@@ -490,6 +493,7 @@
             </FrameLayout>
 
             <FrameLayout
+                android:id="@+id/p4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="5dp">
@@ -587,6 +591,7 @@
             </FrameLayout>
 
             <FrameLayout
+                android:id="@+id/p5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="5dp">
@@ -684,6 +689,7 @@
             </FrameLayout>
 
             <FrameLayout
+                android:id="@+id/p6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="5dp">
@@ -781,6 +787,7 @@
             </FrameLayout>
 
             <FrameLayout
+                android:id="@+id/p7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="5dp">
@@ -878,6 +885,7 @@
             </FrameLayout>
 
             <FrameLayout
+                android:id="@+id/p8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="5dp">
@@ -975,6 +983,7 @@
             </FrameLayout>
 
             <FrameLayout
+                android:id="@+id/p9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="5dp">
@@ -1072,6 +1081,7 @@
             </FrameLayout>
 
             <FrameLayout
+                android:id="@+id/p10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="5dp">

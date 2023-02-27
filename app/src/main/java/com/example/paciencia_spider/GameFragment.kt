@@ -1,6 +1,7 @@
 package com.example.paciencia_spider
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
@@ -12,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
@@ -173,6 +175,17 @@ class GameFragment : Fragment() {
     private lateinit var p10_c12: ImageView
     private lateinit var p10_c13: ImageView
 
+    private lateinit var p1: FrameLayout
+    private lateinit var p2: FrameLayout
+    private lateinit var p3: FrameLayout
+    private lateinit var p4: FrameLayout
+    private lateinit var p5: FrameLayout
+    private lateinit var p6: FrameLayout
+    private lateinit var p7: FrameLayout
+    private lateinit var p8: FrameLayout
+    private lateinit var p9: FrameLayout
+    private lateinit var p10: FrameLayout
+
     private var stackOneCards: MutableList<Card> = mutableListOf()
     private var stackTwoCards: MutableList<Card> = mutableListOf()
     private var stackTreeCards: MutableList<Card> = mutableListOf()
@@ -194,10 +207,6 @@ class GameFragment : Fragment() {
 
     private var numberCardsDeck: Int = 0
 
-    private var countDistribute: Int = 0
-
-    private var gaming: Boolean = false
-
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -218,10 +227,15 @@ class GameFragment : Fragment() {
 
         deck = view.findViewById(R.id.deck)
         deck.setOnClickListener {
-            CoroutineScope(Dispatchers.Main).launch {
-                var cardFalse = mutableListOf<Card>(Card("", false, 0, ""))
-                distributeCards(deckId, 10, cardFalse)
-                animationDeck()
+            Log.i("avaliable", avaliableSizeOfStacks().toString())
+            if(avaliableSizeOfStacks()) {
+                CoroutineScope(Dispatchers.Main).launch {
+                    var cardFalse = mutableListOf<Card>(Card("", false, 0, ""))
+                    distributeCards(deckId, 10, cardFalse)
+                    animationDeck()
+                }
+            } else {
+                Toast.makeText(this.context,"Uma das pilhas atingiu 15 cartas",Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -375,6 +389,17 @@ class GameFragment : Fragment() {
         p10_c11 = view.findViewById(R.id.p10c11)
         p10_c12 = view.findViewById(R.id.p10c12)
         p10_c13 = view.findViewById(R.id.p10c13)
+
+        p1 = view.findViewById(R.id.p1)
+        p2 = view.findViewById(R.id.p2)
+        p3 = view.findViewById(R.id.p3)
+        p4 = view.findViewById(R.id.p4)
+        p5 = view.findViewById(R.id.p5)
+        p6 = view.findViewById(R.id.p6)
+        p7 = view.findViewById(R.id.p7)
+        p8 = view.findViewById(R.id.p8)
+        p9 = view.findViewById(R.id.p9)
+        p10 = view.findViewById(R.id.p10)
 
         p1_c1.setOnClickListener {
             playWithDoubleClick(it as ImageView)
@@ -936,9 +961,12 @@ class GameFragment : Fragment() {
             }
 
             else -> {
-                endpoint.distributeTenCards(IdDeck).enqueue(object: Callback<JsonObject> {
+                endpoint.distributeTenCards(IdDeck).enqueue(object : Callback<JsonObject> {
                     @RequiresApi(Build.VERSION_CODES.M)
-                    override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
+                    override fun onResponse(
+                        call: Call<JsonObject>,
+                        response: Response<JsonObject>
+                    ) {
                         data = response.body()!!
                         getCardsFromDeck(data)
                     }
@@ -993,7 +1021,9 @@ class GameFragment : Fragment() {
 
         var glideCtx = Glide.with(this)
 
-        stack[stack.lastIndex].setShow(true)
+        if(stack.size >=1 ) {
+            stack[stack.lastIndex].setShow(true)
+        }
 
         stack.indices.forEach {
             var imgview = identifyImgView(NumberStack, it+1)
@@ -1008,6 +1038,7 @@ class GameFragment : Fragment() {
         numberCardsDeck = 5
     }
 
+    @SuppressLint("ResourceAsColor")
     fun loadCards() {
         CoroutineScope(Dispatchers.Main).launch {
             distributeCards(deckId, 6, stackOneCards, 1)
@@ -1289,6 +1320,21 @@ class GameFragment : Fragment() {
         return imgView
     }
 
+    private fun avaliableSizeOfStacks(): Boolean {
+        return !(
+                stackOneCards.size == 13 ||
+                stackTwoCards.size  == 13 ||
+                stackTreeCards.size  == 13 ||
+                stackFourCards.size  == 13 ||
+                stackFiveCards.size == 13 ||
+                stackSixCards.size  == 13 ||
+                stackSevenCards.size == 13 ||
+                stackEightCards.size == 13 ||
+                stackNineCards.size == 13 ||
+                stackTenCards.size  == 13
+                )
+    }
+
     @RequiresApi(Build.VERSION_CODES.M)
     fun checkAvaiableCards() {
         avaiableCardsOnStack(stackOneCards,  1)
@@ -1358,11 +1404,13 @@ class GameFragment : Fragment() {
                 if (numberClick == 1) {
                     Log.i("1 click", "stack: $stack, position: $position")
                     var moveElements = selectCards(stack, position)
-                    //applyModifierInStack(::insertCardsSelecteds, moveElements, numberStack!!, imgview)
+                    applyModifierInStack(::insertCardsSelecteds, moveElements, numberStack!!)
+                    loadCardImagesStacks(stack!!, numberStack)
+                    checkAvaiableCards()
                 } else if (numberClick == 2) {
                     Log.i("2 clicks", "stack: $stack, position: $position")
                     var moveElements = selectCards(stack, position)
-                    applyModifierInStack(::removeCardsSelecteds, moveElements, numberStack!!, imgview)
+                    applyModifierInStack(::removeCardsSelecteds, moveElements, numberStack!!)
                     loadCardImagesStacks(stack!!, numberStack)
                 }
 
@@ -1832,41 +1880,66 @@ class GameFragment : Fragment() {
         return moveElements
     }
 
-    private fun applyModifierInStack(function: (MutableList<Card>, MutableList<Card>, Int, ImageView) -> Unit, moveElements: MutableList<Card>, numberStack: Int, imgview: ImageView) {
+    private fun applyModifierInStack(function: (MutableList<Card>, MutableList<Card>, Int) -> Unit, moveElements: MutableList<Card>, numberStack: Int) {
         when(numberStack) {
-            1 -> function(stackOneCards, moveElements, numberStack, imgview)
-            2 -> function(stackTwoCards, moveElements, numberStack, imgview)
-            3 -> function(stackTreeCards, moveElements, numberStack, imgview)
-            4 -> function(stackFourCards, moveElements, numberStack, imgview)
-            5 -> function(stackFiveCards, moveElements, numberStack, imgview)
-            6 -> function(stackSixCards, moveElements, numberStack, imgview)
-            7 -> function(stackSevenCards, moveElements, numberStack, imgview)
-            8 -> function(stackEightCards, moveElements, numberStack, imgview)
-            9 -> function(stackNineCards, moveElements, numberStack, imgview)
-            10 -> function(stackTenCards, moveElements, numberStack, imgview)
+            1 -> function(stackOneCards, moveElements, numberStack)
+            2 -> function(stackTwoCards, moveElements, numberStack)
+            3 -> function(stackTreeCards, moveElements, numberStack)
+            4 -> function(stackFourCards, moveElements, numberStack)
+            5 -> function(stackFiveCards, moveElements, numberStack)
+            6 -> function(stackSixCards, moveElements, numberStack)
+            7 -> function(stackSevenCards, moveElements, numberStack)
+            8 -> function(stackEightCards, moveElements, numberStack)
+            9 -> function(stackNineCards, moveElements, numberStack)
+            10 -> function(stackTenCards, moveElements, numberStack)
         }
     }
 
-    private fun removeCardsSelecteds(stackOrigin: MutableList<Card>, moveElements: MutableList<Card>, numberStack: Int, imgView: ImageView) {
+    fun mapNumberStackToStackFrame(numberStack: Int): FrameLayout {
+        return when(numberStack) {
+            1 -> p1
+            2 -> p2
+            3 -> p3
+            4 -> p4
+            5 -> p5
+            6 -> p6
+            7 -> p7
+            8 -> p8
+            9 -> p9
+            else -> p10
+        }
+    }
+
+    private fun removeCardsSelecteds(stackOrigin: MutableList<Card>, moveElements: MutableList<Card>, numberStack: Int) {
+        var p = mapNumberStackToStackFrame(numberStack)
         var count = 0
-        lateinit var imgviews: MutableList<ImageView>
         var moveElementsSize = moveElements.size
         while(count != moveElementsSize) {
+            var lastIndex = stackOrigin.lastIndex
+            var img = p.getChildAt(lastIndex)
+            Glide.with(this).load(0).into(img as ImageView)
             stackOrigin.removeLast()
             count++
         }
-
-        Log.i("Size updated remove", stackOrigin.size.toString())
     }
 
-    private fun insertCardsSelecteds(stackDestiny: MutableList<Card>, moveElements: MutableList<Card>) {
-        moveElements.forEach {
-            stackDestiny.add(it)
+    //Resolver problema ao inserir duas cartas ou mais e algum problema ao adicionar varias cartas seguidas e checar avaiable
+    private fun insertCardsSelecteds(stackDestiny: MutableList<Card>, moveElements: MutableList<Card>, numberStack: Int) {
+        var p = mapNumberStackToStackFrame(numberStack)
+        var count = 0
+        var moveElementsSize = moveElements.size
+        var stackDestinySize = stackDestiny.size
+        Log.i("moveElements[count]", moveElements.size.toString())
+        while(count != moveElementsSize) {
+            var element = moveElements[count]
+            if((stackDestinySize + moveElementsSize + count) <= 12) {
+                //var element = moveElements[count]
+                stackDestiny.add(element)
+                Glide.with(this).load(element.getImageUrl(element.getCodeC())).into(p.getChildAt(stackDestinySize + count) as ImageView)
+            }
+            count++
         }
+        checkAvaiableCards()
         Log.i("Size updated insert", stackDestiny.size.toString())
-    }
-
-    private fun updateCards() {
-
     }
 }
