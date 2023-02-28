@@ -1353,15 +1353,12 @@ class GameFragment : Fragment() {
     private fun avaiableCardsOnStack(stack: MutableList<Card>, numberStack: Int) {
 
         if(stack.isNotEmpty()) {
+            stack.indices.forEach {
+                stack[it].setAvaiable(false)
+            }
 
             stack[stack.lastIndex].setAvaiable(true)
             stack[stack.lastIndex].setShow(true)
-
-            stack.indices.forEach {
-                if(it != stack.lastIndex) {
-                    stack[it].setAvaiable(false)
-                }
-            }
 
             stack.indices.reversed().forEach {
                 if (it > 0) {
@@ -1390,7 +1387,7 @@ class GameFragment : Fragment() {
                     imgView?.foreground = ColorDrawable(0)
                     imgView?.isClickable = true
                     if(stack[it].getShow() == true) {
-                        Glide.with(this).load(stack[it].getImageUrl(stack[it].getCodeC())).into(imgView!!)
+                        Glide.with(this).load(stack[it].getImageUrl(stack[it].getCodeC())).into(imgView as ImageView)
                     }
                 }
             }
@@ -1403,26 +1400,28 @@ class GameFragment : Fragment() {
             var stack = identifyStack(imgview)
             var numberStack = identifyNumberStack(imgview)
             var position = identifyPosition(imgview)
-            numberClick++
-            Handler(Looper.getMainLooper()).postDelayed({
-                if (numberClick == 1) {
-                    Log.i("1 click", "stack: $stack, position: $position")
-                    var moveElements = selectCards(stack, position)
-                    applyModifierInStack(::insertCardsSelecteds, moveElements, numberStack!!)
-                    avaiableCardsOnStack(stack!!,numberStack)
-                } else if (numberClick == 2) {
-                    Log.i("2 clicks", "stack: $stack, position: $position")
-                    var moveElements = selectCards(stack, position)
-                    applyModifierInStack(::removeCardsSelecteds, moveElements, numberStack!!)
-                    avaiableCardsOnStack(stack!!,numberStack)
+            var moveElements = selectCards(stack, position)
+            var numberStackDestiny = searchVacancyInStacks(moveElements, numberStack)
+            if (numberStackDestiny != 0) {
+                applyModifierInStack(::insertCardsSelecteds, moveElements, numberStackDestiny)
+                applyModifierInStack(::removeCardsSelecteds, moveElements, numberStack)
+                var stackDestiny = when (numberStackDestiny) {
+                    1 -> stackOneCards
+                    2 -> stackTwoCards
+                    3 -> stackTreeCards
+                    4 -> stackFourCards
+                    5 -> stackFiveCards
+                    6 -> stackSixCards
+                    7 -> stackSevenCards
+                    8 -> stackEightCards
+                    9 -> stackNineCards
+                    else -> stackTenCards
                 }
-
-                numberClick = 0
-            }, 300)
+            }
         }
     }
 
-    private fun identifyStack(imgView: ImageView): MutableList<Card>? {
+    private fun identifyStack(imgView: ImageView): MutableList<Card> {
         when(imgView) {
             p1_c1 -> return stackOneCards
             p1_c2 -> return stackOneCards
@@ -1564,11 +1563,11 @@ class GameFragment : Fragment() {
             p10_c12 -> return stackTenCards
             p10_c13 -> return stackTenCards
 
-            else -> return null
+            else -> return stackTenCards
         }
     }
 
-    private fun identifyPosition(imgView: ImageView): Int? {
+    private fun identifyPosition(imgView: ImageView): Int {
         when(imgView) {
             p1_c1 -> return 0
             p1_c2 -> return 1
@@ -1710,11 +1709,11 @@ class GameFragment : Fragment() {
             p10_c12 -> return 11
             p10_c13 -> return 12
 
-            else -> return null
+            else -> return 12
         }
     }
 
-    private fun identifyNumberStack(imgView: ImageView): Int? {
+    private fun identifyNumberStack(imgView: ImageView): Int {
         when(imgView) {
             p1_c1 -> return 1
             p1_c2 -> return 1
@@ -1856,7 +1855,7 @@ class GameFragment : Fragment() {
             p10_c12 -> return 10
             p10_c13 -> return 10
 
-            else -> return null
+            else -> return 10
         }
     }
 
@@ -1870,10 +1869,10 @@ class GameFragment : Fragment() {
         }
     }
 
-    private fun selectCards(stack: MutableList<Card>?, position: Int?): MutableList<Card> {
-        var moveElements = mutableListOf<Card>()
-        if(stack?.lastIndex!! >= 0) {
-            moveElements = stack.subList(position!!, stack.lastIndex+1)
+    private fun selectCards(stack: MutableList<Card>, position: Int): MutableList<Card> {
+        lateinit var moveElements: MutableList<Card>
+        if(stack.lastIndex!! >= 0) {
+            moveElements = stack.subList(position, stack.lastIndex+1)
             Log.i("moveElements", moveElements.size.toString())
 
             moveElements.forEach {
@@ -1914,47 +1913,107 @@ class GameFragment : Fragment() {
     }
 
     private fun removeCardsSelecteds(stackOrigin: MutableList<Card>, moveElements: MutableList<Card>, numberStack: Int) {
-        var p = mapNumberStackToStackFrame(numberStack)
-        var count = 0
-        var moveElementsSize = moveElements.size
-        while(count != moveElementsSize) {
-            var lastIndex = stackOrigin.lastIndex
-            var img = p.getChildAt(lastIndex)
-            Glide.with(this).load(0).into(img as ImageView)
-            stackOrigin.removeLast()
-            count++
+        CoroutineScope(Dispatchers.Main).launch {
+            delay(50)
+            var p = mapNumberStackToStackFrame(numberStack)
+            var count = 0
+            Log.i("remove moveElements == null", (moveElements == null).toString())
+            var moveElementsSize = moveElements.size
+
+            while (count != moveElementsSize) {
+                var lastIndex = stackOrigin.lastIndex
+                var img = p.getChildAt(lastIndex)
+                Glide.with(this@GameFragment).load("").into(img as ImageView)
+                stackOrigin.removeLast()
+                count++
+            }
+
+            avaiableCardsOnStack(stackOrigin, numberStack)
         }
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
     private fun insertCardsSelecteds(stackDestiny: MutableList<Card>, moveElements: MutableList<Card>, numberStack: Int) {
-        var p = mapNumberStackToStackFrame(numberStack)
-        var count = 0
-        var moveElementsSize = moveElements.size
-        var stackDestinySize = stackDestiny.size
+        CoroutineScope(Dispatchers.Main).launch {
 
-        if((stackDestinySize + moveElementsSize) <= 13) {
-            while(count != moveElementsSize) {
-                var element = moveElements[count]
-                Glide.with(this).load(element.getImageUrl(element.getCodeC())).into(p.getChildAt(stackDestinySize + count) as ImageView)
-                count++
+            Log.i("moveElements == null", (moveElements == null).toString())
+
+            var p = mapNumberStackToStackFrame(numberStack)
+            var count = 0
+            var moveElementsSize = moveElements.size
+            var stackDestinySize = stackDestiny.size
+
+            if ((stackDestinySize + moveElementsSize) <= 13) {
+                while (count != moveElementsSize) {
+                    var element = moveElements[count]
+                    Glide.with(this@GameFragment).load(element.getImageUrl(element.getCodeC()))
+                        .into(p.getChildAt(stackDestinySize + count) as ImageView)
+                    count++
+                }
+
+                var moveCards = mutableListOf<Card>()
+
+                moveElements.indices.forEach {
+                    var code = moveElements[it].getCodeC()
+                    Log.i("IT $it", "teste")
+                    var show = moveElements[it].getShow()
+                    var value = moveElements[it].getValue()
+                    var suit = moveElements[it].getSuit()
+                    var avaiable = moveElements[it].getAvaiable()
+                    var card = Card(code, show!!, value, suit, avaiable)
+                    moveCards.add(card)
+                }
+                stackDestiny.addAll(moveCards)
             }
+            avaiableCardsOnStack(stackDestiny, numberStack)
 
-            var moveCards = mutableListOf<Card>()
+            Log.i("Size updated insert", stackDestiny[stackDestiny.lastIndex].getValue().toString())
+        }
+    }
 
-            moveElements.indices.forEach {
-                var code = moveElements[it].getCodeC()
-                Log.i("IT $it", "teste")
-                var show = moveElements[it].getShow()
-                var value = moveElements[it].getValue()
-                var suit = moveElements[it].getSuit()
-                var avaiable = moveElements[it].getAvaiable()
-                var card = Card(code, show!!, value, suit, avaiable)
-                moveCards.add(card)
-            }
-            stackDestiny.addAll(moveCards)
+    @RequiresApi(Build.VERSION_CODES.M)
+    fun searchVacancyInStacks(moveCards: MutableList<Card>, numberStackOrigin: Int): Int {
+
+        if(stackOneCards.size == 0 || stackOneCards[stackOneCards.lastIndex].getValue()-1 == moveCards[0].getValue() && numberStackOrigin != 1) {
+            return 1
         }
 
-        Log.i("Size updated insert", stackDestiny[stackDestiny.lastIndex].getValue().toString())
+        if(stackTwoCards.size == 0 || stackTwoCards[stackTwoCards.lastIndex].getValue()-1 == moveCards[0].getValue() && numberStackOrigin != 2) {
+            return 2
+        }
+
+        if(stackTreeCards.size == 0 || stackTreeCards[stackTreeCards.lastIndex].getValue()-1 == moveCards[0].getValue() && numberStackOrigin != 3) {
+            return 3
+        }
+
+        if(stackFourCards.size == 0 || stackFourCards[stackFourCards.lastIndex].getValue()-1 == moveCards[0].getValue() && numberStackOrigin != 4) {
+            return 4
+        }
+
+        if(stackFiveCards.size == 0 || stackFiveCards[stackFiveCards.lastIndex].getValue()-1 == moveCards[0].getValue() && numberStackOrigin != 5) {
+            return 5
+        }
+
+        if(stackSixCards.size == 0 || stackSixCards[stackSixCards.lastIndex].getValue()-1 == moveCards[0].getValue() && numberStackOrigin != 6) {
+            return 6
+        }
+
+        if(stackSevenCards.size == 0 || stackSevenCards[stackSevenCards.lastIndex].getValue()-1 == moveCards[0].getValue() && numberStackOrigin != 7) {
+            return 7
+        }
+
+        if(stackEightCards.size == 0 || stackEightCards[stackEightCards.lastIndex].getValue()-1 == moveCards[0].getValue() && numberStackOrigin != 8) {
+            return 8
+        }
+
+        if(stackNineCards.size == 0 || stackNineCards[stackNineCards.lastIndex].getValue()-1 == moveCards[0].getValue() && numberStackOrigin != 9) {
+            return 9
+        }
+
+        if(stackTenCards.size == 0 || stackTenCards[stackTenCards.lastIndex].getValue()-1 == moveCards[0].getValue() && numberStackOrigin != 10) {
+            return 10
+        }
+
+        return 0
     }
 }
