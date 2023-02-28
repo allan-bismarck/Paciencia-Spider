@@ -8,6 +8,7 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
@@ -23,7 +24,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import kotlin.properties.Delegates
-import kotlin.reflect.typeOf
 
 class GameFragment : Fragment() {
     private var URL_IMAGES = "https://deckofcardsapi.com/static/img/"
@@ -218,6 +218,7 @@ class GameFragment : Fragment() {
         Log.i("Ciclo GameFragment", "onCreate")
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -401,404 +402,534 @@ class GameFragment : Fragment() {
         p9 = view.findViewById(R.id.p9)
         p10 = view.findViewById(R.id.p10)
 
-        p1_c1.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p1_c1.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p1_c2.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p1_c2.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p1_c3.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p1_c3.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p1_c4.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p1_c4.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p1_c5.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p1_c5.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p1_c6.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p1_c6.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p1_c7.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p1_c7.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p1_c8.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p1_c8.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p1_c9.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p1_c9.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p1_c10.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p1_c10.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p1_c11.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p1_c11.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p1_c12.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p1_c12.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p1_c13.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-
-        p2_c1.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p2_c2.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p2_c3.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p2_c4.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p2_c5.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p2_c6.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p2_c7.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p2_c8.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p2_c9.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p2_c10.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p2_c11.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p2_c12.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p2_c13.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p1_c13.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
 
-        p3_c1.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p2_c1.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p3_c2.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p2_c2.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p3_c3.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p2_c3.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p3_c4.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p2_c4.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p3_c5.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p2_c5.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p3_c6.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p2_c6.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p3_c7.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p2_c7.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p3_c8.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p2_c8.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p3_c9.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p2_c9.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p3_c10.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p2_c10.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p3_c11.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p2_c11.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p3_c12.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p2_c12.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p3_c13.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-
-        p4_c1.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p4_c2.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p4_c3.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p4_c4.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p4_c5.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p4_c6.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p4_c7.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p4_c8.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p4_c9.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p4_c10.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p4_c11.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p4_c12.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p4_c13.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p2_c13.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
 
-        p5_c1.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p3_c1.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p5_c2.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p3_c2.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p5_c3.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p3_c3.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p5_c4.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p3_c4.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p5_c5.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p3_c5.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p5_c6.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p3_c6.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p5_c7.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p3_c7.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p5_c8.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p3_c8.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p5_c9.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p3_c9.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p5_c10.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p3_c10.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p5_c11.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p3_c11.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p5_c12.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p3_c12.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p5_c13.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-
-        p6_c1.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p6_c2.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p6_c3.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p6_c4.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p6_c5.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p6_c6.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p6_c7.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p6_c8.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p6_c9.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p6_c10.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p6_c11.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p6_c12.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p6_c13.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p3_c13.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
 
-        p7_c1.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p4_c1.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p7_c2.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p4_c2.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p7_c3.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p4_c3.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p7_c4.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p4_c4.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p7_c5.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p4_c5.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p7_c6.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p4_c6.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p7_c7.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p4_c7.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p7_c8.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p4_c8.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p7_c9.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p4_c9.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p7_c10.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p4_c10.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p7_c11.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p4_c11.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p7_c12.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p4_c12.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p7_c13.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-
-        p8_c1.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p8_c2.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p8_c3.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p8_c4.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p8_c5.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p8_c6.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p8_c7.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p8_c8.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p8_c9.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p8_c10.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p8_c11.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p8_c12.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
-        }
-        p8_c13.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p4_c13.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
 
-        p9_c1.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p5_c1.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p9_c2.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p5_c2.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p9_c3.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p5_c3.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p9_c4.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p5_c4.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p9_c5.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p5_c5.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p9_c6.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p5_c6.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p9_c7.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p5_c7.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p9_c8.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p5_c8.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p9_c9.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p5_c9.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p9_c10.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p5_c10.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p9_c11.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p5_c11.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p9_c12.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p5_c12.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p9_c13.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p5_c13.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
 
-        p10_c1.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p6_c1.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p10_c2.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p6_c2.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p10_c3.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p6_c3.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p10_c4.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p6_c4.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p10_c5.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p6_c5.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p10_c6.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p6_c6.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p10_c7.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p6_c7.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p10_c8.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p6_c8.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p10_c9.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p6_c9.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p10_c10.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p6_c10.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p10_c11.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p6_c11.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p10_c12.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p6_c12.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
-        p10_c13.setOnClickListener {
-            playWithDoubleClick(it as ImageView)
+        p6_c13.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+
+        p7_c1.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p7_c2.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p7_c3.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p7_c4.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p7_c5.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p7_c6.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p7_c7.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p7_c8.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p7_c9.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p7_c10.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p7_c11.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p7_c12.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p7_c13.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+
+        p8_c1.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p8_c2.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p8_c3.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p8_c4.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p8_c5.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p8_c6.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p8_c7.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p8_c8.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p8_c9.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p8_c10.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p8_c11.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p8_c12.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p8_c13.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+
+        p9_c1.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p9_c2.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p9_c3.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p9_c4.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p9_c5.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p9_c6.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p9_c7.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p9_c8.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p9_c9.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p9_c10.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p9_c11.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p9_c12.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p9_c13.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+
+        p10_c1.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p10_c2.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p10_c3.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p10_c4.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p10_c5.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p10_c6.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p10_c7.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p10_c8.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p10_c9.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p10_c10.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p10_c11.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p10_c12.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
+        }
+        p10_c13.setOnTouchListener { iv, event ->
+            eventsFunction(iv as ImageView, event)
+            true
         }
 
         splashFragment = view.findViewById(R.id.splash_fragment)
@@ -1395,7 +1526,7 @@ class GameFragment : Fragment() {
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
-    private fun playWithDoubleClick(imgview: ImageView) {
+    private fun quickPlay(imgview: ImageView) {
         if(imgview.drawable != null ) {
             var stack = identifyStack(imgview)
             var numberStack = identifyNumberStack(imgview)
@@ -1403,8 +1534,6 @@ class GameFragment : Fragment() {
             var moveElements = selectCards(stack, position)
             var numberStackDestiny = searchVacancyInStacks(moveElements, numberStack)
             if (numberStackDestiny != 0) {
-                applyModifierInStack(::insertCardsSelecteds, moveElements, numberStackDestiny)
-                applyModifierInStack(::removeCardsSelecteds, moveElements, numberStack)
                 var stackDestiny = when (numberStackDestiny) {
                     1 -> stackOneCards
                     2 -> stackTwoCards
@@ -1416,6 +1545,10 @@ class GameFragment : Fragment() {
                     8 -> stackEightCards
                     9 -> stackNineCards
                     else -> stackTenCards
+                }
+                if(moveElements.size + stackDestiny.size <=13) {
+                    applyModifierInStack(::insertCardsSelecteds, moveElements, numberStackDestiny)
+                    applyModifierInStack(::removeCardsSelecteds, moveElements, numberStack)
                 }
             }
         }
@@ -1912,12 +2045,12 @@ class GameFragment : Fragment() {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     private fun removeCardsSelecteds(stackOrigin: MutableList<Card>, moveElements: MutableList<Card>, numberStack: Int) {
         CoroutineScope(Dispatchers.Main).launch {
             delay(50)
             var p = mapNumberStackToStackFrame(numberStack)
             var count = 0
-            Log.i("remove moveElements == null", (moveElements == null).toString())
             var moveElementsSize = moveElements.size
 
             while (count != moveElementsSize) {
@@ -1974,46 +2107,203 @@ class GameFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.M)
     fun searchVacancyInStacks(moveCards: MutableList<Card>, numberStackOrigin: Int): Int {
 
-        if(stackOneCards.size == 0 || stackOneCards[stackOneCards.lastIndex].getValue()-1 == moveCards[0].getValue() && numberStackOrigin != 1) {
+        if((moveCards.size + stackOneCards.size <=13) && (stackOneCards.size == 0 || stackOneCards[stackOneCards.lastIndex].getValue()-1 == moveCards[0].getValue() && numberStackOrigin != 1)) {
             return 1
         }
 
-        if(stackTwoCards.size == 0 || stackTwoCards[stackTwoCards.lastIndex].getValue()-1 == moveCards[0].getValue() && numberStackOrigin != 2) {
+        if((moveCards.size + stackTwoCards.size <=13) && (stackTwoCards.size == 0 || stackTwoCards[stackTwoCards.lastIndex].getValue()-1 == moveCards[0].getValue() && numberStackOrigin != 2)) {
             return 2
         }
 
-        if(stackTreeCards.size == 0 || stackTreeCards[stackTreeCards.lastIndex].getValue()-1 == moveCards[0].getValue() && numberStackOrigin != 3) {
+        if((moveCards.size + stackTreeCards.size <=13) && (stackTreeCards.size == 0 || stackTreeCards[stackTreeCards.lastIndex].getValue()-1 == moveCards[0].getValue() && numberStackOrigin != 3)) {
             return 3
         }
 
-        if(stackFourCards.size == 0 || stackFourCards[stackFourCards.lastIndex].getValue()-1 == moveCards[0].getValue() && numberStackOrigin != 4) {
+        if((moveCards.size + stackFourCards.size <=13) && (stackFourCards.size == 0 || stackFourCards[stackFourCards.lastIndex].getValue()-1 == moveCards[0].getValue() && numberStackOrigin != 4)) {
             return 4
         }
 
-        if(stackFiveCards.size == 0 || stackFiveCards[stackFiveCards.lastIndex].getValue()-1 == moveCards[0].getValue() && numberStackOrigin != 5) {
+        if((moveCards.size + stackFiveCards.size <=13) && (stackFiveCards.size == 0 || stackFiveCards[stackFiveCards.lastIndex].getValue()-1 == moveCards[0].getValue() && numberStackOrigin != 5)) {
             return 5
         }
 
-        if(stackSixCards.size == 0 || stackSixCards[stackSixCards.lastIndex].getValue()-1 == moveCards[0].getValue() && numberStackOrigin != 6) {
+        if((moveCards.size + stackSixCards.size <=13) && (stackSixCards.size == 0 || stackSixCards[stackSixCards.lastIndex].getValue()-1 == moveCards[0].getValue() && numberStackOrigin != 6)) {
             return 6
         }
 
-        if(stackSevenCards.size == 0 || stackSevenCards[stackSevenCards.lastIndex].getValue()-1 == moveCards[0].getValue() && numberStackOrigin != 7) {
+        if((moveCards.size + stackSevenCards.size <=13) && (stackSevenCards.size == 0 || stackSevenCards[stackSevenCards.lastIndex].getValue()-1 == moveCards[0].getValue() && numberStackOrigin != 7)) {
             return 7
         }
 
-        if(stackEightCards.size == 0 || stackEightCards[stackEightCards.lastIndex].getValue()-1 == moveCards[0].getValue() && numberStackOrigin != 8) {
+        if((moveCards.size + stackEightCards.size <=13) && (stackEightCards.size == 0 || stackEightCards[stackEightCards.lastIndex].getValue()-1 == moveCards[0].getValue() && numberStackOrigin != 8)) {
             return 8
         }
 
-        if(stackNineCards.size == 0 || stackNineCards[stackNineCards.lastIndex].getValue()-1 == moveCards[0].getValue() && numberStackOrigin != 9) {
+        if((moveCards.size + stackNineCards.size <=13) && (stackNineCards.size == 0 || stackNineCards[stackNineCards.lastIndex].getValue()-1 == moveCards[0].getValue() && numberStackOrigin != 9)) {
             return 9
         }
 
-        if(stackTenCards.size == 0 || stackTenCards[stackTenCards.lastIndex].getValue()-1 == moveCards[0].getValue() && numberStackOrigin != 10) {
+        if((moveCards.size + stackTenCards.size <=13) && (stackTenCards.size == 0 || stackTenCards[stackTenCards.lastIndex].getValue()-1 == moveCards[0].getValue() && numberStackOrigin != 10)) {
             return 10
         }
 
         return 0
+    }
+
+    fun checkCardsOnStacks(iv: ImageView): Boolean {
+        return (
+                (iv == p1_c1) ||
+                (iv == p1_c2) ||
+                (iv == p1_c3) ||
+                (iv == p1_c4) ||
+                (iv == p1_c5) ||
+                (iv == p1_c6) ||
+                (iv == p1_c7) ||
+                (iv == p1_c8) ||
+                (iv == p1_c9) ||
+                (iv == p1_c10) ||
+                (iv == p1_c11) ||
+                (iv == p1_c12) ||
+                (iv == p1_c13) ||
+
+                (iv == p2_c1) ||
+                (iv == p2_c2) ||
+                (iv == p2_c3) ||
+                (iv == p2_c4) ||
+                (iv == p2_c5) ||
+                (iv == p2_c6) ||
+                (iv == p2_c7) ||
+                (iv == p2_c8) ||
+                (iv == p2_c9) ||
+                (iv == p2_c10) ||
+                (iv == p2_c11) ||
+                (iv == p2_c12) ||
+                (iv == p2_c13) ||
+
+                (iv == p3_c1)  ||
+                (iv == p3_c2)  ||
+                (iv == p3_c3)  ||
+                (iv == p3_c4)  ||
+                (iv == p3_c5)  ||
+                (iv == p3_c6)  ||
+                (iv == p3_c7)  ||
+                (iv == p3_c8)  ||
+                (iv == p3_c9)  ||
+                (iv == p3_c10) ||
+                (iv == p3_c11) ||
+                (iv == p3_c12) ||
+                (iv == p3_c13) ||
+
+                (iv == p4_c1)  ||
+                (iv == p4_c2)  ||
+                (iv == p4_c3)  ||
+                (iv == p4_c4)  ||
+                (iv == p4_c5)  ||
+                (iv == p4_c6)  ||
+                (iv == p4_c7)  ||
+                (iv == p4_c8)  ||
+                (iv == p4_c9)  ||
+                (iv == p4_c10) ||
+                (iv == p4_c11) ||
+                (iv == p4_c12) ||
+                (iv == p4_c13) ||
+
+                (iv == p5_c1)  ||
+                (iv == p5_c2)  ||
+                (iv == p5_c3)  ||
+                (iv == p5_c4)  ||
+                (iv == p5_c5)  ||
+                (iv == p5_c6)  ||
+                (iv == p5_c7)  ||
+                (iv == p5_c8)  ||
+                (iv == p5_c9)  ||
+                (iv == p5_c10) ||
+                (iv == p5_c11) ||
+                (iv == p5_c12) ||
+                (iv == p5_c13) ||
+
+                (iv == p6_c1)  ||
+                (iv == p6_c2)  ||
+                (iv == p6_c3)  ||
+                (iv == p6_c4)  ||
+                (iv == p6_c5)  ||
+                (iv == p6_c6)  ||
+                (iv == p6_c7)  ||
+                (iv == p6_c8)  ||
+                (iv == p6_c9)  ||
+                (iv == p6_c10) ||
+                (iv == p6_c11) ||
+                (iv == p6_c12) ||
+                (iv == p6_c13) ||
+
+                (iv == p7_c1)  ||
+                (iv == p7_c2)  ||
+                (iv == p7_c3)  ||
+                (iv == p7_c4)  ||
+                (iv == p7_c5)  ||
+                (iv == p7_c6)  ||
+                (iv == p7_c7)  ||
+                (iv == p7_c8)  ||
+                (iv == p7_c9)  ||
+                (iv == p7_c10) ||
+                (iv == p7_c11) ||
+                (iv == p7_c12) ||
+                (iv == p7_c13) ||
+
+                (iv == p8_c1)  ||
+                (iv == p8_c2)  ||
+                (iv == p8_c3)  ||
+                (iv == p8_c4)  ||
+                (iv == p8_c5)  ||
+                (iv == p8_c6)  ||
+                (iv == p8_c7)  ||
+                (iv == p8_c8)  ||
+                (iv == p8_c9)  ||
+                (iv == p8_c10) ||
+                (iv == p8_c11) ||
+                (iv == p8_c12) ||
+                (iv == p8_c13) ||
+
+                (iv == p9_c1)  ||
+                (iv == p9_c2)  ||
+                (iv == p9_c3)  ||
+                (iv == p9_c4)  ||
+                (iv == p9_c5)  ||
+                (iv == p9_c6)  ||
+                (iv == p9_c7)  ||
+                (iv == p9_c8)  ||
+                (iv == p9_c9)  ||
+                (iv == p9_c10) ||
+                (iv == p9_c11) ||
+                (iv == p9_c12) ||
+                (iv == p9_c13) ||
+
+                (iv == p10_c1)  ||
+                (iv == p10_c2)  ||
+                (iv == p10_c3)  ||
+                (iv == p10_c4)  ||
+                (iv == p10_c5)  ||
+                (iv == p10_c6)  ||
+                (iv == p10_c7)  ||
+                (iv == p10_c8)  ||
+                (iv == p10_c9)  ||
+                (iv == p10_c10) ||
+                (iv == p10_c11) ||
+                (iv == p10_c12) ||
+                (iv == p10_c13)
+                )
+    }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    fun eventsFunction(iv: ImageView, event: MotionEvent) {
+        if (event.action == MotionEvent.ACTION_MOVE) {
+            /*Log.i("passei aqui", "passei")
+            quickPlay(p1_c6)*/
+        }
+
+        if (event.action == MotionEvent.ACTION_DOWN) {
+            Log.i("passei aqui", "passei")
+            quickPlay(iv)
+        }
     }
 }
