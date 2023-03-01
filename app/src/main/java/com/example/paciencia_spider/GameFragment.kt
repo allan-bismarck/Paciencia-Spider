@@ -1,6 +1,8 @@
 package com.example.paciencia_spider
 
 import android.annotation.SuppressLint
+import android.content.ClipData
+import android.content.ClipDescription
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
@@ -14,6 +16,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
@@ -403,544 +406,7 @@ class GameFragment : Fragment() {
         p9 = view.findViewById(R.id.p9)
         p10 = view.findViewById(R.id.p10)
 
-        p1_c1.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p1_c2.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p1_c3.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p1_c4.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p1_c5.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-
-        p1_c6.setOnClickListener {
-            quickPlay(it as ImageView)
-        }
-
-        p1_c6.setOnLongClickListener {
-            it.setOnTouchListener { it, event ->
-                eventsFunction(it as ImageView, event)
-                true
-            }
-            true
-        }
-
-        p1_c7.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p1_c8.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p1_c9.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p1_c10.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p1_c11.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p1_c12.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p1_c13.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-
-        p2_c1.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p2_c2.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p2_c3.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p2_c4.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p2_c5.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p2_c6.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p2_c7.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p2_c8.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p2_c9.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p2_c10.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p2_c11.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p2_c12.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p2_c13.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-
-        p3_c1.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p3_c2.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p3_c3.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p3_c4.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p3_c5.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p3_c6.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p3_c7.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p3_c8.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p3_c9.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p3_c10.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p3_c11.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p3_c12.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p3_c13.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-
-        p4_c1.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p4_c2.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p4_c3.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p4_c4.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p4_c5.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p4_c6.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p4_c7.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p4_c8.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p4_c9.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p4_c10.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p4_c11.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p4_c12.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p4_c13.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-
-        p5_c1.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p5_c2.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p5_c3.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p5_c4.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p5_c5.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p5_c6.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p5_c7.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p5_c8.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p5_c9.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p5_c10.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p5_c11.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p5_c12.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p5_c13.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-
-        p6_c1.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p6_c2.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p6_c3.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p6_c4.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p6_c5.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p6_c6.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p6_c7.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p6_c8.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p6_c9.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p6_c10.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p6_c11.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p6_c12.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p6_c13.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-
-        p7_c1.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p7_c2.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p7_c3.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p7_c4.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p7_c5.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p7_c6.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p7_c7.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p7_c8.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p7_c9.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p7_c10.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p7_c11.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p7_c12.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p7_c13.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-
-        p8_c1.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p8_c2.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p8_c3.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p8_c4.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p8_c5.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p8_c6.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p8_c7.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p8_c8.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p8_c9.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p8_c10.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p8_c11.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p8_c12.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p8_c13.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-
-        p9_c1.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p9_c2.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p9_c3.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p9_c4.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p9_c5.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p9_c6.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p9_c7.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p9_c8.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p9_c9.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p9_c10.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p9_c11.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p9_c12.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p9_c13.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-
-        p10_c1.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p10_c2.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p10_c3.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p10_c4.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p10_c5.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p10_c6.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p10_c7.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p10_c8.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p10_c9.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p10_c10.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p10_c11.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p10_c12.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
-        p10_c13.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
-            true
-        }
+        initEventsOnImageViews()
 
         splashFragment = view.findViewById(R.id.splash_fragment)
 
@@ -2296,7 +1762,6 @@ class GameFragment : Fragment() {
 
             if (event.action == MotionEvent.ACTION_DOWN) {
                 //quickPlay(iv)
-                iv.elevation = 5.0F
                 Log.i("passei aqui", "passei")
                 x = event.x
                 y = event.y
@@ -2339,6 +1804,97 @@ class GameFragment : Fragment() {
                     x = event.x
                     y = event.y
                 }
+        }
+    }
+
+    private fun initEventsOnImageViews() {
+        for(x in 1..10) {
+            for(y in 1..13) {
+                var imgview = identifyImgView(x, y)
+                var fatherLayout = getFather(x)
+
+                imgview?.setOnClickListener {
+                    quickPlay(it as ImageView)
+                }
+
+                fatherLayout.setOnDragListener(dragListener)
+                imgview?.setOnLongClickListener {
+                    val clipText = "This is our ClipData text"
+                    val item = ClipData.Item(clipText)
+                    val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
+                    val data = ClipData(clipText, mimeTypes, item)
+
+                    val dragShadowBuilder = View.DragShadowBuilder(it)
+                    it.startDragAndDrop(data, dragShadowBuilder, it, 0)
+
+                    it.visibility = View.INVISIBLE
+                    true
+                }
+
+                /*it.setOnTouchListener { it, event ->
+                    eventsFunction(it as ImageView, event)
+                    true
+                }
+                true*/
+            }
+        }
+    }
+
+    val dragListener = View.OnDragListener { view, event ->
+        when(event.action) {
+            DragEvent.ACTION_DRAG_STARTED -> {
+                event.clipDescription.hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)
+            }
+
+            DragEvent.ACTION_DRAG_ENTERED -> {
+                view.invalidate()
+                true
+            }
+
+            DragEvent.ACTION_DRAG_LOCATION -> true
+
+            DragEvent.ACTION_DRAG_EXITED -> {
+                view.invalidate()
+                true
+            }
+
+            DragEvent.ACTION_DROP -> {
+                val item = event.clipData.getItemAt(0)
+                val dragData = item.text
+                Toast.makeText(context, dragData, Toast.LENGTH_SHORT).show()
+
+                view.invalidate()
+
+                val v = event.localState as View
+                val owner = v.parent as ViewGroup
+                owner.removeView(v)
+                val destination = view as LinearLayout
+                destination.addView(v)
+                v.visibility = View.VISIBLE
+                true
+            }
+
+            DragEvent.ACTION_DRAG_ENDED -> {
+                view.invalidate()
+                true
+            }
+
+            else -> false
+        }
+    }
+
+    fun getFather(numberStack: Int): FrameLayout {
+        return when(numberStack) {
+            1 -> p1
+            2 -> p2
+            3 -> p3
+            4 -> p4
+            5 -> p5
+            6 -> p6
+            7 -> p7
+            8 -> p8
+            9 -> p9
+            else -> p10
         }
     }
 }
