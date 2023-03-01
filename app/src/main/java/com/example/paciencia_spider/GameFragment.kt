@@ -9,6 +9,7 @@ import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
+import android.view.DragEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
@@ -202,8 +203,6 @@ class GameFragment : Fragment() {
     private var qtdNaipes by Delegates.notNull<Int>()
 
     private lateinit var splashFragment: FrameLayout
-
-    private var numberClick: Int = 0
 
     private var numberCardsDeck: Int = 0
 
@@ -422,10 +421,19 @@ class GameFragment : Fragment() {
             eventsFunction(iv as ImageView, event)
             true
         }
-        p1_c6.setOnTouchListener { iv, event ->
-            eventsFunction(iv as ImageView, event)
+
+        p1_c6.setOnClickListener {
+            quickPlay(it as ImageView)
+        }
+
+        p1_c6.setOnLongClickListener {
+            it.setOnTouchListener { it, event ->
+                eventsFunction(it as ImageView, event)
+                true
+            }
             true
         }
+
         p1_c7.setOnTouchListener { iv, event ->
             eventsFunction(iv as ImageView, event)
             true
@@ -2004,13 +2012,8 @@ class GameFragment : Fragment() {
 
     private fun selectCards(stack: MutableList<Card>, position: Int): MutableList<Card> {
         lateinit var moveElements: MutableList<Card>
-        if(stack.lastIndex!! >= 0) {
-            moveElements = stack.subList(position, stack.lastIndex+1)
-            Log.i("moveElements", moveElements.size.toString())
-
-            moveElements.forEach {
-                Log.i("moveElementsValue", "${it.getValue()}")
-            }
+        if(stack.lastIndex >= 0) {
+            moveElements = stack.subList(position, stack.lastIndex + 1)
         }
         return moveElements
     }
@@ -2296,14 +2299,59 @@ class GameFragment : Fragment() {
 
     @RequiresApi(Build.VERSION_CODES.M)
     fun eventsFunction(iv: ImageView, event: MotionEvent) {
-        if (event.action == MotionEvent.ACTION_MOVE) {
-            /*Log.i("passei aqui", "passei")
-            quickPlay(p1_c6)*/
-        }
+        if(checkCardsOnStacks(iv)) {
+            var imgview = ImageView(context)
+            Glide.with(this).load(stackOneCards[0].getImageBack()).into(imgview)
+            var x: Float = 0F
+            var y: Float = 0F
+            var dx: Float
+            var dy: Float
 
-        if (event.action == MotionEvent.ACTION_DOWN) {
-            Log.i("passei aqui", "passei")
-            quickPlay(iv)
+            if (event.action == MotionEvent.ACTION_DOWN) {
+                //quickPlay(iv)
+                Log.i("passei aqui", "passei")
+                x = event.x
+                y = event.y
+            }
+
+            if (event.action == MotionEvent.ACTION_MOVE) {
+                dx = event.x - x
+                dy = event.y - y
+
+                imgview.x = imgview.x + dx
+                imgview.y = imgview.y + dy
+
+                x = event.x
+                y = event.y
+            }
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    fun eventsFunction2(iv: ImageView, event: DragEvent) {
+        if(checkCardsOnStacks(iv)) {
+            var x: Float = 0F
+            var y: Float = 0F
+            var dx: Float
+            var dy: Float
+
+            if (event.action == DragEvent.ACTION_DRAG_STARTED) {
+                //quickPlay(iv)
+                Log.i("passei aqui", "passei")
+                x = event.x
+                y = event.y
+            }
+
+                if (event.action == DragEvent.ACTION_DROP) {
+                    dx = event.x - x
+                    dy = event.y - y
+
+                    iv.x = iv.x + dx
+                    iv.y = iv.y + dy
+
+                    x = event.x
+                    y = event.y
+                }
         }
     }
 }
