@@ -206,7 +206,8 @@ class GameFragment : Fragment() {
 
     private var numberCardsDeck: Int = 0
 
-    @RequiresApi(Build.VERSION_CODES.M)
+    private lateinit var viewGlobal: View
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -218,12 +219,13 @@ class GameFragment : Fragment() {
     }
 
     @SuppressLint("ClickableViewAccessibility")
-    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view: View = inflater.inflate(R.layout.fragment_game, container, false)
+
+        viewGlobal = view
 
         deck = view.findViewById(R.id.deck)
         deck.setOnClickListener {
@@ -1069,7 +1071,6 @@ class GameFragment : Fragment() {
         when(numberCards) {
             5 -> {
                 endpoint.distributeFiveCards(IdDeck).enqueue(object: Callback<JsonObject> {
-                    @RequiresApi(Build.VERSION_CODES.M)
                     override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
                         data = response.body()!!
                         getCardsToStacks(data, stack)
@@ -1085,7 +1086,6 @@ class GameFragment : Fragment() {
 
             6 -> {
                 endpoint.distributeSixCards(IdDeck).enqueue(object: Callback<JsonObject> {
-                    @RequiresApi(Build.VERSION_CODES.M)
                     override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
                         data = response.body()!!
                         getCardsToStacks(data, stack)
@@ -1101,7 +1101,6 @@ class GameFragment : Fragment() {
 
             else -> {
                 endpoint.distributeTenCards(IdDeck).enqueue(object : Callback<JsonObject> {
-                    @RequiresApi(Build.VERSION_CODES.M)
                     override fun onResponse(
                         call: Call<JsonObject>,
                         response: Response<JsonObject>
@@ -1155,7 +1154,6 @@ class GameFragment : Fragment() {
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
     private fun loadCardImagesStacks(stack: MutableList<Card>, NumberStack: Int) {
 
         var glideCtx = Glide.with(this)
@@ -1196,7 +1194,6 @@ class GameFragment : Fragment() {
             splashFragment.visibility = View.INVISIBLE }, 7000)
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
     fun getCardsFromDeck(data: JsonObject) {
         var gson = Gson()
         var d = gson.fromJson(data, CardModel::class.java)
@@ -1249,7 +1246,6 @@ class GameFragment : Fragment() {
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
     private fun loadCardsFromDeck(stack: MutableList<Card>, numberStack: Int) {
         var imgView: ImageView?
         var size = stack.size
@@ -1473,7 +1469,6 @@ class GameFragment : Fragment() {
                 )
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
     fun checkAvaiableCards() {
         avaiableCardsOnStack(stackOneCards,  1)
         avaiableCardsOnStack(stackTwoCards,  2)
@@ -1488,7 +1483,6 @@ class GameFragment : Fragment() {
     }
 
     @SuppressLint("ResourceAsColor")
-    @RequiresApi(Build.VERSION_CODES.M)
     private fun avaiableCardsOnStack(stack: MutableList<Card>, numberStack: Int) {
 
         if(stack.isNotEmpty()) {
@@ -1533,7 +1527,6 @@ class GameFragment : Fragment() {
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
     private fun quickPlay(imgview: ImageView) {
         if(imgview.drawable != null ) {
             var stack = identifyStack(imgview)
@@ -2048,7 +2041,6 @@ class GameFragment : Fragment() {
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
     private fun removeCardsSelecteds(stackOrigin: MutableList<Card>, moveElements: MutableList<Card>, numberStack: Int) {
         CoroutineScope(Dispatchers.Main).launch {
             delay(50)
@@ -2068,11 +2060,8 @@ class GameFragment : Fragment() {
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
     private fun insertCardsSelecteds(stackDestiny: MutableList<Card>, moveElements: MutableList<Card>, numberStack: Int) {
         CoroutineScope(Dispatchers.Main).launch {
-
-            Log.i("moveElements == null", (moveElements == null).toString())
 
             var p = mapNumberStackToStackFrame(numberStack)
             var count = 0
@@ -2107,7 +2096,6 @@ class GameFragment : Fragment() {
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
     fun searchVacancyInStacks(moveCards: MutableList<Card>, numberStackOrigin: Int): Int {
 
         if((moveCards.size + stackOneCards.size <=13) && (stackOneCards.size == 0 || stackOneCards[stackOneCards.lastIndex].getValue()-1 == moveCards[0].getValue() && numberStackOrigin != 1)) {
@@ -2297,7 +2285,6 @@ class GameFragment : Fragment() {
                 )
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
     fun eventsFunction(iv: ImageView, event: MotionEvent) {
         if(checkCardsOnStacks(iv)) {
             var imgview = ImageView(context)
@@ -2309,6 +2296,7 @@ class GameFragment : Fragment() {
 
             if (event.action == MotionEvent.ACTION_DOWN) {
                 //quickPlay(iv)
+                iv.elevation = 5.0F
                 Log.i("passei aqui", "passei")
                 x = event.x
                 y = event.y
@@ -2318,8 +2306,8 @@ class GameFragment : Fragment() {
                 dx = event.x - x
                 dy = event.y - y
 
-                imgview.x = imgview.x + dx
-                imgview.y = imgview.y + dy
+                iv.x = imgview.x + dx
+                iv.y = imgview.y + dy
 
                 x = event.x
                 y = event.y
@@ -2327,7 +2315,6 @@ class GameFragment : Fragment() {
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
     fun eventsFunction2(iv: ImageView, event: DragEvent) {
         if(checkCardsOnStacks(iv)) {
             var x: Float = 0F
