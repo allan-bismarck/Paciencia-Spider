@@ -1751,62 +1751,6 @@ class GameFragment : Fragment() {
                 )
     }
 
-    fun eventsFunction(iv: ImageView, event: MotionEvent) {
-        if(checkCardsOnStacks(iv)) {
-            var imgview = ImageView(context)
-            Glide.with(this).load(stackOneCards[0].getImageBack()).into(imgview)
-            var x: Float = 0F
-            var y: Float = 0F
-            var dx: Float
-            var dy: Float
-
-            if (event.action == MotionEvent.ACTION_DOWN) {
-                //quickPlay(iv)
-                Log.i("passei aqui", "passei")
-                x = event.x
-                y = event.y
-            }
-
-            if (event.action == MotionEvent.ACTION_MOVE) {
-                dx = event.x - x
-                dy = event.y - y
-
-                iv.x = imgview.x + dx
-                iv.y = imgview.y + dy
-
-                x = event.x
-                y = event.y
-            }
-        }
-    }
-
-    fun eventsFunction2(iv: ImageView, event: DragEvent) {
-        if(checkCardsOnStacks(iv)) {
-            var x: Float = 0F
-            var y: Float = 0F
-            var dx: Float
-            var dy: Float
-
-            if (event.action == DragEvent.ACTION_DRAG_STARTED) {
-                //quickPlay(iv)
-                Log.i("passei aqui", "passei")
-                x = event.x
-                y = event.y
-            }
-
-                if (event.action == DragEvent.ACTION_DROP) {
-                    dx = event.x - x
-                    dy = event.y - y
-
-                    iv.x = iv.x + dx
-                    iv.y = iv.y + dy
-
-                    x = event.x
-                    y = event.y
-                }
-        }
-    }
-
     private fun initEventsOnImageViews() {
         for(x in 1..10) {
             for(y in 1..13) {
@@ -1824,42 +1768,59 @@ class GameFragment : Fragment() {
                     val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
                     val data = ClipData(clipText, mimeTypes, item)
 
+                    var stack = identifyStack(imgview)
+                    var numberStack = identifyNumberStack(imgview)
+                    var position = identifyPosition(imgview)
+                    var moveElements = selectCards(stack, position)
+
+                    var move = FrameLayout(requireContext())
+
+                    /*moveElements.forEach { iv ->
+                        var v = ImageView(requireContext())
+                        Glide.with(this).load(iv.getImageUrl(iv.getCodeC())).into(v)
+                        v.visibility = View.VISIBLE
+                        move.addView(v)
+                    }*/
+
                     val dragShadowBuilder = View.DragShadowBuilder(it)
                     it.startDragAndDrop(data, dragShadowBuilder, it, 0)
 
                     it.visibility = View.INVISIBLE
                     true
                 }
-
-                /*it.setOnTouchListener { it, event ->
-                    eventsFunction(it as ImageView, event)
-                    true
-                }
-                true*/
             }
         }
     }
 
-    val dragListener = View.OnDragListener { view, event ->
+    private val dragListener = View.OnDragListener { view, event ->
         when(event.action) {
             DragEvent.ACTION_DRAG_STARTED -> {
-                event.clipDescription.hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)
-            }
-
-            DragEvent.ACTION_DRAG_ENTERED -> {
-                view.invalidate()
+                Log.i("DragEvent", "ACTION_DRAG_STARTED")
+               /* applyModifierInStack(::removeCardsSelecteds, moveElements, numberStack)*/
+                /*event.clipDescription.hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)*/
                 true
             }
 
-            DragEvent.ACTION_DRAG_LOCATION -> true
+            DragEvent.ACTION_DRAG_ENTERED -> {
+                Log.i("DragEvent", "ACTION_DRAG_ENTERED")
+                /*view.invalidate()*/
+                true
+            }
+
+            DragEvent.ACTION_DRAG_LOCATION -> {
+                Log.i("DragEvent", "ACTION_DRAG_LOCATION")
+                true
+            }
 
             DragEvent.ACTION_DRAG_EXITED -> {
-                view.invalidate()
+                Log.i("DragEvent", "ACTION_DRAG_EXITED")
+               /* view.invalidate()*/
                 true
             }
 
             DragEvent.ACTION_DROP -> {
-                val item = event.clipData.getItemAt(0)
+                Log.i("DragEvent", "ACTION_DRAG_DROP")
+                /*val item = event.clipData.getItemAt(0)
                 val dragData = item.text
                 Toast.makeText(context, dragData, Toast.LENGTH_SHORT).show()
 
@@ -1870,20 +1831,24 @@ class GameFragment : Fragment() {
                 owner.removeView(v)
                 val destination = view as LinearLayout
                 destination.addView(v)
-                v.visibility = View.VISIBLE
+                v.visibility = View.VISIBLE*/
                 true
             }
 
             DragEvent.ACTION_DRAG_ENDED -> {
-                view.invalidate()
+                Log.i("DragEvent", "ACTION_DRAG_ENDED")
+                /*view.invalidate()*/
                 true
             }
 
-            else -> false
+            else -> {
+                Log.i("DragEvent", "ELSE")
+                false
+            }
         }
     }
 
-    fun getFather(numberStack: Int): FrameLayout {
+    private fun getFather(numberStack: Int): FrameLayout {
         return when(numberStack) {
             1 -> p1
             2 -> p2
