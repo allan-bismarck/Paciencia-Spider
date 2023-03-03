@@ -1,6 +1,9 @@
 package com.example.paciencia_spider
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
+import android.content.ClipData
+import android.content.ClipDescription
 import android.graphics.drawable.ColorDrawable
 import android.media.Image
 import android.os.Bundle
@@ -222,6 +225,8 @@ class GameFragment : Fragment() {
     private lateinit var move_c13: ImageView
 
     private lateinit var stackViewMove: FrameLayout
+
+    private var moveElements: MutableList<Card> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -1026,7 +1031,7 @@ class GameFragment : Fragment() {
             var stack = identifyStack(imgview)
             var numberStack = identifyNumberStack(imgview)
             var position = identifyPosition(imgview)
-            var moveElements = selectCards(stack, position)
+            moveElements = selectCards(stack, position)
             var numberStackDestiny = searchVacancyInStacks(moveElements, numberStack)
             if (numberStackDestiny != 0) {
                 var stackDestiny = when (numberStackDestiny) {
@@ -1590,7 +1595,7 @@ class GameFragment : Fragment() {
         }
     }
 
-    fun searchVacancyInStacks(moveCards: MutableList<Card>, numberStackOrigin: Int): Int {
+    private fun searchVacancyInStacks(moveCards: MutableList<Card>, numberStackOrigin: Int): Int {
 
         if((moveCards.size + stackOneCards.size <=13) && (stackOneCards.size == 0 || stackOneCards[stackOneCards.lastIndex].getValue()-1 == moveCards[0].getValue() && numberStackOrigin != 1)) {
             return 1
@@ -1784,20 +1789,18 @@ class GameFragment : Fragment() {
         for(x in 1..10) {
             for(y in 1..13) {
                 var imgview = identifyImgView(x, y)
-                var fatherLayout = getFather(x)
 
                 imgview?.setOnClickListener {
                     quickPlay(it as ImageView)
                 }
 
-                fatherLayout.setOnDragListener(dragListener)
 
                 imgview?.setOnLongClickListener {
                     if(imgview.drawable != null ) {
                         var stack = identifyStack(imgview)
                         var numberStack = identifyNumberStack(imgview)
                         var position = identifyPosition(imgview)
-                        var moveElements = selectCards(stack, position)
+                        moveElements = selectCards(stack, position)
 
                         moveElements.indices.forEach { index ->
                             var imgviewTemp = identifyImageViewMove(index)
@@ -1806,95 +1809,12 @@ class GameFragment : Fragment() {
                                 .into(imgviewTemp)
                         }
 
-                        stackViewMove.x = it.x
-                        stackViewMove.y = it.y
-
-                        Log.i("moveElementsSize", moveElements.size.toString())
-
-                        //CoroutineScope(Dispatchers.Main).launch {
-                            //delay(300)
-                            val dragShadowBuilder = View.DragShadowBuilder(stackViewMove)
-                            it.startDragAndDrop(null, dragShadowBuilder, stackViewMove, 0)
-
-                            applyModifierInStack(::removeCardsSelecteds, moveElements, numberStack)
-                            clearStackMove()
-                        //}
+                        showDialog(moveElements, numberStack, this)
+                        clearStackMove()
                     }
                     true
                 }
             }
-        }
-    }
-
-    @SuppressLint("ResourceAsColor")
-    private val dragListener = View.OnDragListener { view, event ->
-        when(event.action) {
-            DragEvent.ACTION_DRAG_STARTED -> {
-                Log.i("DragEvent", "ACTION_DRAG_STARTED")
-                /*event.clipDescription.hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)*/
-                true
-            }
-
-            DragEvent.ACTION_DRAG_ENTERED -> {
-                Log.i("DragEvent", "ACTION_DRAG_ENTERED")
-                /*view.invalidate()*/
-                true
-            }
-
-            DragEvent.ACTION_DRAG_LOCATION -> {
-                Log.i("DragEvent", "ACTION_DRAG_LOCATION")
-                true
-            }
-
-            DragEvent.ACTION_DRAG_EXITED -> {
-                Log.i("DragEvent", "ACTION_DRAG_EXITED")
-                loadCardImagesStacks(stackOneCards, 1)
-               /* view.invalidate()*/
-                true
-            }
-
-            DragEvent.ACTION_DROP -> {
-                Log.i("DragEvent", "ACTION_DRAG_DROP")
-                /*val item = event.clipData.getItemAt(0)
-                val dragData = item.text
-                Toast.makeText(context, dragData, Toast.LENGTH_SHORT).show()
-
-                view.invalidate()
-
-                val v = event.localState as View
-                val owner = v.parent as ViewGroup
-                owner.removeView(v)
-                val destination = view as LinearLayout
-                destination.addView(v)
-                v.visibility = View.VISIBLE*/
-                true
-            }
-
-            DragEvent.ACTION_DRAG_ENDED -> {
-                Log.i("DragEvent", "ACTION_DRAG_ENDED")
-                /*view.invalidate()*/
-                true
-            }
-
-            else -> {
-                Log.i("DragEvent", "ELSE")
-                false
-            }
-        }
-    }
-
-    private fun getFather(numberStack: Int): FrameLayout {
-        return when(numberStack) {
-            1 -> p1
-            2 -> p2
-            3 -> p3
-            4 -> p4
-            5 -> p5
-            6 -> p6
-            7 -> p7
-            8 -> p8
-            9 -> p9
-            else -> p10
         }
     }
 
@@ -1916,10 +1836,30 @@ class GameFragment : Fragment() {
         }
     }
 
-    fun clearStackMove() {
+    private fun clearStackMove() {
         for(x in 0..12) {
             var imgview = identifyImageViewMove(x)
             Glide.with(this).load("").into(imgview)
         }
+    }
+
+    private fun showDialog(moveElements: MutableList<Card>, numberStack: Int,fragment: GameFragment) {
+        val builder = AlertDialog.Builder(context)
+        //builder.setCancelable(false)
+
+        val v = layoutInflater.inflate(R.layout.move_cards_dialog, null)
+        builder.setView(v)
+
+        /*builder.setPositiveButton("Sim") {
+                dialog, which ->
+            //finish()
+            Toast.makeText(context, "Jogo finalizado!", Toast.LENGTH_LONG).show()
+        }*/
+        builder.setNegativeButton("Cancelar") {
+                dialog, which ->
+        }
+
+        val dialog = builder.create()
+        dialog.show()
     }
 }

@@ -59,14 +59,14 @@ class GameActivity : AppCompatActivity() {
     }
 
 
-    fun loadFragment(fragment: Fragment) {
+    private fun loadFragment(fragment: Fragment) {
         val fragmentLoad = supportFragmentManager.beginTransaction()
         fragmentLoad.replace(R.id.frameFragment, fragment)
         fragment.arguments = b
         fragmentLoad.commit()
     }
 
-    fun reloadFragment(fragment: Fragment) {
+    private fun reloadFragment(fragment: Fragment) {
         val fragmentLoad = supportFragmentManager.beginTransaction()
         fragmentLoad.remove(fragment)
         fragmentLoad.commit()
@@ -75,7 +75,7 @@ class GameActivity : AppCompatActivity() {
         loadFragment(gameFragment)
     }
 
-    fun showDialog(type: String, fragment: GameFragment) {
+    private fun showDialog(type: String, fragment: GameFragment) {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("AVISO")
 
