@@ -9,9 +9,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="grey31">#4F4F4F</color>
     <color name="blue">#0000FF</color>
-    <color name="limegreen">#32CD32</color>
+    <color name="lime_green">#32CD32</color>
     <color name="red">#FF0000</color>
-    <color name="darkorange">#FF8C00</color>
+    <color name="dark_orange">#FF8C00</color>
     <color name="black_transparent">#77000000</color>
     <color name="black_total_transparent">#00000000</color>
 </resources>

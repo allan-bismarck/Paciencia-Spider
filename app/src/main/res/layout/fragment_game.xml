@@ -4,13 +4,111 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".GameFragment"
-    android:background="@color/teal_700">
+    android:id="@+id/background">
+
+    <FrameLayout
+        android:id="@+id/move"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="-10dp">
+
+        <ImageView
+            android:id="@+id/move_c1"
+            android:layout_width="@dimen/width_cards_play"
+            android:layout_height="@dimen/height_cards_play"
+            />
+
+        <ImageView
+            android:id="@+id/move_c2"
+            android:layout_width="@dimen/width_cards_play"
+            android:layout_height="@dimen/height_cards_play"
+            android:layout_marginTop="@dimen/space_cards_two"
+            />
+
+        <ImageView
+            android:id="@+id/move_c3"
+            android:layout_width="@dimen/width_cards_play"
+            android:layout_height="@dimen/height_cards_play"
+            android:layout_marginTop="@dimen/space_cards_tree"
+            />
+
+        <ImageView
+            android:id="@+id/move_c4"
+            android:layout_width="@dimen/width_cards_play"
+            android:layout_height="@dimen/height_cards_play"
+            android:layout_marginTop="@dimen/space_cards_four"
+            />
+
+        <ImageView
+            android:id="@+id/move_c5"
+            android:layout_width="@dimen/width_cards_play"
+            android:layout_height="@dimen/height_cards_play"
+            android:layout_marginTop="@dimen/space_cards_five"
+            />
+
+        <ImageView
+            android:id="@+id/move_c6"
+            android:layout_width="@dimen/width_cards_play"
+            android:layout_height="@dimen/height_cards_play"
+            android:layout_marginTop="@dimen/space_cards_six"
+            />
+
+        <ImageView
+            android:id="@+id/move_c7"
+            android:layout_width="@dimen/width_cards_play"
+            android:layout_height="@dimen/height_cards_play"
+            android:layout_marginTop="@dimen/space_cards_seven"
+            />
+
+        <ImageView
+            android:id="@+id/move_c8"
+            android:layout_width="@dimen/width_cards_play"
+            android:layout_height="@dimen/height_cards_play"
+            android:layout_marginTop="@dimen/space_cards_eight"
+            />
+
+        <ImageView
+            android:id="@+id/move_c9"
+            android:layout_width="@dimen/width_cards_play"
+            android:layout_height="@dimen/height_cards_play"
+            android:layout_marginTop="@dimen/space_cards_nine"
+            />
+
+        <ImageView
+            android:id="@+id/move_c10"
+            android:layout_width="@dimen/width_cards_play"
+            android:layout_height="@dimen/height_cards_play"
+            android:layout_marginTop="@dimen/space_cards_ten"
+            />
+
+        <ImageView
+            android:id="@+id/move_c11"
+            android:layout_width="@dimen/width_cards_play"
+            android:layout_height="@dimen/height_cards_play"
+            android:layout_marginTop="@dimen/space_cards_eleven"
+            />
+
+        <ImageView
+            android:id="@+id/move_c12"
+            android:layout_width="@dimen/width_cards_play"
+            android:layout_height="@dimen/height_cards_play"
+            android:layout_marginTop="@dimen/space_cards_twelve"
+            />
+
+        <ImageView
+            android:id="@+id/move_c13"
+            android:layout_width="@dimen/width_cards_play"
+            android:layout_height="@dimen/height_cards_play"
+            android:layout_marginTop="@dimen/space_cards_thirteen"
+            />
+    </FrameLayout>
 
     <LinearLayout
         android:id="@+id/game"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:background="@color/teal_700"
         android:padding="5dp">
 
         <LinearLayout
@@ -24,7 +122,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginRight="40dp">
+                android:layout_marginEnd="40dp">
 
                 <ImageView
                     android:id="@+id/deck_c1"
@@ -37,28 +135,28 @@
                     android:layout_width="@dimen/width_deck"
                     android:layout_height="@dimen/height_deck"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="10dp" />
+                    android:layout_marginStart="10dp" />
 
                 <ImageView
                     android:id="@+id/deck_c3"
                     android:layout_width="@dimen/width_deck"
                     android:layout_height="@dimen/height_deck"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="20dp" />
+                    android:layout_marginStart="20dp" />
 
                 <ImageView
                     android:id="@+id/deck_c4"
                     android:layout_width="@dimen/width_deck"
                     android:layout_height="@dimen/height_deck"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="30dp" />
+                    android:layout_marginStart="30dp" />
 
                 <ImageView
                     android:id="@+id/deck_c5"
                     android:layout_width="@dimen/width_deck"
                     android:layout_height="@dimen/height_deck"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="40dp" />
+                    android:layout_marginStart="40dp" />
 
             </FrameLayout>
 
@@ -193,6 +291,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/game_space"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"

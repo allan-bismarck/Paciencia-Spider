@@ -1,24 +1,20 @@
 package com.example.paciencia_spider
 
 import android.annotation.SuppressLint
-import android.content.ClipData
-import android.content.ClipDescription
 import android.graphics.drawable.ColorDrawable
-import android.os.Build
+import android.media.Image
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.DragEvent
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.Toast
-import androidx.annotation.RequiresApi
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.google.gson.Gson
@@ -210,6 +206,22 @@ class GameFragment : Fragment() {
     private var numberCardsDeck: Int = 0
 
     private lateinit var viewGlobal: View
+
+    private lateinit var move_c1: ImageView
+    private lateinit var move_c2: ImageView
+    private lateinit var move_c3: ImageView
+    private lateinit var move_c4: ImageView
+    private lateinit var move_c5: ImageView
+    private lateinit var move_c6: ImageView
+    private lateinit var move_c7: ImageView
+    private lateinit var move_c8: ImageView
+    private lateinit var move_c9: ImageView
+    private lateinit var move_c10: ImageView
+    private lateinit var move_c11: ImageView
+    private lateinit var move_c12: ImageView
+    private lateinit var move_c13: ImageView
+
+    private lateinit var stackViewMove: FrameLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -409,6 +421,22 @@ class GameFragment : Fragment() {
         initEventsOnImageViews()
 
         splashFragment = view.findViewById(R.id.splash_fragment)
+
+        move_c1 = view.findViewById(R.id.move_c1)
+        move_c2 = view.findViewById(R.id.move_c2)
+        move_c3 = view.findViewById(R.id.move_c3)
+        move_c4 = view.findViewById(R.id.move_c4)
+        move_c5 = view.findViewById(R.id.move_c5) 
+        move_c6 = view.findViewById(R.id.move_c6)
+        move_c7 = view.findViewById(R.id.move_c7)
+        move_c8 = view.findViewById(R.id.move_c8)
+        move_c9 = view.findViewById(R.id.move_c9)
+        move_c10 = view.findViewById(R.id.move_c10)
+        move_c11 = view.findViewById(R.id.move_c11)
+        move_c12 = view.findViewById(R.id.move_c12)
+        move_c13 = view.findViewById(R.id.move_c13)
+
+        stackViewMove = view.findViewById(R.id.move)
 
         return view
     }
@@ -1751,6 +1779,7 @@ class GameFragment : Fragment() {
                 )
     }
 
+    @SuppressLint("ResourceType")
     private fun initEventsOnImageViews() {
         for(x in 1..10) {
             for(y in 1..13) {
@@ -1762,41 +1791,46 @@ class GameFragment : Fragment() {
                 }
 
                 fatherLayout.setOnDragListener(dragListener)
+
                 imgview?.setOnLongClickListener {
-                    val clipText = "This is our ClipData text"
-                    val item = ClipData.Item(clipText)
-                    val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
-                    val data = ClipData(clipText, mimeTypes, item)
+                    if(imgview.drawable != null ) {
+                        var stack = identifyStack(imgview)
+                        var numberStack = identifyNumberStack(imgview)
+                        var position = identifyPosition(imgview)
+                        var moveElements = selectCards(stack, position)
 
-                    var stack = identifyStack(imgview)
-                    var numberStack = identifyNumberStack(imgview)
-                    var position = identifyPosition(imgview)
-                    var moveElements = selectCards(stack, position)
+                        moveElements.indices.forEach { index ->
+                            var imgviewTemp = identifyImageViewMove(index)
+                            Glide.with(this)
+                                .load(moveElements[index].getImageUrl(moveElements[index].getCodeC()))
+                                .into(imgviewTemp)
+                        }
 
-                    var move = FrameLayout(requireContext())
+                        stackViewMove.x = it.x
+                        stackViewMove.y = it.y
 
-                    /*moveElements.forEach { iv ->
-                        var v = ImageView(requireContext())
-                        Glide.with(this).load(iv.getImageUrl(iv.getCodeC())).into(v)
-                        v.visibility = View.VISIBLE
-                        move.addView(v)
-                    }*/
+                        Log.i("moveElementsSize", moveElements.size.toString())
 
-                    val dragShadowBuilder = View.DragShadowBuilder(it)
-                    it.startDragAndDrop(data, dragShadowBuilder, it, 0)
+                        //CoroutineScope(Dispatchers.Main).launch {
+                            //delay(300)
+                            val dragShadowBuilder = View.DragShadowBuilder(stackViewMove)
+                            it.startDragAndDrop(null, dragShadowBuilder, stackViewMove, 0)
 
-                    it.visibility = View.INVISIBLE
+                            applyModifierInStack(::removeCardsSelecteds, moveElements, numberStack)
+                            clearStackMove()
+                        //}
+                    }
                     true
                 }
             }
         }
     }
 
+    @SuppressLint("ResourceAsColor")
     private val dragListener = View.OnDragListener { view, event ->
         when(event.action) {
             DragEvent.ACTION_DRAG_STARTED -> {
                 Log.i("DragEvent", "ACTION_DRAG_STARTED")
-               /* applyModifierInStack(::removeCardsSelecteds, moveElements, numberStack)*/
                 /*event.clipDescription.hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)*/
                 true
             }
@@ -1814,6 +1848,7 @@ class GameFragment : Fragment() {
 
             DragEvent.ACTION_DRAG_EXITED -> {
                 Log.i("DragEvent", "ACTION_DRAG_EXITED")
+                loadCardImagesStacks(stackOneCards, 1)
                /* view.invalidate()*/
                 true
             }
@@ -1860,6 +1895,31 @@ class GameFragment : Fragment() {
             8 -> p8
             9 -> p9
             else -> p10
+        }
+    }
+
+    private fun identifyImageViewMove(count: Int): ImageView {
+        return when(count) {
+            0 -> move_c1
+            1 -> move_c2
+            2 -> move_c3
+            3 -> move_c4
+            4 -> move_c5
+            5 -> move_c6
+            6 -> move_c7
+            7 -> move_c8
+            8 -> move_c9
+            9 -> move_c10
+            10 -> move_c11
+            11 -> move_c12
+            else -> move_c13
+        }
+    }
+
+    fun clearStackMove() {
+        for(x in 0..12) {
+            var imgview = identifyImageViewMove(x)
+            Glide.with(this).load("").into(imgview)
         }
     }
 }
