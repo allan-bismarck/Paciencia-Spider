@@ -1,26 +1,18 @@
 package com.example.paciencia_spider
 
 import android.annotation.SuppressLint
-import android.app.AlertDialog
-import android.content.ClipData
-import android.content.ClipDescription
 import android.graphics.drawable.ColorDrawable
-import android.media.Image
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
-import android.view.DragEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.TextView
 import android.widget.Toast
-import androidx.annotation.ColorInt
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.google.gson.Gson
@@ -203,6 +195,8 @@ class GameFragment : Fragment() {
     private var stackNineCards: MutableList<Card> = mutableListOf()
     private var stackTenCards: MutableList<Card> = mutableListOf()
 
+    private lateinit var move_c1: ImageView
+
     private var deckId: String = ""
 
     private var qtdNaipes by Delegates.notNull<Int>()
@@ -233,15 +227,14 @@ class GameFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val view: View = inflater.inflate(R.layout.fragment_game, container, false)
 
         deck = view.findViewById(R.id.deck)
         deck.setOnClickListener {
-            Log.i("avaliable", avaliableSizeOfStacks().toString())
             if(avaliableSizeOfStacks()) {
                 CoroutineScope(Dispatchers.Main).launch {
-                    var cardFalse = mutableListOf<Card>(Card("", false, 0, ""))
+                    val cardFalse = mutableListOf<Card>(Card("", false, 0, ""))
                     distributeCards(deckId, 10, cardFalse)
                     animationDeck()
                 }
@@ -412,6 +405,8 @@ class GameFragment : Fragment() {
         p9 = view.findViewById(R.id.p9)
         p10 = view.findViewById(R.id.p10)
 
+        move_c1 = view.findViewById(R.id.move_c1)
+
         initEventsOnImageViews()
 
         splashFragment = view.findViewById(R.id.splash_fragment)
@@ -472,7 +467,7 @@ class GameFragment : Fragment() {
                             response: Response<JsonObject>
                         ) {
                             data = response.body()!!
-                            deckId = data?.get("deck_id").toString()
+                            deckId = data.get("deck_id").toString()
                             deckId = deckId.split('"')[1]
                             endpoint.shuffleDeck(deckId)
                             loadCards()
@@ -492,7 +487,7 @@ class GameFragment : Fragment() {
                             response: Response<JsonObject>
                         ) {
                             data = response.body()!!
-                            deckId = data?.get("deck_id").toString()
+                            deckId = data.get("deck_id").toString()
                             deckId = deckId.split('"')[1]
                             endpoint.shuffleDeck(deckId)
                             loadCards()
@@ -512,7 +507,7 @@ class GameFragment : Fragment() {
                             response: Response<JsonObject>
                         ) {
                             data = response.body()!!
-                            deckId = data?.get("deck_id").toString()
+                            deckId = data.get("deck_id").toString()
                             deckId = deckId.split('"')[1]
                             endpoint.shuffleDeck(deckId)
                             loadCards()
@@ -594,22 +589,22 @@ class GameFragment : Fragment() {
     }
 
     fun getCardsToStacks(data: JsonObject, stack: MutableList<Card>) {
-        var gson = Gson()
-        var d = gson.fromJson(data, CardModel::class.java)
+        val gson = Gson()
+        val d = gson.fromJson(data, CardModel::class.java)
 
         d.cards.forEach {
             var code = it.get("code").toString()
             code = code.split('"')[1]
-            var show = false
-            var charValue = it.get("value").toString()
-            var value = mapValueToInt(charValue)
-            var suit = it.get("suit").toString()
-            stack?.add(Card(code, show, value, suit))
+            val show = false
+            val charValue = it.get("value").toString()
+            val value = mapValueToInt(charValue)
+            val suit = it.get("suit").toString()
+            stack.add(Card(code, show, value, suit))
         }
     }
 
     private fun mapValueToInt(charValue: String): Int {
-        var char = charValue.split('"')[1]
+        val char = charValue.split('"')[1]
         return when(char) {
             "ACE" -> 1
             "2" -> 2
@@ -630,14 +625,14 @@ class GameFragment : Fragment() {
 
     private fun loadCardImagesStacks(stack: MutableList<Card>, NumberStack: Int) {
 
-        var glideCtx = Glide.with(this)
+        val glideCtx = Glide.with(this)
 
         if(stack.size >=1 ) {
             stack[stack.lastIndex].setShow(true)
         }
 
         stack.indices.forEach {
-            var imgview = identifyImgView(NumberStack, it+1)
+            val imgview = identifyImgView(NumberStack, it+1)
             if(stack[it].getShow() == false) {
                 glideCtx.load(stack[it].getImageBack()).into(imgview!!)
             } else {
@@ -668,18 +663,18 @@ class GameFragment : Fragment() {
     }
 
     fun getCardsFromDeck(data: JsonObject) {
-        var gson = Gson()
-        var d = gson.fromJson(data, CardModel::class.java)
-        var cards = mutableListOf<Card>()
+        val gson = Gson()
+        val d = gson.fromJson(data, CardModel::class.java)
+        val cards = mutableListOf<Card>()
 
         if(d.cards.size >= 10) {
             d.cards.forEach {
                 var code = it.get("code").toString()
                 code = code.split('"')[1]
-                var show = true
-                var charValue = it.get("value").toString()
-                var value = mapValueToInt(charValue)
-                var suit = it.get("suit").toString()
+                val show = true
+                val charValue = it.get("value").toString()
+                val value = mapValueToInt(charValue)
+                val suit = it.get("suit").toString()
                 cards.add(Card(code, show, value, suit))
             }
 
@@ -712,6 +707,7 @@ class GameFragment : Fragment() {
 
             stackTenCards.add(cards[9])
             loadCardsFromDeck(stackTenCards, 10)
+
         }
 
         if(numberCardsDeck > 0) {
@@ -720,15 +716,13 @@ class GameFragment : Fragment() {
     }
 
     private fun loadCardsFromDeck(stack: MutableList<Card>, numberStack: Int) {
-        var imgView: ImageView?
-        var size = stack.size
-        imgView = identifyImgView(numberStack, size)
+        val size = stack.size
+        val imgView = identifyImgView(numberStack, size)
         if(imgView != null) {
-            Glide.with(this).load(stack[size - 1].getImageUrl(stack[size - 1].getCodeC()))
-                .into(imgView)
+            val imageURL = stack[size - 1].getImageUrl(stack[size - 1].getCodeC())
+            Glide.with(this).load(imageURL).into(imgView)
+            checkAvaiableCards()
         }
-
-        checkAvaiableCards()
     }
 
     private fun identifyImgView(numberStack: Int, position: Int): ImageView? {
@@ -983,7 +977,7 @@ class GameFragment : Fragment() {
             }
 
             stack.indices.forEach {
-                var imgView = identifyImgView(numberStack, it+1)
+                val imgView = identifyImgView(numberStack, it+1)
                 if(!stack[it].getAvaiable() || stack[it].getShow() == false) {
                     imgView?.foreground = ColorDrawable(R.color.black_transparent)
                     imgView?.isClickable = false
@@ -1000,14 +994,14 @@ class GameFragment : Fragment() {
 
     private fun quickPlay(imgview: ImageView) {
         if(imgview.drawable != null && !longClick) {
-            var stack = identifyStack(imgview)
-            var numberStack = identifyNumberStack(imgview)
-            var position = identifyPosition(imgview)
+            val stack = identifyStack(imgview)
+            val numberStack = identifyNumberStack(imgview)
+            val position = identifyPosition(imgview)
             moveElements = selectCards(stack, position)
             if(moveElements.isNotEmpty()) {
-                var numberStackDestiny = searchVacancyInStacks(moveElements, numberStack)
+                val numberStackDestiny = searchVacancyInStacks(moveElements, numberStack)
                 if (numberStackDestiny != 0) {
-                    var stackDestiny = when (numberStackDestiny) {
+                    val stackDestiny = when (numberStackDestiny) {
                         1 -> stackOneCards
                         2 -> stackTwoCards
                         3 -> stackTreeCards
@@ -1478,6 +1472,8 @@ class GameFragment : Fragment() {
             4 -> deck_c4.setImageResource(0)
             5 -> deck_c5.setImageResource(0)
         }
+
+
     }
 
     private fun selectCards(stack: MutableList<Card>, position: Int): MutableList<Card> {
@@ -1533,14 +1529,14 @@ class GameFragment : Fragment() {
     private fun removeCardsSelecteds(stackOrigin: MutableList<Card>, moveElements: MutableList<Card>, numberStack: Int) {
         CoroutineScope(Dispatchers.Main).launch {
             delay(50)
-            var p = mapNumberStackToStackFrame(numberStack)
+            val p = mapNumberStackToStackFrame(numberStack)
             var count = 0
-            var moveElementsSize = moveElements.size
+            val moveElementsSize = moveElements.size
 
             while (count != moveElementsSize) {
-                var lastIndex = stackOrigin.lastIndex
-                var img = p.getChildAt(lastIndex)
-                Glide.with(this@GameFragment).load("").into(img as ImageView)
+                val lastIndex = stackOrigin.lastIndex
+                val img = p.getChildAt(lastIndex) as ImageView
+                img.setImageResource(0)
                 stackOrigin.removeLast()
                 count++
             }
@@ -1552,28 +1548,28 @@ class GameFragment : Fragment() {
     private fun insertCardsSelecteds(stackDestiny: MutableList<Card>, moveElements: MutableList<Card>, numberStack: Int) {
         CoroutineScope(Dispatchers.Main).launch {
 
-            var p = mapNumberStackToStackFrame(numberStack)
+            val p = mapNumberStackToStackFrame(numberStack)
             var count = 0
-            var moveElementsSize = moveElements.size
-            var stackDestinySize = stackDestiny.size
+            val moveElementsSize = moveElements.size
+            val stackDestinySize = stackDestiny.size
 
             if ((stackDestinySize + moveElementsSize) <= 13) {
                 while (count != moveElementsSize) {
-                    var element = moveElements[count]
+                    val element = moveElements[count]
                     Glide.with(this@GameFragment).load(element.getImageUrl(element.getCodeC()))
                         .into(p.getChildAt(stackDestinySize + count) as ImageView)
                     count++
                 }
 
-                var moveCards = mutableListOf<Card>()
+                val moveCards = mutableListOf<Card>()
 
                 moveElements.indices.forEach {
-                    var code = moveElements[it].getCodeC()
-                    var show = moveElements[it].getShow()
-                    var value = moveElements[it].getValue()
-                    var suit = moveElements[it].getSuit()
-                    var avaiable = moveElements[it].getAvaiable()
-                    var card = Card(code, show!!, value, suit, avaiable)
+                    val code = moveElements[it].getCodeC()
+                    val show = moveElements[it].getShow()
+                    val value = moveElements[it].getValue()
+                    val suit = moveElements[it].getSuit()
+                    val avaiable = moveElements[it].getAvaiable()
+                    val card = Card(code, show!!, value, suit, avaiable)
                     moveCards.add(card)
                 }
                 stackDestiny.addAll(moveCards)
@@ -1631,13 +1627,12 @@ class GameFragment : Fragment() {
     private fun initEventsOnImageViews() {
         for(x in 1..10) {
             for(y in 1..13) {
-                var imgview = identifyImgView(x, y)
+                val imgview = identifyImgView(x, y)
 
                 imgview?.setOnClickListener {
                     if(longClick) {
-                        Log.i("Cliquei aqui", x.toString())
-                        var stack = identifyStack(imgview)
-                        var numberStack = identifyNumberStack(imgview)
+                        val stack = identifyStack(imgview)
+                        val numberStack = identifyNumberStack(imgview)
 
                         longClick = false
                         game.foreground = null
@@ -1657,8 +1652,8 @@ class GameFragment : Fragment() {
                 imgview?.setOnLongClickListener {
                     if(imgview.drawable != null ) {
                         longClick = true
-                        var stack = identifyStack(imgview)
-                        var position = identifyPosition(imgview)
+                        val stack = identifyStack(imgview)
+                        val position = identifyPosition(imgview)
 
                         moveElements = selectCards(stack, position)
                         stackOrigin = identifyNumberStack(imgview)
@@ -1671,5 +1666,4 @@ class GameFragment : Fragment() {
             }
         }
     }
-
 }

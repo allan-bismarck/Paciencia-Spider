@@ -1,107 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".GameFragment"
     android:id="@+id/background">
-
-    <FrameLayout
-        android:id="@+id/move"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center">
-
-        <ImageView
-            android:id="@+id/move_c1"
-            android:layout_width="@dimen/width_cards_play"
-            android:layout_height="@dimen/height_cards_play"
-            />
-
-        <ImageView
-            android:id="@+id/move_c2"
-            android:layout_width="@dimen/width_cards_play"
-            android:layout_height="@dimen/height_cards_play"
-            android:layout_marginTop="@dimen/space_cards_two"
-            />
-
-        <ImageView
-            android:id="@+id/move_c3"
-            android:layout_width="@dimen/width_cards_play"
-            android:layout_height="@dimen/height_cards_play"
-            android:layout_marginTop="@dimen/space_cards_tree"
-            />
-
-        <ImageView
-            android:id="@+id/move_c4"
-            android:layout_width="@dimen/width_cards_play"
-            android:layout_height="@dimen/height_cards_play"
-            android:layout_marginTop="@dimen/space_cards_four"
-            />
-
-        <ImageView
-            android:id="@+id/move_c5"
-            android:layout_width="@dimen/width_cards_play"
-            android:layout_height="@dimen/height_cards_play"
-            android:layout_marginTop="@dimen/space_cards_five"
-            />
-
-        <ImageView
-            android:id="@+id/move_c6"
-            android:layout_width="@dimen/width_cards_play"
-            android:layout_height="@dimen/height_cards_play"
-            android:layout_marginTop="@dimen/space_cards_six"
-            />
-
-        <ImageView
-            android:id="@+id/move_c7"
-            android:layout_width="@dimen/width_cards_play"
-            android:layout_height="@dimen/height_cards_play"
-            android:layout_marginTop="@dimen/space_cards_seven"
-            />
-
-        <ImageView
-            android:id="@+id/move_c8"
-            android:layout_width="@dimen/width_cards_play"
-            android:layout_height="@dimen/height_cards_play"
-            android:layout_marginTop="@dimen/space_cards_eight"
-            />
-
-        <ImageView
-            android:id="@+id/move_c9"
-            android:layout_width="@dimen/width_cards_play"
-            android:layout_height="@dimen/height_cards_play"
-            android:layout_marginTop="@dimen/space_cards_nine"
-            />
-
-        <ImageView
-            android:id="@+id/move_c10"
-            android:layout_width="@dimen/width_cards_play"
-            android:layout_height="@dimen/height_cards_play"
-            android:layout_marginTop="@dimen/space_cards_ten"
-            />
-
-        <ImageView
-            android:id="@+id/move_c11"
-            android:layout_width="@dimen/width_cards_play"
-            android:layout_height="@dimen/height_cards_play"
-            android:layout_marginTop="@dimen/space_cards_eleven"
-            />
-
-        <ImageView
-            android:id="@+id/move_c12"
-            android:layout_width="@dimen/width_cards_play"
-            android:layout_height="@dimen/height_cards_play"
-            android:layout_marginTop="@dimen/space_cards_twelve"
-            />
-
-        <ImageView
-            android:id="@+id/move_c13"
-            android:layout_width="@dimen/width_cards_play"
-            android:layout_height="@dimen/height_cards_play"
-            android:layout_marginTop="@dimen/space_cards_thirteen"
-            />
-    </FrameLayout>
 
     <LinearLayout
         android:id="@+id/game"
@@ -1280,6 +1183,14 @@
 
     </LinearLayout>
 
+
+    <ImageView
+        android:id="@+id/move_c1"
+        android:layout_width="@dimen/width_cards_play"
+        android:layout_height="@dimen/height_cards_play"
+        android:layout_marginStart="20dp"
+        />
+
     <FrameLayout
         android:id="@+id/splash_fragment"
         android:layout_width="match_parent"
@@ -1293,4 +1204,4 @@
 
     </FrameLayout>
 
-</RelativeLayout>
+</FrameLayout>
