@@ -211,24 +211,6 @@ class GameFragment : Fragment() {
 
     private var numberCardsDeck: Int = 0
 
-    private lateinit var viewGlobal: View
-
-    private lateinit var move_c1: ImageView
-    private lateinit var move_c2: ImageView
-    private lateinit var move_c3: ImageView
-    private lateinit var move_c4: ImageView
-    private lateinit var move_c5: ImageView
-    private lateinit var move_c6: ImageView
-    private lateinit var move_c7: ImageView
-    private lateinit var move_c8: ImageView
-    private lateinit var move_c9: ImageView
-    private lateinit var move_c10: ImageView
-    private lateinit var move_c11: ImageView
-    private lateinit var move_c12: ImageView
-    private lateinit var move_c13: ImageView
-
-    private lateinit var stackViewMove: FrameLayout
-
     private var moveElements: MutableList<Card> = mutableListOf()
 
     private lateinit var game: LinearLayout
@@ -253,8 +235,6 @@ class GameFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view: View = inflater.inflate(R.layout.fragment_game, container, false)
-
-        viewGlobal = view
 
         deck = view.findViewById(R.id.deck)
         deck.setOnClickListener {
@@ -435,22 +415,6 @@ class GameFragment : Fragment() {
         initEventsOnImageViews()
 
         splashFragment = view.findViewById(R.id.splash_fragment)
-
-        move_c1 = view.findViewById(R.id.move_c1)
-        move_c2 = view.findViewById(R.id.move_c2)
-        move_c3 = view.findViewById(R.id.move_c3)
-        move_c4 = view.findViewById(R.id.move_c4)
-        move_c5 = view.findViewById(R.id.move_c5) 
-        move_c6 = view.findViewById(R.id.move_c6)
-        move_c7 = view.findViewById(R.id.move_c7)
-        move_c8 = view.findViewById(R.id.move_c8)
-        move_c9 = view.findViewById(R.id.move_c9)
-        move_c10 = view.findViewById(R.id.move_c10)
-        move_c11 = view.findViewById(R.id.move_c11)
-        move_c12 = view.findViewById(R.id.move_c12)
-        move_c13 = view.findViewById(R.id.move_c13)
-
-        stackViewMove = view.findViewById(R.id.move)
 
         game = view.findViewById(R.id.game)
 
@@ -685,7 +649,6 @@ class GameFragment : Fragment() {
         numberCardsDeck = 5
     }
 
-    @SuppressLint("ResourceAsColor")
     fun loadCards() {
         CoroutineScope(Dispatchers.Main).launch {
             distributeCards(deckId, 6, stackOneCards, 1)
@@ -1616,8 +1579,6 @@ class GameFragment : Fragment() {
                 stackDestiny.addAll(moveCards)
             }
             avaiableCardsOnStack(stackDestiny, numberStack)
-
-            Log.i("Size updated insert", stackDestiny[stackDestiny.lastIndex].getValue().toString())
         }
     }
 
@@ -1664,150 +1625,6 @@ class GameFragment : Fragment() {
         }
 
         return 0
-    }
-
-    fun checkCardsOnStacks(iv: ImageView): Boolean {
-        return (
-                (iv == p1_c1) ||
-                (iv == p1_c2) ||
-                (iv == p1_c3) ||
-                (iv == p1_c4) ||
-                (iv == p1_c5) ||
-                (iv == p1_c6) ||
-                (iv == p1_c7) ||
-                (iv == p1_c8) ||
-                (iv == p1_c9) ||
-                (iv == p1_c10) ||
-                (iv == p1_c11) ||
-                (iv == p1_c12) ||
-                (iv == p1_c13) ||
-
-                (iv == p2_c1) ||
-                (iv == p2_c2) ||
-                (iv == p2_c3) ||
-                (iv == p2_c4) ||
-                (iv == p2_c5) ||
-                (iv == p2_c6) ||
-                (iv == p2_c7) ||
-                (iv == p2_c8) ||
-                (iv == p2_c9) ||
-                (iv == p2_c10) ||
-                (iv == p2_c11) ||
-                (iv == p2_c12) ||
-                (iv == p2_c13) ||
-
-                (iv == p3_c1)  ||
-                (iv == p3_c2)  ||
-                (iv == p3_c3)  ||
-                (iv == p3_c4)  ||
-                (iv == p3_c5)  ||
-                (iv == p3_c6)  ||
-                (iv == p3_c7)  ||
-                (iv == p3_c8)  ||
-                (iv == p3_c9)  ||
-                (iv == p3_c10) ||
-                (iv == p3_c11) ||
-                (iv == p3_c12) ||
-                (iv == p3_c13) ||
-
-                (iv == p4_c1)  ||
-                (iv == p4_c2)  ||
-                (iv == p4_c3)  ||
-                (iv == p4_c4)  ||
-                (iv == p4_c5)  ||
-                (iv == p4_c6)  ||
-                (iv == p4_c7)  ||
-                (iv == p4_c8)  ||
-                (iv == p4_c9)  ||
-                (iv == p4_c10) ||
-                (iv == p4_c11) ||
-                (iv == p4_c12) ||
-                (iv == p4_c13) ||
-
-                (iv == p5_c1)  ||
-                (iv == p5_c2)  ||
-                (iv == p5_c3)  ||
-                (iv == p5_c4)  ||
-                (iv == p5_c5)  ||
-                (iv == p5_c6)  ||
-                (iv == p5_c7)  ||
-                (iv == p5_c8)  ||
-                (iv == p5_c9)  ||
-                (iv == p5_c10) ||
-                (iv == p5_c11) ||
-                (iv == p5_c12) ||
-                (iv == p5_c13) ||
-
-                (iv == p6_c1)  ||
-                (iv == p6_c2)  ||
-                (iv == p6_c3)  ||
-                (iv == p6_c4)  ||
-                (iv == p6_c5)  ||
-                (iv == p6_c6)  ||
-                (iv == p6_c7)  ||
-                (iv == p6_c8)  ||
-                (iv == p6_c9)  ||
-                (iv == p6_c10) ||
-                (iv == p6_c11) ||
-                (iv == p6_c12) ||
-                (iv == p6_c13) ||
-
-                (iv == p7_c1)  ||
-                (iv == p7_c2)  ||
-                (iv == p7_c3)  ||
-                (iv == p7_c4)  ||
-                (iv == p7_c5)  ||
-                (iv == p7_c6)  ||
-                (iv == p7_c7)  ||
-                (iv == p7_c8)  ||
-                (iv == p7_c9)  ||
-                (iv == p7_c10) ||
-                (iv == p7_c11) ||
-                (iv == p7_c12) ||
-                (iv == p7_c13) ||
-
-                (iv == p8_c1)  ||
-                (iv == p8_c2)  ||
-                (iv == p8_c3)  ||
-                (iv == p8_c4)  ||
-                (iv == p8_c5)  ||
-                (iv == p8_c6)  ||
-                (iv == p8_c7)  ||
-                (iv == p8_c8)  ||
-                (iv == p8_c9)  ||
-                (iv == p8_c10) ||
-                (iv == p8_c11) ||
-                (iv == p8_c12) ||
-                (iv == p8_c13) ||
-
-                (iv == p9_c1)  ||
-                (iv == p9_c2)  ||
-                (iv == p9_c3)  ||
-                (iv == p9_c4)  ||
-                (iv == p9_c5)  ||
-                (iv == p9_c6)  ||
-                (iv == p9_c7)  ||
-                (iv == p9_c8)  ||
-                (iv == p9_c9)  ||
-                (iv == p9_c10) ||
-                (iv == p9_c11) ||
-                (iv == p9_c12) ||
-                (iv == p9_c13) ||
-
-                (iv == p10_c1)  ||
-                (iv == p10_c2)  ||
-                (iv == p10_c3)  ||
-                (iv == p10_c4)  ||
-                (iv == p10_c5)  ||
-                (iv == p10_c6)  ||
-                (iv == p10_c7)  ||
-                (iv == p10_c8)  ||
-                (iv == p10_c9)  ||
-                (iv == p10_c10) ||
-                (iv == p10_c11) ||
-                (iv == p10_c12) ||
-                (iv == p10_c13)
-                )
     }
 
     @SuppressLint("ResourceType")
