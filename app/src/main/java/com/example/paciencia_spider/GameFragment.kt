@@ -24,154 +24,154 @@ import retrofit2.Response
 import kotlin.properties.Delegates
 
 class GameFragment : Fragment() {
-    private var URL_IMAGES = "https://deckofcardsapi.com/static/img/"
+    private var urlAPI = "https://deckofcardsapi.com/static/img/"
 
     private lateinit var deck: FrameLayout
-    private lateinit var deck_c1: ImageView
-    private lateinit var deck_c2: ImageView
-    private lateinit var deck_c3: ImageView
-    private lateinit var deck_c4: ImageView
-    private lateinit var deck_c5: ImageView
+    private lateinit var deckC1: ImageView
+    private lateinit var deckC2: ImageView
+    private lateinit var deckC3: ImageView
+    private lateinit var deckC4: ImageView
+    private lateinit var deckC5: ImageView
 
-    private lateinit var p1_c1: ImageView
-    private lateinit var p1_c2: ImageView
-    private lateinit var p1_c3: ImageView
-    private lateinit var p1_c4: ImageView
-    private lateinit var p1_c5: ImageView
-    private lateinit var p1_c6: ImageView
-    private lateinit var p1_c7: ImageView
-    private lateinit var p1_c8: ImageView
-    private lateinit var p1_c9: ImageView
-    private lateinit var p1_c10: ImageView
-    private lateinit var p1_c11: ImageView
-    private lateinit var p1_c12: ImageView
-    private lateinit var p1_c13: ImageView
+    private lateinit var p1C1: ImageView
+    private lateinit var p1C2: ImageView
+    private lateinit var p1C3: ImageView
+    private lateinit var p1C4: ImageView
+    private lateinit var p1C5: ImageView
+    private lateinit var p1C6: ImageView
+    private lateinit var p1C7: ImageView
+    private lateinit var p1C8: ImageView
+    private lateinit var p1C9: ImageView
+    private lateinit var p1C10: ImageView
+    private lateinit var p1C11: ImageView
+    private lateinit var p1C12: ImageView
+    private lateinit var p1C13: ImageView
 
-    private lateinit var p2_c1: ImageView
-    private lateinit var p2_c2: ImageView
-    private lateinit var p2_c3: ImageView
-    private lateinit var p2_c4: ImageView
-    private lateinit var p2_c5: ImageView
-    private lateinit var p2_c6: ImageView
-    private lateinit var p2_c7: ImageView
-    private lateinit var p2_c8: ImageView
-    private lateinit var p2_c9: ImageView
-    private lateinit var p2_c10: ImageView
-    private lateinit var p2_c11: ImageView
-    private lateinit var p2_c12: ImageView
-    private lateinit var p2_c13: ImageView
+    private lateinit var p2C1: ImageView
+    private lateinit var p2C2: ImageView
+    private lateinit var p2C3: ImageView
+    private lateinit var p2C4: ImageView
+    private lateinit var p2C5: ImageView
+    private lateinit var p2C6: ImageView
+    private lateinit var p2C7: ImageView
+    private lateinit var p2C8: ImageView
+    private lateinit var p2C9: ImageView
+    private lateinit var p2C10: ImageView
+    private lateinit var p2C11: ImageView
+    private lateinit var p2C12: ImageView
+    private lateinit var p2C13: ImageView
 
-    private lateinit var p3_c1: ImageView
-    private lateinit var p3_c2: ImageView
-    private lateinit var p3_c3: ImageView
-    private lateinit var p3_c4: ImageView
-    private lateinit var p3_c5: ImageView
-    private lateinit var p3_c6: ImageView
-    private lateinit var p3_c7: ImageView
-    private lateinit var p3_c8: ImageView
-    private lateinit var p3_c9: ImageView
-    private lateinit var p3_c10: ImageView
-    private lateinit var p3_c11: ImageView
-    private lateinit var p3_c12: ImageView
-    private lateinit var p3_c13: ImageView
+    private lateinit var p3C1: ImageView
+    private lateinit var p3C2: ImageView
+    private lateinit var p3C3: ImageView
+    private lateinit var p3C4: ImageView
+    private lateinit var p3C5: ImageView
+    private lateinit var p3C6: ImageView
+    private lateinit var p3C7: ImageView
+    private lateinit var p3C8: ImageView
+    private lateinit var p3C9: ImageView
+    private lateinit var p3C10: ImageView
+    private lateinit var p3C11: ImageView
+    private lateinit var p3C12: ImageView
+    private lateinit var p3C13: ImageView
 
-    private lateinit var p4_c1: ImageView
-    private lateinit var p4_c2: ImageView
-    private lateinit var p4_c3: ImageView
-    private lateinit var p4_c4: ImageView
-    private lateinit var p4_c5: ImageView
-    private lateinit var p4_c6: ImageView
-    private lateinit var p4_c7: ImageView
-    private lateinit var p4_c8: ImageView
-    private lateinit var p4_c9: ImageView
-    private lateinit var p4_c10: ImageView
-    private lateinit var p4_c11: ImageView
-    private lateinit var p4_c12: ImageView
-    private lateinit var p4_c13: ImageView
+    private lateinit var p4C1: ImageView
+    private lateinit var p4C2: ImageView
+    private lateinit var p4C3: ImageView
+    private lateinit var p4C4: ImageView
+    private lateinit var p4C5: ImageView
+    private lateinit var p4C6: ImageView
+    private lateinit var p4C7: ImageView
+    private lateinit var p4C8: ImageView
+    private lateinit var p4C9: ImageView
+    private lateinit var p4C10: ImageView
+    private lateinit var p4C11: ImageView
+    private lateinit var p4C12: ImageView
+    private lateinit var p4C13: ImageView
 
-    private lateinit var p5_c1: ImageView
-    private lateinit var p5_c2: ImageView
-    private lateinit var p5_c3: ImageView
-    private lateinit var p5_c4: ImageView
-    private lateinit var p5_c5: ImageView
-    private lateinit var p5_c6: ImageView
-    private lateinit var p5_c7: ImageView
-    private lateinit var p5_c8: ImageView
-    private lateinit var p5_c9: ImageView
-    private lateinit var p5_c10: ImageView
-    private lateinit var p5_c11: ImageView
-    private lateinit var p5_c12: ImageView
-    private lateinit var p5_c13: ImageView
+    private lateinit var p5C1: ImageView
+    private lateinit var p5C2: ImageView
+    private lateinit var p5C3: ImageView
+    private lateinit var p5C4: ImageView
+    private lateinit var p5C5: ImageView
+    private lateinit var p5C6: ImageView
+    private lateinit var p5C7: ImageView
+    private lateinit var p5C8: ImageView
+    private lateinit var p5C9: ImageView
+    private lateinit var p5C10: ImageView
+    private lateinit var p5C11: ImageView
+    private lateinit var p5C12: ImageView
+    private lateinit var p5C13: ImageView
 
-    private lateinit var p6_c1: ImageView
-    private lateinit var p6_c2: ImageView
-    private lateinit var p6_c3: ImageView
-    private lateinit var p6_c4: ImageView
-    private lateinit var p6_c5: ImageView
-    private lateinit var p6_c6: ImageView
-    private lateinit var p6_c7: ImageView
-    private lateinit var p6_c8: ImageView
-    private lateinit var p6_c9: ImageView
-    private lateinit var p6_c10: ImageView
-    private lateinit var p6_c11: ImageView
-    private lateinit var p6_c12: ImageView
-    private lateinit var p6_c13: ImageView
+    private lateinit var p6C1: ImageView
+    private lateinit var p6C2: ImageView
+    private lateinit var p6C3: ImageView
+    private lateinit var p6C4: ImageView
+    private lateinit var p6C5: ImageView
+    private lateinit var p6C6: ImageView
+    private lateinit var p6C7: ImageView
+    private lateinit var p6C8: ImageView
+    private lateinit var p6C9: ImageView
+    private lateinit var p6C10: ImageView
+    private lateinit var p6C11: ImageView
+    private lateinit var p6C12: ImageView
+    private lateinit var p6C13: ImageView
 
-    private lateinit var p7_c1: ImageView
-    private lateinit var p7_c2: ImageView
-    private lateinit var p7_c3: ImageView
-    private lateinit var p7_c4: ImageView
-    private lateinit var p7_c5: ImageView
-    private lateinit var p7_c6: ImageView
-    private lateinit var p7_c7: ImageView
-    private lateinit var p7_c8: ImageView
-    private lateinit var p7_c9: ImageView
-    private lateinit var p7_c10: ImageView
-    private lateinit var p7_c11: ImageView
-    private lateinit var p7_c12: ImageView
-    private lateinit var p7_c13: ImageView
+    private lateinit var p7C1: ImageView
+    private lateinit var p7C2: ImageView
+    private lateinit var p7C3: ImageView
+    private lateinit var p7C4: ImageView
+    private lateinit var p7C5: ImageView
+    private lateinit var p7C6: ImageView
+    private lateinit var p7C7: ImageView
+    private lateinit var p7C8: ImageView
+    private lateinit var p7C9: ImageView
+    private lateinit var p7C10: ImageView
+    private lateinit var p7C11: ImageView
+    private lateinit var p7C12: ImageView
+    private lateinit var p7C13: ImageView
 
-    private lateinit var p8_c1: ImageView
-    private lateinit var p8_c2: ImageView
-    private lateinit var p8_c3: ImageView
-    private lateinit var p8_c4: ImageView
-    private lateinit var p8_c5: ImageView
-    private lateinit var p8_c6: ImageView
-    private lateinit var p8_c7: ImageView
-    private lateinit var p8_c8: ImageView
-    private lateinit var p8_c9: ImageView
-    private lateinit var p8_c10: ImageView
-    private lateinit var p8_c11: ImageView
-    private lateinit var p8_c12: ImageView
-    private lateinit var p8_c13: ImageView
+    private lateinit var p8C1: ImageView
+    private lateinit var p8C2: ImageView
+    private lateinit var p8C3: ImageView
+    private lateinit var p8C4: ImageView
+    private lateinit var p8C5: ImageView
+    private lateinit var p8C6: ImageView
+    private lateinit var p8C7: ImageView
+    private lateinit var p8C8: ImageView
+    private lateinit var p8C9: ImageView
+    private lateinit var p8C10: ImageView
+    private lateinit var p8C11: ImageView
+    private lateinit var p8C12: ImageView
+    private lateinit var p8C13: ImageView
 
-    private lateinit var p9_c1: ImageView
-    private lateinit var p9_c2: ImageView
-    private lateinit var p9_c3: ImageView
-    private lateinit var p9_c4: ImageView
-    private lateinit var p9_c5: ImageView
-    private lateinit var p9_c6: ImageView
-    private lateinit var p9_c7: ImageView
-    private lateinit var p9_c8: ImageView
-    private lateinit var p9_c9: ImageView
-    private lateinit var p9_c10: ImageView
-    private lateinit var p9_c11: ImageView
-    private lateinit var p9_c12: ImageView
-    private lateinit var p9_c13: ImageView
+    private lateinit var p9C1: ImageView
+    private lateinit var p9C2: ImageView
+    private lateinit var p9C3: ImageView
+    private lateinit var p9C4: ImageView
+    private lateinit var p9C5: ImageView
+    private lateinit var p9C6: ImageView
+    private lateinit var p9C7: ImageView
+    private lateinit var p9C8: ImageView
+    private lateinit var p9C9: ImageView
+    private lateinit var p9C10: ImageView
+    private lateinit var p9C11: ImageView
+    private lateinit var p9C12: ImageView
+    private lateinit var p9C13: ImageView
 
-    private lateinit var p10_c1: ImageView
-    private lateinit var p10_c2: ImageView
-    private lateinit var p10_c3: ImageView
-    private lateinit var p10_c4: ImageView
-    private lateinit var p10_c5: ImageView
-    private lateinit var p10_c6: ImageView
-    private lateinit var p10_c7: ImageView
-    private lateinit var p10_c8: ImageView
-    private lateinit var p10_c9: ImageView
-    private lateinit var p10_c10: ImageView
-    private lateinit var p10_c11: ImageView
-    private lateinit var p10_c12: ImageView
-    private lateinit var p10_c13: ImageView
+    private lateinit var p10C1: ImageView
+    private lateinit var p10C2: ImageView
+    private lateinit var p10C3: ImageView
+    private lateinit var p10C4: ImageView
+    private lateinit var p10C5: ImageView
+    private lateinit var p10C6: ImageView
+    private lateinit var p10C7: ImageView
+    private lateinit var p10C8: ImageView
+    private lateinit var p10C9: ImageView
+    private lateinit var p10C10: ImageView
+    private lateinit var p10C11: ImageView
+    private lateinit var p10C12: ImageView
+    private lateinit var p10C13: ImageView
 
     private lateinit var p1: FrameLayout
     private lateinit var p2: FrameLayout
@@ -195,8 +195,6 @@ class GameFragment : Fragment() {
     private var stackNineCards: MutableList<Card> = mutableListOf()
     private var stackTenCards: MutableList<Card> = mutableListOf()
 
-    private lateinit var move_c1: ImageView
-
     private var deckId: String = ""
 
     private var qtdNaipes by Delegates.notNull<Int>()
@@ -219,8 +217,6 @@ class GameFragment : Fragment() {
         qtdNaipes = arguments?.getInt("qtdNaipes")!!
 
         getDeck()
-
-        Log.i("Ciclo GameFragment", "onCreate")
     }
 
     @SuppressLint("ClickableViewAccessibility", "MissingInflatedId")
@@ -234,7 +230,7 @@ class GameFragment : Fragment() {
         deck.setOnClickListener {
             if(avaliableSizeOfStacks()) {
                 CoroutineScope(Dispatchers.Main).launch {
-                    val cardFalse = mutableListOf<Card>(Card("", false, 0, ""))
+                    val cardFalse = mutableListOf(Card("", false, 0, ""))
                     distributeCards(deckId, 10, cardFalse)
                     animationDeck()
                 }
@@ -243,156 +239,156 @@ class GameFragment : Fragment() {
             }
         }
 
-        deck_c1 = view.findViewById(R.id.deck_c1)
-        Glide.with(this).load("$URL_IMAGES/back.png").into(deck_c1)
-        deck_c2 = view.findViewById(R.id.deck_c2)
-        Glide.with(this).load("$URL_IMAGES/back.png").into(deck_c2)
-        deck_c3 = view.findViewById(R.id.deck_c3)
-        Glide.with(this).load("$URL_IMAGES/back.png").into(deck_c3)
-        deck_c4 = view.findViewById(R.id.deck_c4)
-        Glide.with(this).load("$URL_IMAGES/back.png").into(deck_c4)
-        deck_c5 = view.findViewById(R.id.deck_c5)
-        Glide.with(this).load("$URL_IMAGES/back.png").into(deck_c5)
+        deckC1 = view.findViewById(R.id.deck_c1)
+        Glide.with(this).load("$urlAPI/back.png").into(deckC1)
+        deckC2 = view.findViewById(R.id.deck_c2)
+        Glide.with(this).load("$urlAPI/back.png").into(deckC2)
+        deckC3 = view.findViewById(R.id.deck_c3)
+        Glide.with(this).load("$urlAPI/back.png").into(deckC3)
+        deckC4 = view.findViewById(R.id.deck_c4)
+        Glide.with(this).load("$urlAPI/back.png").into(deckC4)
+        deckC5 = view.findViewById(R.id.deck_c5)
+        Glide.with(this).load("$urlAPI/back.png").into(deckC5)
 
-        p1_c1 = view.findViewById(R.id.p1c1)
-        p1_c2 = view.findViewById(R.id.p1c2)
-        p1_c3 = view.findViewById(R.id.p1c3)
-        p1_c4 = view.findViewById(R.id.p1c4)
-        p1_c5 = view.findViewById(R.id.p1c5)
-        p1_c6 = view.findViewById(R.id.p1c6)
-        p1_c7 = view.findViewById(R.id.p1c7)
-        p1_c8 = view.findViewById(R.id.p1c8)
-        p1_c9 = view.findViewById(R.id.p1c9)
-        p1_c10 = view.findViewById(R.id.p1c10)
-        p1_c11 = view.findViewById(R.id.p1c11)
-        p1_c12 = view.findViewById(R.id.p1c12)
-        p1_c13 = view.findViewById(R.id.p1c13)
+        p1C1 = view.findViewById(R.id.p1c1)
+        p1C2 = view.findViewById(R.id.p1c2)
+        p1C3 = view.findViewById(R.id.p1c3)
+        p1C4 = view.findViewById(R.id.p1c4)
+        p1C5 = view.findViewById(R.id.p1c5)
+        p1C6 = view.findViewById(R.id.p1c6)
+        p1C7 = view.findViewById(R.id.p1c7)
+        p1C8 = view.findViewById(R.id.p1c8)
+        p1C9 = view.findViewById(R.id.p1c9)
+        p1C10 = view.findViewById(R.id.p1c10)
+        p1C11 = view.findViewById(R.id.p1c11)
+        p1C12 = view.findViewById(R.id.p1c12)
+        p1C13 = view.findViewById(R.id.p1c13)
 
-        p2_c1 = view.findViewById(R.id.p2c1)
-        p2_c2 = view.findViewById(R.id.p2c2)
-        p2_c3 = view.findViewById(R.id.p2c3)
-        p2_c4 = view.findViewById(R.id.p2c4)
-        p2_c5 = view.findViewById(R.id.p2c5)
-        p2_c6 = view.findViewById(R.id.p2c6)
-        p2_c7 = view.findViewById(R.id.p2c7)
-        p2_c8 = view.findViewById(R.id.p2c8)
-        p2_c9 = view.findViewById(R.id.p2c9)
-        p2_c10 = view.findViewById(R.id.p2c10)
-        p2_c11 = view.findViewById(R.id.p2c11)
-        p2_c12 = view.findViewById(R.id.p2c12)
-        p2_c13 = view.findViewById(R.id.p2c13)
+        p2C1 = view.findViewById(R.id.p2c1)
+        p2C2 = view.findViewById(R.id.p2c2)
+        p2C3 = view.findViewById(R.id.p2c3)
+        p2C4 = view.findViewById(R.id.p2c4)
+        p2C5 = view.findViewById(R.id.p2c5)
+        p2C6 = view.findViewById(R.id.p2c6)
+        p2C7 = view.findViewById(R.id.p2c7)
+        p2C8 = view.findViewById(R.id.p2c8)
+        p2C9 = view.findViewById(R.id.p2c9)
+        p2C10 = view.findViewById(R.id.p2c10)
+        p2C11 = view.findViewById(R.id.p2c11)
+        p2C12 = view.findViewById(R.id.p2c12)
+        p2C13 = view.findViewById(R.id.p2c13)
 
-        p3_c1 = view.findViewById(R.id.p3c1)
-        p3_c2 = view.findViewById(R.id.p3c2)
-        p3_c3 = view.findViewById(R.id.p3c3)
-        p3_c4 = view.findViewById(R.id.p3c4)
-        p3_c5 = view.findViewById(R.id.p3c5)
-        p3_c6 = view.findViewById(R.id.p3c6)
-        p3_c7 = view.findViewById(R.id.p3c7)
-        p3_c8 = view.findViewById(R.id.p3c8)
-        p3_c9 = view.findViewById(R.id.p3c9)
-        p3_c10 = view.findViewById(R.id.p3c10)
-        p3_c11 = view.findViewById(R.id.p3c11)
-        p3_c12 = view.findViewById(R.id.p3c12)
-        p3_c13 = view.findViewById(R.id.p3c13)
+        p3C1 = view.findViewById(R.id.p3c1)
+        p3C2 = view.findViewById(R.id.p3c2)
+        p3C3 = view.findViewById(R.id.p3c3)
+        p3C4 = view.findViewById(R.id.p3c4)
+        p3C5 = view.findViewById(R.id.p3c5)
+        p3C6 = view.findViewById(R.id.p3c6)
+        p3C7 = view.findViewById(R.id.p3c7)
+        p3C8 = view.findViewById(R.id.p3c8)
+        p3C9 = view.findViewById(R.id.p3c9)
+        p3C10 = view.findViewById(R.id.p3c10)
+        p3C11 = view.findViewById(R.id.p3c11)
+        p3C12 = view.findViewById(R.id.p3c12)
+        p3C13 = view.findViewById(R.id.p3c13)
 
-        p4_c1 = view.findViewById(R.id.p4c1)
-        p4_c2 = view.findViewById(R.id.p4c2)
-        p4_c3 = view.findViewById(R.id.p4c3)
-        p4_c4 = view.findViewById(R.id.p4c4)
-        p4_c5 = view.findViewById(R.id.p4c5)
-        p4_c6 = view.findViewById(R.id.p4c6)
-        p4_c7 = view.findViewById(R.id.p4c7)
-        p4_c8 = view.findViewById(R.id.p4c8)
-        p4_c9 = view.findViewById(R.id.p4c9)
-        p4_c10 = view.findViewById(R.id.p4c10)
-        p4_c11 = view.findViewById(R.id.p4c11)
-        p4_c12 = view.findViewById(R.id.p4c12)
-        p4_c13 = view.findViewById(R.id.p4c13)
+        p4C1 = view.findViewById(R.id.p4c1)
+        p4C2 = view.findViewById(R.id.p4c2)
+        p4C3 = view.findViewById(R.id.p4c3)
+        p4C4 = view.findViewById(R.id.p4c4)
+        p4C5 = view.findViewById(R.id.p4c5)
+        p4C6 = view.findViewById(R.id.p4c6)
+        p4C7 = view.findViewById(R.id.p4c7)
+        p4C8 = view.findViewById(R.id.p4c8)
+        p4C9 = view.findViewById(R.id.p4c9)
+        p4C10 = view.findViewById(R.id.p4c10)
+        p4C11 = view.findViewById(R.id.p4c11)
+        p4C12 = view.findViewById(R.id.p4c12)
+        p4C13 = view.findViewById(R.id.p4c13)
 
-        p5_c1 = view.findViewById(R.id.p5c1)
-        p5_c2 = view.findViewById(R.id.p5c2)
-        p5_c3 = view.findViewById(R.id.p5c3)
-        p5_c4 = view.findViewById(R.id.p5c4)
-        p5_c5 = view.findViewById(R.id.p5c5)
-        p5_c6 = view.findViewById(R.id.p5c6)
-        p5_c7 = view.findViewById(R.id.p5c7)
-        p5_c8 = view.findViewById(R.id.p5c8)
-        p5_c9 = view.findViewById(R.id.p5c9)
-        p5_c10 = view.findViewById(R.id.p5c10)
-        p5_c11 = view.findViewById(R.id.p5c11)
-        p5_c12 = view.findViewById(R.id.p5c12)
-        p5_c13 = view.findViewById(R.id.p5c13)
+        p5C1 = view.findViewById(R.id.p5c1)
+        p5C2 = view.findViewById(R.id.p5c2)
+        p5C3 = view.findViewById(R.id.p5c3)
+        p5C4 = view.findViewById(R.id.p5c4)
+        p5C5 = view.findViewById(R.id.p5c5)
+        p5C6 = view.findViewById(R.id.p5c6)
+        p5C7 = view.findViewById(R.id.p5c7)
+        p5C8 = view.findViewById(R.id.p5c8)
+        p5C9 = view.findViewById(R.id.p5c9)
+        p5C10 = view.findViewById(R.id.p5c10)
+        p5C11 = view.findViewById(R.id.p5c11)
+        p5C12 = view.findViewById(R.id.p5c12)
+        p5C13 = view.findViewById(R.id.p5c13)
 
-        p6_c1 = view.findViewById(R.id.p6c1)
-        p6_c2 = view.findViewById(R.id.p6c2)
-        p6_c3 = view.findViewById(R.id.p6c3)
-        p6_c4 = view.findViewById(R.id.p6c4)
-        p6_c5 = view.findViewById(R.id.p6c5)
-        p6_c6 = view.findViewById(R.id.p6c6)
-        p6_c7 = view.findViewById(R.id.p6c7)
-        p6_c8 = view.findViewById(R.id.p6c8)
-        p6_c9 = view.findViewById(R.id.p6c9)
-        p6_c10 = view.findViewById(R.id.p6c10)
-        p6_c11 = view.findViewById(R.id.p6c11)
-        p6_c12 = view.findViewById(R.id.p6c12)
-        p6_c13 = view.findViewById(R.id.p6c13)
+        p6C1 = view.findViewById(R.id.p6c1)
+        p6C2 = view.findViewById(R.id.p6c2)
+        p6C3 = view.findViewById(R.id.p6c3)
+        p6C4 = view.findViewById(R.id.p6c4)
+        p6C5 = view.findViewById(R.id.p6c5)
+        p6C6 = view.findViewById(R.id.p6c6)
+        p6C7 = view.findViewById(R.id.p6c7)
+        p6C8 = view.findViewById(R.id.p6c8)
+        p6C9 = view.findViewById(R.id.p6c9)
+        p6C10 = view.findViewById(R.id.p6c10)
+        p6C11 = view.findViewById(R.id.p6c11)
+        p6C12 = view.findViewById(R.id.p6c12)
+        p6C13 = view.findViewById(R.id.p6c13)
 
-        p7_c1 = view.findViewById(R.id.p7c1)
-        p7_c2 = view.findViewById(R.id.p7c2)
-        p7_c3 = view.findViewById(R.id.p7c3)
-        p7_c4 = view.findViewById(R.id.p7c4)
-        p7_c5 = view.findViewById(R.id.p7c5)
-        p7_c6 = view.findViewById(R.id.p7c6)
-        p7_c7 = view.findViewById(R.id.p7c7)
-        p7_c8 = view.findViewById(R.id.p7c8)
-        p7_c9 = view.findViewById(R.id.p7c9)
-        p7_c10 = view.findViewById(R.id.p7c10)
-        p7_c11 = view.findViewById(R.id.p7c11)
-        p7_c12 = view.findViewById(R.id.p7c12)
-        p7_c13 = view.findViewById(R.id.p7c13)
+        p7C1 = view.findViewById(R.id.p7c1)
+        p7C2 = view.findViewById(R.id.p7c2)
+        p7C3 = view.findViewById(R.id.p7c3)
+        p7C4 = view.findViewById(R.id.p7c4)
+        p7C5 = view.findViewById(R.id.p7c5)
+        p7C6 = view.findViewById(R.id.p7c6)
+        p7C7 = view.findViewById(R.id.p7c7)
+        p7C8 = view.findViewById(R.id.p7c8)
+        p7C9 = view.findViewById(R.id.p7c9)
+        p7C10 = view.findViewById(R.id.p7c10)
+        p7C11 = view.findViewById(R.id.p7c11)
+        p7C12 = view.findViewById(R.id.p7c12)
+        p7C13 = view.findViewById(R.id.p7c13)
 
-        p8_c1 = view.findViewById(R.id.p8c1)
-        p8_c2 = view.findViewById(R.id.p8c2)
-        p8_c3 = view.findViewById(R.id.p8c3)
-        p8_c4 = view.findViewById(R.id.p8c4)
-        p8_c5 = view.findViewById(R.id.p8c5)
-        p8_c6 = view.findViewById(R.id.p8c6)
-        p8_c7 = view.findViewById(R.id.p8c7)
-        p8_c8 = view.findViewById(R.id.p8c8)
-        p8_c9 = view.findViewById(R.id.p8c9)
-        p8_c10 = view.findViewById(R.id.p8c10)
-        p8_c11 = view.findViewById(R.id.p8c11)
-        p8_c12 = view.findViewById(R.id.p8c12)
-        p8_c13 = view.findViewById(R.id.p8c13)
+        p8C1 = view.findViewById(R.id.p8c1)
+        p8C2 = view.findViewById(R.id.p8c2)
+        p8C3 = view.findViewById(R.id.p8c3)
+        p8C4 = view.findViewById(R.id.p8c4)
+        p8C5 = view.findViewById(R.id.p8c5)
+        p8C6 = view.findViewById(R.id.p8c6)
+        p8C7 = view.findViewById(R.id.p8c7)
+        p8C8 = view.findViewById(R.id.p8c8)
+        p8C9 = view.findViewById(R.id.p8c9)
+        p8C10 = view.findViewById(R.id.p8c10)
+        p8C11 = view.findViewById(R.id.p8c11)
+        p8C12 = view.findViewById(R.id.p8c12)
+        p8C13 = view.findViewById(R.id.p8c13)
 
-        p9_c1 = view.findViewById(R.id.p9c1)
-        p9_c2 = view.findViewById(R.id.p9c2)
-        p9_c3 = view.findViewById(R.id.p9c3)
-        p9_c4 = view.findViewById(R.id.p9c4)
-        p9_c5 = view.findViewById(R.id.p9c5)
-        p9_c6 = view.findViewById(R.id.p9c6)
-        p9_c7 = view.findViewById(R.id.p9c7)
-        p9_c8 = view.findViewById(R.id.p9c8)
-        p9_c9 = view.findViewById(R.id.p9c9)
-        p9_c10 = view.findViewById(R.id.p9c10)
-        p9_c11 = view.findViewById(R.id.p9c11)
-        p9_c12 = view.findViewById(R.id.p9c12)
-        p9_c13 = view.findViewById(R.id.p9c13)
+        p9C1 = view.findViewById(R.id.p9c1)
+        p9C2 = view.findViewById(R.id.p9c2)
+        p9C3 = view.findViewById(R.id.p9c3)
+        p9C4 = view.findViewById(R.id.p9c4)
+        p9C5 = view.findViewById(R.id.p9c5)
+        p9C6 = view.findViewById(R.id.p9c6)
+        p9C7 = view.findViewById(R.id.p9c7)
+        p9C8 = view.findViewById(R.id.p9c8)
+        p9C9 = view.findViewById(R.id.p9c9)
+        p9C10 = view.findViewById(R.id.p9c10)
+        p9C11 = view.findViewById(R.id.p9c11)
+        p9C12 = view.findViewById(R.id.p9c12)
+        p9C13 = view.findViewById(R.id.p9c13)
 
-        p10_c1 = view.findViewById(R.id.p10c1)
-        p10_c2 = view.findViewById(R.id.p10c2)
-        p10_c3 = view.findViewById(R.id.p10c3)
-        p10_c4 = view.findViewById(R.id.p10c4)
-        p10_c5 = view.findViewById(R.id.p10c5)
-        p10_c6 = view.findViewById(R.id.p10c6)
-        p10_c7 = view.findViewById(R.id.p10c7)
-        p10_c8 = view.findViewById(R.id.p10c8)
-        p10_c9 = view.findViewById(R.id.p10c9)
-        p10_c10 = view.findViewById(R.id.p10c10)
-        p10_c11 = view.findViewById(R.id.p10c11)
-        p10_c12 = view.findViewById(R.id.p10c12)
-        p10_c13 = view.findViewById(R.id.p10c13)
+        p10C1 = view.findViewById(R.id.p10c1)
+        p10C2 = view.findViewById(R.id.p10c2)
+        p10C3 = view.findViewById(R.id.p10c3)
+        p10C4 = view.findViewById(R.id.p10c4)
+        p10C5 = view.findViewById(R.id.p10c5)
+        p10C6 = view.findViewById(R.id.p10c6)
+        p10C7 = view.findViewById(R.id.p10c7)
+        p10C8 = view.findViewById(R.id.p10c8)
+        p10C9 = view.findViewById(R.id.p10c9)
+        p10C10 = view.findViewById(R.id.p10c10)
+        p10C11 = view.findViewById(R.id.p10c11)
+        p10C12 = view.findViewById(R.id.p10c12)
+        p10C13 = view.findViewById(R.id.p10c13)
 
         p1 = view.findViewById(R.id.p1)
         p2 = view.findViewById(R.id.p2)
@@ -405,8 +401,6 @@ class GameFragment : Fragment() {
         p9 = view.findViewById(R.id.p9)
         p10 = view.findViewById(R.id.p10)
 
-        move_c1 = view.findViewById(R.id.move_c1)
-
         initEventsOnImageViews()
 
         splashFragment = view.findViewById(R.id.splash_fragment)
@@ -416,45 +410,9 @@ class GameFragment : Fragment() {
         return view
     }
 
-    override fun onStart() {
-        super.onStart()
-
-        Log.i("Ciclo GameFragment", "onStart")
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-        Log.i("Ciclo GameFragment", "onResume")
-    }
-
-    override fun onPause() {
-        super.onPause()
-
-        Log.i("Ciclo GameFragment", "onPause")
-    }
-
-    override fun onStop() {
-        super.onStop()
-
-        Log.i("Ciclo GameFragment", "onStop")
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-
-        Log.i("Ciclo GameFragment", "onDestroyView")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-
-        Log.i("Ciclo GameFragment", "onDestroy")
-    }
-
     private fun getDeck() {
-        val BASE_URL = "https://deckofcardsapi.com"
-        val serviceClient = Api.getRetrofitInstance(BASE_URL)
+        val baseURL = "https://deckofcardsapi.com"
+        val serviceClient = Api.getRetrofitInstance(baseURL)
         val endpoint = serviceClient.create(Endpoint::class.java)
         lateinit var data: JsonObject
 
@@ -530,8 +488,8 @@ class GameFragment : Fragment() {
 
     private suspend fun distributeCards(IdDeck: String, numberCards: Int, stack: MutableList<Card>, NumberStack: Int = 0) {
         delay(150)
-        val BASE_URL = "https://deckofcardsapi.com"
-        val serviceClient = Api.getRetrofitInstance(BASE_URL)
+        val baseURL = "https://deckofcardsapi.com"
+        val serviceClient = Api.getRetrofitInstance(baseURL)
         val endpoint = serviceClient.create(Endpoint::class.java)
         lateinit var data: JsonObject
 
@@ -604,8 +562,7 @@ class GameFragment : Fragment() {
     }
 
     private fun mapValueToInt(charValue: String): Int {
-        val char = charValue.split('"')[1]
-        return when(char) {
+        return when(charValue.split('"')[1]) {
             "ACE" -> 1
             "2" -> 2
             "3" -> 3
@@ -730,190 +687,190 @@ class GameFragment : Fragment() {
         when(numberStack) {
             1 -> {
                 imgView = when(position) {
-                    1 -> p1_c1
-                    2 -> p1_c2
-                    3 -> p1_c3
-                    4 -> p1_c4
-                    5 -> p1_c5
-                    6 -> p1_c6
-                    7 -> p1_c7
-                    8 -> p1_c8
-                    9 -> p1_c9
-                    10 -> p1_c10
-                    11 -> p1_c11
-                    12 -> p1_c12
-                    13 -> p1_c13
+                    1 -> p1C1
+                    2 -> p1C2
+                    3 -> p1C3
+                    4 -> p1C4
+                    5 -> p1C5
+                    6 -> p1C6
+                    7 -> p1C7
+                    8 -> p1C8
+                    9 -> p1C9
+                    10 -> p1C10
+                    11 -> p1C11
+                    12 -> p1C12
+                    13 -> p1C13
                     else -> null
                 }
             }
 
             2 -> {
                 imgView = when(position) {
-                    1 -> p2_c1
-                    2 -> p2_c2
-                    3 -> p2_c3
-                    4 -> p2_c4
-                    5 -> p2_c5
-                    6 -> p2_c6
-                    7 -> p2_c7
-                    8 -> p2_c8
-                    9 -> p2_c9
-                    10 -> p2_c10
-                    11 -> p2_c11
-                    12 -> p2_c12
-                    13 -> p2_c13
+                    1 -> p2C1
+                    2 -> p2C2
+                    3 -> p2C3
+                    4 -> p2C4
+                    5 -> p2C5
+                    6 -> p2C6
+                    7 -> p2C7
+                    8 -> p2C8
+                    9 -> p2C9
+                    10 -> p2C10
+                    11 -> p2C11
+                    12 -> p2C12
+                    13 -> p2C13
                     else -> null
                 }
             }
 
             3 -> {
                 imgView = when(position) {
-                    1 -> p3_c1
-                    2 -> p3_c2
-                    3 -> p3_c3
-                    4 -> p3_c4
-                    5 -> p3_c5
-                    6 -> p3_c6
-                    7 -> p3_c7
-                    8 -> p3_c8
-                    9 -> p3_c9
-                    10 -> p3_c10
-                    11 -> p3_c11
-                    12 -> p3_c12
-                    13 -> p3_c13
+                    1 -> p3C1
+                    2 -> p3C2
+                    3 -> p3C3
+                    4 -> p3C4
+                    5 -> p3C5
+                    6 -> p3C6
+                    7 -> p3C7
+                    8 -> p3C8
+                    9 -> p3C9
+                    10 -> p3C10
+                    11 -> p3C11
+                    12 -> p3C12
+                    13 -> p3C13
                     else -> null
                 }
             }
 
             4 -> {
                 imgView = when(position) {
-                    1 -> p4_c1
-                    2 -> p4_c2
-                    3 -> p4_c3
-                    4 -> p4_c4
-                    5 -> p4_c5
-                    6 -> p4_c6
-                    7 -> p4_c7
-                    8 -> p4_c8
-                    9 -> p4_c9
-                    10 -> p4_c10
-                    11 -> p4_c11
-                    12 -> p4_c12
-                    13 -> p4_c13
+                    1 -> p4C1
+                    2 -> p4C2
+                    3 -> p4C3
+                    4 -> p4C4
+                    5 -> p4C5
+                    6 -> p4C6
+                    7 -> p4C7
+                    8 -> p4C8
+                    9 -> p4C9
+                    10 -> p4C10
+                    11 -> p4C11
+                    12 -> p4C12
+                    13 -> p4C13
                     else -> null
                 }
             }
 
             5 -> {
                 imgView = when(position) {
-                    1 -> p5_c1
-                    2 -> p5_c2
-                    3 -> p5_c3
-                    4 -> p5_c4
-                    5 -> p5_c5
-                    6 -> p5_c6
-                    7 -> p5_c7
-                    8 -> p5_c8
-                    9 -> p5_c9
-                    10 -> p5_c10
-                    11 -> p5_c11
-                    12 -> p5_c12
-                    13 -> p5_c13
+                    1 -> p5C1
+                    2 -> p5C2
+                    3 -> p5C3
+                    4 -> p5C4
+                    5 -> p5C5
+                    6 -> p5C6
+                    7 -> p5C7
+                    8 -> p5C8
+                    9 -> p5C9
+                    10 -> p5C10
+                    11 -> p5C11
+                    12 -> p5C12
+                    13 -> p5C13
                     else -> null
                 }
             }
 
             6 -> {
                 imgView = when(position) {
-                    1 -> p6_c1
-                    2 -> p6_c2
-                    3 -> p6_c3
-                    4 -> p6_c4
-                    5 -> p6_c5
-                    6 -> p6_c6
-                    7 -> p6_c7
-                    8 -> p6_c8
-                    9 -> p6_c9
-                    10 -> p6_c10
-                    11 -> p6_c11
-                    12 -> p6_c12
-                    13 -> p6_c13
+                    1 -> p6C1
+                    2 -> p6C2
+                    3 -> p6C3
+                    4 -> p6C4
+                    5 -> p6C5
+                    6 -> p6C6
+                    7 -> p6C7
+                    8 -> p6C8
+                    9 -> p6C9
+                    10 -> p6C10
+                    11 -> p6C11
+                    12 -> p6C12
+                    13 -> p6C13
                     else -> null
                 }
             }
 
             7 -> {
                 imgView = when(position) {
-                    1 -> p7_c1
-                    2 -> p7_c2
-                    3 -> p7_c3
-                    4 -> p7_c4
-                    5 -> p7_c5
-                    6 -> p7_c6
-                    7 -> p7_c7
-                    8 -> p7_c8
-                    9 -> p7_c9
-                    10 -> p7_c10
-                    11 -> p7_c11
-                    12 -> p7_c12
-                    13 -> p7_c13
+                    1 -> p7C1
+                    2 -> p7C2
+                    3 -> p7C3
+                    4 -> p7C4
+                    5 -> p7C5
+                    6 -> p7C6
+                    7 -> p7C7
+                    8 -> p7C8
+                    9 -> p7C9
+                    10 -> p7C10
+                    11 -> p7C11
+                    12 -> p7C12
+                    13 -> p7C13
                     else -> null
                 }
             }
 
             8 -> {
                 imgView = when(position) {
-                    1 -> p8_c1
-                    2 -> p8_c2
-                    3 -> p8_c3
-                    4 -> p8_c4
-                    5 -> p8_c5
-                    6 -> p8_c6
-                    7 -> p8_c7
-                    8 -> p8_c8
-                    9 -> p8_c9
-                    10 -> p8_c10
-                    11 -> p8_c11
-                    12 -> p8_c12
-                    13 -> p8_c13
+                    1 -> p8C1
+                    2 -> p8C2
+                    3 -> p8C3
+                    4 -> p8C4
+                    5 -> p8C5
+                    6 -> p8C6
+                    7 -> p8C7
+                    8 -> p8C8
+                    9 -> p8C9
+                    10 -> p8C10
+                    11 -> p8C11
+                    12 -> p8C12
+                    13 -> p8C13
                     else -> null
                 }
             }
 
             9 -> {
                 imgView = when(position) {
-                    1 -> p9_c1
-                    2 -> p9_c2
-                    3 -> p9_c3
-                    4 -> p9_c4
-                    5 -> p9_c5
-                    6 -> p9_c6
-                    7 -> p9_c7
-                    8 -> p9_c8
-                    9 -> p9_c9
-                    10 -> p9_c10
-                    11 -> p9_c11
-                    12 -> p9_c12
-                    13 -> p9_c13
+                    1 -> p9C1
+                    2 -> p9C2
+                    3 -> p9C3
+                    4 -> p9C4
+                    5 -> p9C5
+                    6 -> p9C6
+                    7 -> p9C7
+                    8 -> p9C8
+                    9 -> p9C9
+                    10 -> p9C10
+                    11 -> p9C11
+                    12 -> p9C12
+                    13 -> p9C13
                     else -> null
                 }
             }
 
             10 -> {
                 imgView = when(position) {
-                    1 -> p10_c1
-                    2 -> p10_c2
-                    3 -> p10_c3
-                    4 -> p10_c4
-                    5 -> p10_c5
-                    6 -> p10_c6
-                    7 -> p10_c7
-                    8 -> p10_c8
-                    9 -> p10_c9
-                    10 -> p10_c10
-                    11 -> p10_c11
-                    12 -> p10_c12
-                    13 -> p10_c13
+                    1 -> p10C1
+                    2 -> p10C2
+                    3 -> p10C3
+                    4 -> p10C4
+                    5 -> p10C5
+                    6 -> p10C6
+                    7 -> p10C7
+                    8 -> p10C8
+                    9 -> p10C9
+                    10 -> p10C10
+                    11 -> p10C11
+                    12 -> p10C12
+                    13 -> p10C13
                     else -> null
                 }
             }
@@ -1028,145 +985,145 @@ class GameFragment : Fragment() {
 
     private fun identifyStack(imgView: ImageView): MutableList<Card> {
         when(imgView) {
-            p1_c1 -> return stackOneCards
-            p1_c2 -> return stackOneCards
-            p1_c3 -> return stackOneCards
-            p1_c4 -> return stackOneCards
-            p1_c5 -> return stackOneCards
-            p1_c6 -> return stackOneCards
-            p1_c7 -> return stackOneCards
-            p1_c8 -> return stackOneCards
-            p1_c9 -> return stackOneCards
-            p1_c10 -> return stackOneCards
-            p1_c11 -> return stackOneCards
-            p1_c12 -> return stackOneCards
-            p1_c13 -> return stackOneCards
+            p1C1 -> return stackOneCards
+            p1C2 -> return stackOneCards
+            p1C3 -> return stackOneCards
+            p1C4 -> return stackOneCards
+            p1C5 -> return stackOneCards
+            p1C6 -> return stackOneCards
+            p1C7 -> return stackOneCards
+            p1C8 -> return stackOneCards
+            p1C9 -> return stackOneCards
+            p1C10 -> return stackOneCards
+            p1C11 -> return stackOneCards
+            p1C12 -> return stackOneCards
+            p1C13 -> return stackOneCards
 
-            p2_c1 -> return stackTwoCards
-            p2_c2 -> return stackTwoCards
-            p2_c3 -> return stackTwoCards
-            p2_c4 -> return stackTwoCards
-            p2_c5 -> return stackTwoCards
-            p2_c6 -> return stackTwoCards
-            p2_c7 -> return stackTwoCards
-            p2_c8 -> return stackTwoCards
-            p2_c9 -> return stackTwoCards
-            p2_c10 -> return stackTwoCards
-            p2_c11 -> return stackTwoCards
-            p2_c12 -> return stackTwoCards
-            p2_c13 -> return stackTwoCards
+            p2C1 -> return stackTwoCards
+            p2C2 -> return stackTwoCards
+            p2C3 -> return stackTwoCards
+            p2C4 -> return stackTwoCards
+            p2C5 -> return stackTwoCards
+            p2C6 -> return stackTwoCards
+            p2C7 -> return stackTwoCards
+            p2C8 -> return stackTwoCards
+            p2C9 -> return stackTwoCards
+            p2C10 -> return stackTwoCards
+            p2C11 -> return stackTwoCards
+            p2C12 -> return stackTwoCards
+            p2C13 -> return stackTwoCards
 
-            p3_c1 -> return stackTreeCards
-            p3_c2 -> return stackTreeCards
-            p3_c3 -> return stackTreeCards
-            p3_c4 -> return stackTreeCards
-            p3_c5 -> return stackTreeCards
-            p3_c6 -> return stackTreeCards
-            p3_c7 -> return stackTreeCards
-            p3_c8 -> return stackTreeCards
-            p3_c9 -> return stackTreeCards
-            p3_c10 -> return stackTreeCards
-            p3_c11 -> return stackTreeCards
-            p3_c12 -> return stackTreeCards
-            p3_c13 -> return stackTreeCards
+            p3C1 -> return stackTreeCards
+            p3C2 -> return stackTreeCards
+            p3C3 -> return stackTreeCards
+            p3C4 -> return stackTreeCards
+            p3C5 -> return stackTreeCards
+            p3C6 -> return stackTreeCards
+            p3C7 -> return stackTreeCards
+            p3C8 -> return stackTreeCards
+            p3C9 -> return stackTreeCards
+            p3C10 -> return stackTreeCards
+            p3C11 -> return stackTreeCards
+            p3C12 -> return stackTreeCards
+            p3C13 -> return stackTreeCards
 
-            p4_c1 -> return stackFourCards
-            p4_c2 -> return stackFourCards
-            p4_c3 -> return stackFourCards
-            p4_c4 -> return stackFourCards
-            p4_c5 -> return stackFourCards
-            p4_c6 -> return stackFourCards
-            p4_c7 -> return stackFourCards
-            p4_c8 -> return stackFourCards
-            p4_c9 -> return stackFourCards
-            p4_c10 -> return stackFourCards
-            p4_c11 -> return stackFourCards
-            p4_c12 -> return stackFourCards
-            p4_c13 -> return stackFourCards
+            p4C1 -> return stackFourCards
+            p4C2 -> return stackFourCards
+            p4C3 -> return stackFourCards
+            p4C4 -> return stackFourCards
+            p4C5 -> return stackFourCards
+            p4C6 -> return stackFourCards
+            p4C7 -> return stackFourCards
+            p4C8 -> return stackFourCards
+            p4C9 -> return stackFourCards
+            p4C10 -> return stackFourCards
+            p4C11 -> return stackFourCards
+            p4C12 -> return stackFourCards
+            p4C13 -> return stackFourCards
 
-            p5_c1 -> return stackFiveCards
-            p5_c2 -> return stackFiveCards
-            p5_c3 -> return stackFiveCards
-            p5_c4 -> return stackFiveCards
-            p5_c5 -> return stackFiveCards
-            p5_c6 -> return stackFiveCards
-            p5_c7 -> return stackFiveCards
-            p5_c8 -> return stackFiveCards
-            p5_c9 -> return stackFiveCards
-            p5_c10 -> return stackFiveCards
-            p5_c11 -> return stackFiveCards
-            p5_c12 -> return stackFiveCards
-            p5_c13 -> return stackFiveCards
+            p5C1 -> return stackFiveCards
+            p5C2 -> return stackFiveCards
+            p5C3 -> return stackFiveCards
+            p5C4 -> return stackFiveCards
+            p5C5 -> return stackFiveCards
+            p5C6 -> return stackFiveCards
+            p5C7 -> return stackFiveCards
+            p5C8 -> return stackFiveCards
+            p5C9 -> return stackFiveCards
+            p5C10 -> return stackFiveCards
+            p5C11 -> return stackFiveCards
+            p5C12 -> return stackFiveCards
+            p5C13 -> return stackFiveCards
 
-            p6_c1 -> return stackSixCards
-            p6_c2 -> return stackSixCards
-            p6_c3 -> return stackSixCards
-            p6_c4 -> return stackSixCards
-            p6_c5 -> return stackSixCards
-            p6_c6 -> return stackSixCards
-            p6_c7 -> return stackSixCards
-            p6_c8 -> return stackSixCards
-            p6_c9 -> return stackSixCards
-            p6_c10 -> return stackSixCards
-            p6_c11 -> return stackSixCards
-            p6_c12 -> return stackSixCards
-            p6_c13 -> return stackSixCards
+            p6C1 -> return stackSixCards
+            p6C2 -> return stackSixCards
+            p6C3 -> return stackSixCards
+            p6C4 -> return stackSixCards
+            p6C5 -> return stackSixCards
+            p6C6 -> return stackSixCards
+            p6C7 -> return stackSixCards
+            p6C8 -> return stackSixCards
+            p6C9 -> return stackSixCards
+            p6C10 -> return stackSixCards
+            p6C11 -> return stackSixCards
+            p6C12 -> return stackSixCards
+            p6C13 -> return stackSixCards
 
-            p7_c1 -> return stackSevenCards
-            p7_c2 -> return stackSevenCards
-            p7_c3 -> return stackSevenCards
-            p7_c4 -> return stackSevenCards
-            p7_c5 -> return stackSevenCards
-            p7_c6 -> return stackSevenCards
-            p7_c7 -> return stackSevenCards
-            p7_c8 -> return stackSevenCards
-            p7_c9 -> return stackSevenCards
-            p7_c10 -> return stackSevenCards
-            p7_c11 -> return stackSevenCards
-            p7_c12 -> return stackSevenCards
-            p7_c13 -> return stackSevenCards
+            p7C1 -> return stackSevenCards
+            p7C2 -> return stackSevenCards
+            p7C3 -> return stackSevenCards
+            p7C4 -> return stackSevenCards
+            p7C5 -> return stackSevenCards
+            p7C6 -> return stackSevenCards
+            p7C7 -> return stackSevenCards
+            p7C8 -> return stackSevenCards
+            p7C9 -> return stackSevenCards
+            p7C10 -> return stackSevenCards
+            p7C11 -> return stackSevenCards
+            p7C12 -> return stackSevenCards
+            p7C13 -> return stackSevenCards
 
-            p8_c1 -> return stackEightCards
-            p8_c2 -> return stackEightCards
-            p8_c3 -> return stackEightCards
-            p8_c4 -> return stackEightCards
-            p8_c5 -> return stackEightCards
-            p8_c6 -> return stackEightCards
-            p8_c7 -> return stackEightCards
-            p8_c8 -> return stackEightCards
-            p8_c9 -> return stackEightCards
-            p8_c10 -> return stackEightCards
-            p8_c11 -> return stackEightCards
-            p8_c12 -> return stackEightCards
-            p8_c13 -> return stackEightCards
+            p8C1 -> return stackEightCards
+            p8C2 -> return stackEightCards
+            p8C3 -> return stackEightCards
+            p8C4 -> return stackEightCards
+            p8C5 -> return stackEightCards
+            p8C6 -> return stackEightCards
+            p8C7 -> return stackEightCards
+            p8C8 -> return stackEightCards
+            p8C9 -> return stackEightCards
+            p8C10 -> return stackEightCards
+            p8C11 -> return stackEightCards
+            p8C12 -> return stackEightCards
+            p8C13 -> return stackEightCards
 
-            p9_c1 -> return stackNineCards
-            p9_c2 -> return stackNineCards
-            p9_c3 -> return stackNineCards
-            p9_c4 -> return stackNineCards
-            p9_c5 -> return stackNineCards
-            p9_c6 -> return stackNineCards
-            p9_c7 -> return stackNineCards
-            p9_c8 -> return stackNineCards
-            p9_c9 -> return stackNineCards
-            p9_c10 -> return stackNineCards
-            p9_c11 -> return stackNineCards
-            p9_c12 -> return stackNineCards
-            p9_c13 -> return stackNineCards
+            p9C1 -> return stackNineCards
+            p9C2 -> return stackNineCards
+            p9C3 -> return stackNineCards
+            p9C4 -> return stackNineCards
+            p9C5 -> return stackNineCards
+            p9C6 -> return stackNineCards
+            p9C7 -> return stackNineCards
+            p9C8 -> return stackNineCards
+            p9C9 -> return stackNineCards
+            p9C10 -> return stackNineCards
+            p9C11 -> return stackNineCards
+            p9C12 -> return stackNineCards
+            p9C13 -> return stackNineCards
 
-            p10_c1 -> return stackTenCards
-            p10_c2 -> return stackTenCards
-            p10_c3 -> return stackTenCards
-            p10_c4 -> return stackTenCards
-            p10_c5 -> return stackTenCards
-            p10_c6 -> return stackTenCards
-            p10_c7 -> return stackTenCards
-            p10_c8 -> return stackTenCards
-            p10_c9 -> return stackTenCards
-            p10_c10 -> return stackTenCards
-            p10_c11 -> return stackTenCards
-            p10_c12 -> return stackTenCards
-            p10_c13 -> return stackTenCards
+            p10C1 -> return stackTenCards
+            p10C2 -> return stackTenCards
+            p10C3 -> return stackTenCards
+            p10C4 -> return stackTenCards
+            p10C5 -> return stackTenCards
+            p10C6 -> return stackTenCards
+            p10C7 -> return stackTenCards
+            p10C8 -> return stackTenCards
+            p10C9 -> return stackTenCards
+            p10C10 -> return stackTenCards
+            p10C11 -> return stackTenCards
+            p10C12 -> return stackTenCards
+            p10C13 -> return stackTenCards
 
             else -> return stackTenCards
         }
@@ -1174,145 +1131,145 @@ class GameFragment : Fragment() {
 
     private fun identifyPosition(imgView: ImageView): Int {
         when(imgView) {
-            p1_c1 -> return 0
-            p1_c2 -> return 1
-            p1_c3 -> return 2
-            p1_c4 -> return 3
-            p1_c5 -> return 4
-            p1_c6 -> return 5
-            p1_c7 -> return 6
-            p1_c8 -> return 7
-            p1_c9 -> return 8
-            p1_c10 -> return 9
-            p1_c11 -> return 10
-            p1_c12 -> return 11
-            p1_c13 -> return 12
+            p1C1 -> return 0
+            p1C2 -> return 1
+            p1C3 -> return 2
+            p1C4 -> return 3
+            p1C5 -> return 4
+            p1C6 -> return 5
+            p1C7 -> return 6
+            p1C8 -> return 7
+            p1C9 -> return 8
+            p1C10 -> return 9
+            p1C11 -> return 10
+            p1C12 -> return 11
+            p1C13 -> return 12
 
-            p2_c1 -> return 0
-            p2_c2 -> return 1
-            p2_c3 -> return 2
-            p2_c4 -> return 3
-            p2_c5 -> return 4
-            p2_c6 -> return 5
-            p2_c7 -> return 6
-            p2_c8 -> return 7
-            p2_c9 -> return 8
-            p2_c10 -> return 9
-            p2_c11 -> return 10
-            p2_c12 -> return 11
-            p2_c13 -> return 12
+            p2C1 -> return 0
+            p2C2 -> return 1
+            p2C3 -> return 2
+            p2C4 -> return 3
+            p2C5 -> return 4
+            p2C6 -> return 5
+            p2C7 -> return 6
+            p2C8 -> return 7
+            p2C9 -> return 8
+            p2C10 -> return 9
+            p2C11 -> return 10
+            p2C12 -> return 11
+            p2C13 -> return 12
 
-            p3_c1 -> return 0
-            p3_c2 -> return 1
-            p3_c3 -> return 2
-            p3_c4 -> return 3
-            p3_c5 -> return 4
-            p3_c6 -> return 5
-            p3_c7 -> return 6
-            p3_c8 -> return 7
-            p3_c9 -> return 8
-            p3_c10 -> return 9
-            p3_c11 -> return 10
-            p3_c12 -> return 11
-            p3_c13 -> return 12
+            p3C1 -> return 0
+            p3C2 -> return 1
+            p3C3 -> return 2
+            p3C4 -> return 3
+            p3C5 -> return 4
+            p3C6 -> return 5
+            p3C7 -> return 6
+            p3C8 -> return 7
+            p3C9 -> return 8
+            p3C10 -> return 9
+            p3C11 -> return 10
+            p3C12 -> return 11
+            p3C13 -> return 12
 
-            p4_c1 -> return 0
-            p4_c2 -> return 1
-            p4_c3 -> return 2
-            p4_c4 -> return 3
-            p4_c5 -> return 4
-            p4_c6 -> return 5
-            p4_c7 -> return 6
-            p4_c8 -> return 7
-            p4_c9 -> return 8
-            p4_c10 -> return 9
-            p4_c11 -> return 10
-            p4_c12 -> return 11
-            p4_c13 -> return 12
+            p4C1 -> return 0
+            p4C2 -> return 1
+            p4C3 -> return 2
+            p4C4 -> return 3
+            p4C5 -> return 4
+            p4C6 -> return 5
+            p4C7 -> return 6
+            p4C8 -> return 7
+            p4C9 -> return 8
+            p4C10 -> return 9
+            p4C11 -> return 10
+            p4C12 -> return 11
+            p4C13 -> return 12
 
-            p5_c1 -> return 0
-            p5_c2 -> return 1
-            p5_c3 -> return 2
-            p5_c4 -> return 3
-            p5_c5 -> return 4
-            p5_c6 -> return 5
-            p5_c7 -> return 6
-            p5_c8 -> return 7
-            p5_c9 -> return 8
-            p5_c10 -> return 9
-            p5_c11 -> return 10
-            p5_c12 -> return 11
-            p5_c13 -> return 12
+            p5C1 -> return 0
+            p5C2 -> return 1
+            p5C3 -> return 2
+            p5C4 -> return 3
+            p5C5 -> return 4
+            p5C6 -> return 5
+            p5C7 -> return 6
+            p5C8 -> return 7
+            p5C9 -> return 8
+            p5C10 -> return 9
+            p5C11 -> return 10
+            p5C12 -> return 11
+            p5C13 -> return 12
 
-            p6_c1 -> return 0
-            p6_c2 -> return 1
-            p6_c3 -> return 2
-            p6_c4 -> return 3
-            p6_c5 -> return 4
-            p6_c6 -> return 5
-            p6_c7 -> return 6
-            p6_c8 -> return 7
-            p6_c9 -> return 8
-            p6_c10 -> return 9
-            p6_c11 -> return 10
-            p6_c12 -> return 11
-            p6_c13 -> return 12
+            p6C1 -> return 0
+            p6C2 -> return 1
+            p6C3 -> return 2
+            p6C4 -> return 3
+            p6C5 -> return 4
+            p6C6 -> return 5
+            p6C7 -> return 6
+            p6C8 -> return 7
+            p6C9 -> return 8
+            p6C10 -> return 9
+            p6C11 -> return 10
+            p6C12 -> return 11
+            p6C13 -> return 12
 
-            p7_c1 -> return 0
-            p7_c2 -> return 1
-            p7_c3 -> return 2
-            p7_c4 -> return 3
-            p7_c5 -> return 4
-            p7_c6 -> return 5
-            p7_c7 -> return 6
-            p7_c8 -> return 7
-            p7_c9 -> return 8
-            p7_c10 -> return 9
-            p7_c11 -> return 10
-            p7_c12 -> return 11
-            p7_c13 -> return 12
+            p7C1 -> return 0
+            p7C2 -> return 1
+            p7C3 -> return 2
+            p7C4 -> return 3
+            p7C5 -> return 4
+            p7C6 -> return 5
+            p7C7 -> return 6
+            p7C8 -> return 7
+            p7C9 -> return 8
+            p7C10 -> return 9
+            p7C11 -> return 10
+            p7C12 -> return 11
+            p7C13 -> return 12
 
-            p8_c1 -> return 0
-            p8_c2 -> return 1
-            p8_c3 -> return 2
-            p8_c4 -> return 3
-            p8_c5 -> return 4
-            p8_c6 -> return 5
-            p8_c7 -> return 6
-            p8_c8 -> return 7
-            p8_c9 -> return 8
-            p8_c10 -> return 9
-            p8_c11 -> return 10
-            p8_c12 -> return 11
-            p8_c13 -> return 12
+            p8C1 -> return 0
+            p8C2 -> return 1
+            p8C3 -> return 2
+            p8C4 -> return 3
+            p8C5 -> return 4
+            p8C6 -> return 5
+            p8C7 -> return 6
+            p8C8 -> return 7
+            p8C9 -> return 8
+            p8C10 -> return 9
+            p8C11 -> return 10
+            p8C12 -> return 11
+            p8C13 -> return 12
 
-            p9_c1 -> return 0
-            p9_c2 -> return 1
-            p9_c3 -> return 2
-            p9_c4 -> return 3
-            p9_c5 -> return 4
-            p9_c6 -> return 5
-            p9_c7 -> return 6
-            p9_c8 -> return 7
-            p9_c9 -> return 8
-            p9_c10 -> return 9
-            p9_c11 -> return 10
-            p9_c12 -> return 11
-            p9_c13 -> return 12
+            p9C1 -> return 0
+            p9C2 -> return 1
+            p9C3 -> return 2
+            p9C4 -> return 3
+            p9C5 -> return 4
+            p9C6 -> return 5
+            p9C7 -> return 6
+            p9C8 -> return 7
+            p9C9 -> return 8
+            p9C10 -> return 9
+            p9C11 -> return 10
+            p9C12 -> return 11
+            p9C13 -> return 12
 
-            p10_c1 -> return 0
-            p10_c2 -> return 1
-            p10_c3 -> return 2
-            p10_c4 -> return 3
-            p10_c5 -> return 4
-            p10_c6 -> return 5
-            p10_c7 -> return 6
-            p10_c8 -> return 7
-            p10_c9 -> return 8
-            p10_c10 -> return 9
-            p10_c11 -> return 10
-            p10_c12 -> return 11
-            p10_c13 -> return 12
+            p10C1 -> return 0
+            p10C2 -> return 1
+            p10C3 -> return 2
+            p10C4 -> return 3
+            p10C5 -> return 4
+            p10C6 -> return 5
+            p10C7 -> return 6
+            p10C8 -> return 7
+            p10C9 -> return 8
+            p10C10 -> return 9
+            p10C11 -> return 10
+            p10C12 -> return 11
+            p10C13 -> return 12
 
             else -> return 12
         }
@@ -1320,145 +1277,145 @@ class GameFragment : Fragment() {
 
     private fun identifyNumberStack(imgView: ImageView): Int {
         when(imgView) {
-            p1_c1 -> return 1
-            p1_c2 -> return 1
-            p1_c3 -> return 1
-            p1_c4 -> return 1
-            p1_c5 -> return 1
-            p1_c6 -> return 1
-            p1_c7 -> return 1
-            p1_c8 -> return 1
-            p1_c9 -> return 1
-            p1_c10 -> return 1
-            p1_c11 -> return 1
-            p1_c12 -> return 1
-            p1_c13 -> return 1
+            p1C1 -> return 1
+            p1C2 -> return 1
+            p1C3 -> return 1
+            p1C4 -> return 1
+            p1C5 -> return 1
+            p1C6 -> return 1
+            p1C7 -> return 1
+            p1C8 -> return 1
+            p1C9 -> return 1
+            p1C10 -> return 1
+            p1C11 -> return 1
+            p1C12 -> return 1
+            p1C13 -> return 1
 
-            p2_c1 -> return 2
-            p2_c2 -> return 2
-            p2_c3 -> return 2
-            p2_c4 -> return 2
-            p2_c5 -> return 2
-            p2_c6 -> return 2
-            p2_c7 -> return 2
-            p2_c8 -> return 2
-            p2_c9 -> return 2
-            p2_c10 -> return 2
-            p2_c11 -> return 2
-            p2_c12 -> return 2
-            p2_c13 -> return 2
+            p2C1 -> return 2
+            p2C2 -> return 2
+            p2C3 -> return 2
+            p2C4 -> return 2
+            p2C5 -> return 2
+            p2C6 -> return 2
+            p2C7 -> return 2
+            p2C8 -> return 2
+            p2C9 -> return 2
+            p2C10 -> return 2
+            p2C11 -> return 2
+            p2C12 -> return 2
+            p2C13 -> return 2
 
-            p3_c1 -> return 3
-            p3_c2 -> return 3
-            p3_c3 -> return 3
-            p3_c4 -> return 3
-            p3_c5 -> return 3
-            p3_c6 -> return 3
-            p3_c7 -> return 3
-            p3_c8 -> return 3
-            p3_c9 -> return 3
-            p3_c10 -> return 3
-            p3_c11 -> return 3
-            p3_c12 -> return 3
-            p3_c13 -> return 3
+            p3C1 -> return 3
+            p3C2 -> return 3
+            p3C3 -> return 3
+            p3C4 -> return 3
+            p3C5 -> return 3
+            p3C6 -> return 3
+            p3C7 -> return 3
+            p3C8 -> return 3
+            p3C9 -> return 3
+            p3C10 -> return 3
+            p3C11 -> return 3
+            p3C12 -> return 3
+            p3C13 -> return 3
 
-            p4_c1 -> return 4
-            p4_c2 -> return 4
-            p4_c3 -> return 4
-            p4_c4 -> return 4
-            p4_c5 -> return 4
-            p4_c6 -> return 4
-            p4_c7 -> return 4
-            p4_c8 -> return 4
-            p4_c9 -> return 4
-            p4_c10 -> return 4
-            p4_c11 -> return 4
-            p4_c12 -> return 4
-            p4_c13 -> return 4
+            p4C1 -> return 4
+            p4C2 -> return 4
+            p4C3 -> return 4
+            p4C4 -> return 4
+            p4C5 -> return 4
+            p4C6 -> return 4
+            p4C7 -> return 4
+            p4C8 -> return 4
+            p4C9 -> return 4
+            p4C10 -> return 4
+            p4C11 -> return 4
+            p4C12 -> return 4
+            p4C13 -> return 4
 
-            p5_c1 -> return 5
-            p5_c2 -> return 5
-            p5_c3 -> return 5
-            p5_c4 -> return 5
-            p5_c5 -> return 5
-            p5_c6 -> return 5
-            p5_c7 -> return 5
-            p5_c8 -> return 5
-            p5_c9 -> return 5
-            p5_c10 -> return 5
-            p5_c11 -> return 5
-            p5_c12 -> return 5
-            p5_c13 -> return 5
+            p5C1 -> return 5
+            p5C2 -> return 5
+            p5C3 -> return 5
+            p5C4 -> return 5
+            p5C5 -> return 5
+            p5C6 -> return 5
+            p5C7 -> return 5
+            p5C8 -> return 5
+            p5C9 -> return 5
+            p5C10 -> return 5
+            p5C11 -> return 5
+            p5C12 -> return 5
+            p5C13 -> return 5
 
-            p6_c1 -> return 6
-            p6_c2 -> return 6
-            p6_c3 -> return 6
-            p6_c4 -> return 6
-            p6_c5 -> return 6
-            p6_c6 -> return 6
-            p6_c7 -> return 6
-            p6_c8 -> return 6
-            p6_c9 -> return 6
-            p6_c10 -> return 6
-            p6_c11 -> return 6
-            p6_c12 -> return 6
-            p6_c13 -> return 6
+            p6C1 -> return 6
+            p6C2 -> return 6
+            p6C3 -> return 6
+            p6C4 -> return 6
+            p6C5 -> return 6
+            p6C6 -> return 6
+            p6C7 -> return 6
+            p6C8 -> return 6
+            p6C9 -> return 6
+            p6C10 -> return 6
+            p6C11 -> return 6
+            p6C12 -> return 6
+            p6C13 -> return 6
 
-            p7_c1 -> return 7
-            p7_c2 -> return 7
-            p7_c3 -> return 7
-            p7_c4 -> return 7
-            p7_c5 -> return 7
-            p7_c6 -> return 7
-            p7_c7 -> return 7
-            p7_c8 -> return 7
-            p7_c9 -> return 7
-            p7_c10 -> return 7
-            p7_c11 -> return 7
-            p7_c12 -> return 7
-            p7_c13 -> return 7
+            p7C1 -> return 7
+            p7C2 -> return 7
+            p7C3 -> return 7
+            p7C4 -> return 7
+            p7C5 -> return 7
+            p7C6 -> return 7
+            p7C7 -> return 7
+            p7C8 -> return 7
+            p7C9 -> return 7
+            p7C10 -> return 7
+            p7C11 -> return 7
+            p7C12 -> return 7
+            p7C13 -> return 7
 
-            p8_c1 -> return 8
-            p8_c2 -> return 8
-            p8_c3 -> return 8
-            p8_c4 -> return 8
-            p8_c5 -> return 8
-            p8_c6 -> return 8
-            p8_c7 -> return 8
-            p8_c8 -> return 8
-            p8_c9 -> return 8
-            p8_c10 -> return 8
-            p8_c11 -> return 8
-            p8_c12 -> return 8
-            p8_c13 -> return 8
+            p8C1 -> return 8
+            p8C2 -> return 8
+            p8C3 -> return 8
+            p8C4 -> return 8
+            p8C5 -> return 8
+            p8C6 -> return 8
+            p8C7 -> return 8
+            p8C8 -> return 8
+            p8C9 -> return 8
+            p8C10 -> return 8
+            p8C11 -> return 8
+            p8C12 -> return 8
+            p8C13 -> return 8
 
-            p9_c1 -> return 9
-            p9_c2 -> return 9
-            p9_c3 -> return 9
-            p9_c4 -> return 9
-            p9_c5 -> return 9
-            p9_c6 -> return 9
-            p9_c7 -> return 9
-            p9_c8 -> return 9
-            p9_c9 -> return 9
-            p9_c10 -> return 9
-            p9_c11 -> return 9
-            p9_c12 -> return 9
-            p9_c13 -> return 9
+            p9C1 -> return 9
+            p9C2 -> return 9
+            p9C3 -> return 9
+            p9C4 -> return 9
+            p9C5 -> return 9
+            p9C6 -> return 9
+            p9C7 -> return 9
+            p9C8 -> return 9
+            p9C9 -> return 9
+            p9C10 -> return 9
+            p9C11 -> return 9
+            p9C12 -> return 9
+            p9C13 -> return 9
 
-            p10_c1 -> return 10
-            p10_c2 -> return 10
-            p10_c3 -> return 10
-            p10_c4 -> return 10
-            p10_c5 -> return 10
-            p10_c6 -> return 10
-            p10_c7 -> return 10
-            p10_c8 -> return 10
-            p10_c9 -> return 10
-            p10_c10 -> return 10
-            p10_c11 -> return 10
-            p10_c12 -> return 10
-            p10_c13 -> return 10
+            p10C1 -> return 10
+            p10C2 -> return 10
+            p10C3 -> return 10
+            p10C4 -> return 10
+            p10C5 -> return 10
+            p10C6 -> return 10
+            p10C7 -> return 10
+            p10C8 -> return 10
+            p10C9 -> return 10
+            p10C10 -> return 10
+            p10C11 -> return 10
+            p10C12 -> return 10
+            p10C13 -> return 10
 
             else -> return 10
         }
@@ -1466,11 +1423,11 @@ class GameFragment : Fragment() {
 
     private fun animationDeck() {
         when(numberCardsDeck) {
-            1 -> deck_c1.setImageResource(0)
-            2 -> deck_c2.setImageResource(0)
-            3 -> deck_c3.setImageResource(0)
-            4 -> deck_c4.setImageResource(0)
-            5 -> deck_c5.setImageResource(0)
+            1 -> deckC1.setImageResource(0)
+            2 -> deckC2.setImageResource(0)
+            3 -> deckC3.setImageResource(0)
+            4 -> deckC4.setImageResource(0)
+            5 -> deckC5.setImageResource(0)
         }
 
 
