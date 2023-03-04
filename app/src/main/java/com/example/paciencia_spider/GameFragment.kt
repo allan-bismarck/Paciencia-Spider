@@ -16,7 +16,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.ColorInt
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
@@ -228,6 +231,12 @@ class GameFragment : Fragment() {
 
     private var moveElements: MutableList<Card> = mutableListOf()
 
+    private lateinit var game: LinearLayout
+
+    private var longClick = false
+
+    private var stackOrigin: Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -238,7 +247,7 @@ class GameFragment : Fragment() {
         Log.i("Ciclo GameFragment", "onCreate")
     }
 
-    @SuppressLint("ClickableViewAccessibility")
+    @SuppressLint("ClickableViewAccessibility", "MissingInflatedId")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -442,6 +451,8 @@ class GameFragment : Fragment() {
         move_c13 = view.findViewById(R.id.move_c13)
 
         stackViewMove = view.findViewById(R.id.move)
+
+        game = view.findViewById(R.id.game)
 
         return view
     }
@@ -690,7 +701,7 @@ class GameFragment : Fragment() {
         }
 
         Handler(Looper.getMainLooper()).postDelayed({
-            splashFragment.visibility = View.INVISIBLE }, 7000)
+            splashFragment.visibility = View.GONE }, 7000)
     }
 
     fun getCardsFromDeck(data: JsonObject) {
@@ -968,7 +979,7 @@ class GameFragment : Fragment() {
                 )
     }
 
-    fun checkAvaiableCards() {
+    private fun checkAvaiableCards() {
         avaiableCardsOnStack(stackOneCards,  1)
         avaiableCardsOnStack(stackTwoCards,  2)
         avaiableCardsOnStack(stackTreeCards, 3)
@@ -994,10 +1005,8 @@ class GameFragment : Fragment() {
 
             stack.indices.reversed().forEach {
                 if (it > 0) {
-                    var imgView = identifyImgView(numberStack, it)
                     if (((stack[it].getValue()) == stack[it-1].getValue()-1) && (stack[it].getSuit() == stack[it-1].getSuit())) {
                         stack[it - 1].setAvaiable(true)
-                        imgView?.isClickable = true
                     }
                 }
             }
@@ -1016,7 +1025,7 @@ class GameFragment : Fragment() {
                     imgView?.foreground = ColorDrawable(R.color.black_transparent)
                     imgView?.isClickable = false
                 } else {
-                    imgView?.foreground = ColorDrawable(0)
+                    imgView?.foreground = null
                     imgView?.isClickable = true
                     if(stack[it].getShow() == true) {
                         Glide.with(this).load(stack[it].getImageUrl(stack[it].getCodeC())).into(imgView as ImageView)
@@ -1027,28 +1036,34 @@ class GameFragment : Fragment() {
     }
 
     private fun quickPlay(imgview: ImageView) {
-        if(imgview.drawable != null ) {
+        if(imgview.drawable != null && !longClick) {
             var stack = identifyStack(imgview)
             var numberStack = identifyNumberStack(imgview)
             var position = identifyPosition(imgview)
             moveElements = selectCards(stack, position)
-            var numberStackDestiny = searchVacancyInStacks(moveElements, numberStack)
-            if (numberStackDestiny != 0) {
-                var stackDestiny = when (numberStackDestiny) {
-                    1 -> stackOneCards
-                    2 -> stackTwoCards
-                    3 -> stackTreeCards
-                    4 -> stackFourCards
-                    5 -> stackFiveCards
-                    6 -> stackSixCards
-                    7 -> stackSevenCards
-                    8 -> stackEightCards
-                    9 -> stackNineCards
-                    else -> stackTenCards
-                }
-                if(moveElements.size + stackDestiny.size <=13) {
-                    applyModifierInStack(::insertCardsSelecteds, moveElements, numberStackDestiny)
-                    applyModifierInStack(::removeCardsSelecteds, moveElements, numberStack)
+            if(moveElements.isNotEmpty()) {
+                var numberStackDestiny = searchVacancyInStacks(moveElements, numberStack)
+                if (numberStackDestiny != 0) {
+                    var stackDestiny = when (numberStackDestiny) {
+                        1 -> stackOneCards
+                        2 -> stackTwoCards
+                        3 -> stackTreeCards
+                        4 -> stackFourCards
+                        5 -> stackFiveCards
+                        6 -> stackSixCards
+                        7 -> stackSevenCards
+                        8 -> stackEightCards
+                        9 -> stackNineCards
+                        else -> stackTenCards
+                    }
+                    if (moveElements.size + stackDestiny.size <= 13) {
+                        applyModifierInStack(
+                            ::insertCardsSelecteds,
+                            moveElements,
+                            numberStackDestiny
+                        )
+                        applyModifierInStack(::removeCardsSelecteds, moveElements, numberStack)
+                    }
                 }
             }
         }
@@ -1504,9 +1519,21 @@ class GameFragment : Fragment() {
 
     private fun selectCards(stack: MutableList<Card>, position: Int): MutableList<Card> {
         lateinit var moveElements: MutableList<Card>
+        var elementsAvaiable = true
         if(stack.lastIndex >= 0) {
             moveElements = stack.subList(position, stack.lastIndex + 1)
         }
+
+        moveElements.forEach {
+            if(!it.getAvaiable()) {
+                elementsAvaiable = false
+            }
+        }
+
+        if(!elementsAvaiable) {
+            moveElements = mutableListOf()
+        }
+
         return moveElements
     }
 
@@ -1579,7 +1606,6 @@ class GameFragment : Fragment() {
 
                 moveElements.indices.forEach {
                     var code = moveElements[it].getCodeC()
-                    Log.i("IT $it", "teste")
                     var show = moveElements[it].getShow()
                     var value = moveElements[it].getValue()
                     var suit = moveElements[it].getSuit()
@@ -1791,26 +1817,37 @@ class GameFragment : Fragment() {
                 var imgview = identifyImgView(x, y)
 
                 imgview?.setOnClickListener {
-                    quickPlay(it as ImageView)
-                }
+                    if(longClick) {
+                        Log.i("Cliquei aqui", x.toString())
+                        var stack = identifyStack(imgview)
+                        var numberStack = identifyNumberStack(imgview)
 
+                        longClick = false
+                        game.foreground = null
+
+                        if(moveElements[0].getValue() == stack[stack.lastIndex].getValue()-1) {
+                            applyModifierInStack(::insertCardsSelecteds, moveElements, numberStack)
+                            applyModifierInStack(::removeCardsSelecteds, moveElements, stackOrigin)
+                            stackOrigin = 0
+                        } else {
+                            Toast.makeText(context, "Não é possível inserir na pilha selecionada, tente outra pilha", Toast.LENGTH_LONG).show()
+                        }
+                    } else {
+                        quickPlay(it as ImageView)
+                    }
+                }
 
                 imgview?.setOnLongClickListener {
                     if(imgview.drawable != null ) {
+                        longClick = true
                         var stack = identifyStack(imgview)
-                        var numberStack = identifyNumberStack(imgview)
                         var position = identifyPosition(imgview)
+
                         moveElements = selectCards(stack, position)
+                        stackOrigin = identifyNumberStack(imgview)
 
-                        moveElements.indices.forEach { index ->
-                            var imgviewTemp = identifyImageViewMove(index)
-                            Glide.with(this)
-                                .load(moveElements[index].getImageUrl(moveElements[index].getCodeC()))
-                                .into(imgviewTemp)
-                        }
-
-                        showDialog(moveElements, numberStack, this)
-                        clearStackMove()
+                        Toast.makeText(context, "Clique na pilha que deseja inserir as cartas selecionadas", Toast.LENGTH_LONG).show()
+                        game.foreground = ColorDrawable(R.color.purple_200)
                     }
                     true
                 }
@@ -1818,48 +1855,4 @@ class GameFragment : Fragment() {
         }
     }
 
-    private fun identifyImageViewMove(count: Int): ImageView {
-        return when(count) {
-            0 -> move_c1
-            1 -> move_c2
-            2 -> move_c3
-            3 -> move_c4
-            4 -> move_c5
-            5 -> move_c6
-            6 -> move_c7
-            7 -> move_c8
-            8 -> move_c9
-            9 -> move_c10
-            10 -> move_c11
-            11 -> move_c12
-            else -> move_c13
-        }
-    }
-
-    private fun clearStackMove() {
-        for(x in 0..12) {
-            var imgview = identifyImageViewMove(x)
-            Glide.with(this).load("").into(imgview)
-        }
-    }
-
-    private fun showDialog(moveElements: MutableList<Card>, numberStack: Int,fragment: GameFragment) {
-        val builder = AlertDialog.Builder(context)
-        //builder.setCancelable(false)
-
-        val v = layoutInflater.inflate(R.layout.move_cards_dialog, null)
-        builder.setView(v)
-
-        /*builder.setPositiveButton("Sim") {
-                dialog, which ->
-            //finish()
-            Toast.makeText(context, "Jogo finalizado!", Toast.LENGTH_LONG).show()
-        }*/
-        builder.setNegativeButton("Cancelar") {
-                dialog, which ->
-        }
-
-        val dialog = builder.create()
-        dialog.show()
-    }
 }
