@@ -63,7 +63,7 @@
 
             </FrameLayout>
 
-            <FrameLayout
+            <!--<FrameLayout
                 android:layout_width="@dimen/width_deck"
                 android:layout_height="@dimen/height_deck"
                 android:background="@color/white"
@@ -77,119 +77,71 @@
                     android:layout_height="@dimen/height_deck"
                     android:layout_gravity="center"
                     android:background="@color/teal_700" />
-            </FrameLayout>
+            </FrameLayout>-->
 
-            <FrameLayout
+            <ImageView
+                android:id="@+id/stack1"
                 android:layout_width="@dimen/width_deck"
                 android:layout_height="@dimen/height_deck"
-                android:background="@color/white"
-                android:padding="1dp"
+                android:src="@drawable/rectangle_stroke"
                 android:layout_marginHorizontal="5dp"
-                >
+                />
 
-                <ImageView
-                    android:id="@+id/stack2"
-                    android:layout_width="@dimen/width_deck"
-                    android:layout_height="@dimen/height_deck"
-                    android:layout_gravity="center"
-                    android:background="@color/teal_700" />
-            </FrameLayout>
-
-            <FrameLayout
+            <ImageView
+                android:id="@+id/stack2"
                 android:layout_width="@dimen/width_deck"
                 android:layout_height="@dimen/height_deck"
-                android:background="@color/white"
-                android:padding="1dp"
+                android:src="@drawable/rectangle_stroke"
                 android:layout_marginHorizontal="5dp"
-                >
+                />
 
-                <ImageView
-                    android:id="@+id/stack3"
-                    android:layout_width="@dimen/width_deck"
-                    android:layout_height="@dimen/height_deck"
-                    android:layout_gravity="center"
-                    android:background="@color/teal_700" />
-            </FrameLayout>
-
-            <FrameLayout
+            <ImageView
+                android:id="@+id/stack3"
                 android:layout_width="@dimen/width_deck"
                 android:layout_height="@dimen/height_deck"
-                android:background="@color/white"
-                android:padding="1dp"
+                android:src="@drawable/rectangle_stroke"
                 android:layout_marginHorizontal="5dp"
-                >
+                />
 
-                <ImageView
-                    android:id="@+id/stack4"
-                    android:layout_width="@dimen/width_deck"
-                    android:layout_height="@dimen/height_deck"
-                    android:layout_gravity="center"
-                    android:background="@color/teal_700" />
-            </FrameLayout>
-
-            <FrameLayout
+            <ImageView
+                android:id="@+id/stack4"
                 android:layout_width="@dimen/width_deck"
                 android:layout_height="@dimen/height_deck"
-                android:background="@color/white"
-                android:padding="1dp"
+                android:src="@drawable/rectangle_stroke"
                 android:layout_marginHorizontal="5dp"
-                >
+                />
 
-                <ImageView
-                    android:id="@+id/stack5"
-                    android:layout_width="@dimen/width_deck"
-                    android:layout_height="@dimen/height_deck"
-                    android:layout_gravity="center"
-                    android:background="@color/teal_700" />
-            </FrameLayout>
-
-            <FrameLayout
+            <ImageView
+                android:id="@+id/stack5"
                 android:layout_width="@dimen/width_deck"
                 android:layout_height="@dimen/height_deck"
-                android:background="@color/white"
-                android:padding="1dp"
-                android:layout_marginHorizontal="5dp">
-
-                <ImageView
-                    android:id="@+id/stack6"
-                    android:layout_width="@dimen/width_deck"
-                    android:layout_height="@dimen/height_deck"
-                    android:layout_gravity="center"
-                    android:background="@color/teal_700" />
-            </FrameLayout>
-
-            <FrameLayout
-                android:layout_width="@dimen/width_deck"
-                android:layout_height="@dimen/height_deck"
-                android:background="@color/white"
-                android:padding="1dp"
+                android:src="@drawable/rectangle_stroke"
                 android:layout_marginHorizontal="5dp"
-                >
+                />
 
-                <ImageView
-                    android:id="@+id/stack7"
-                    android:layout_width="@dimen/width_deck"
-                    android:layout_height="@dimen/height_deck"
-                    android:layout_gravity="center"
-                    android:background="@color/teal_700" />
-            </FrameLayout>
-
-            <FrameLayout
+            <ImageView
+                android:id="@+id/stack6"
                 android:layout_width="@dimen/width_deck"
                 android:layout_height="@dimen/height_deck"
-                android:background="@color/white"
-                android:padding="1dp"
+                android:src="@drawable/rectangle_stroke"
                 android:layout_marginHorizontal="5dp"
-                >
+                />
 
-                <ImageView
-                    android:id="@+id/stack8"
-                    android:layout_width="@dimen/width_deck"
-                    android:layout_height="@dimen/height_deck"
-                    android:layout_gravity="center"
-                    android:background="@color/teal_700" />
+            <ImageView
+                android:id="@+id/stack7"
+                android:layout_width="@dimen/width_deck"
+                android:layout_height="@dimen/height_deck"
+                android:src="@drawable/rectangle_stroke"
+                android:layout_marginHorizontal="5dp"
+                />
 
-            </FrameLayout>
+            <ImageView
+                android:id="@+id/stack8"
+                android:layout_width="@dimen/width_deck"
+                android:layout_height="@dimen/height_deck"
+                android:src="@drawable/rectangle_stroke"
+                android:layout_marginHorizontal="5dp"
+                />
 
         </LinearLayout>
 
@@ -1182,14 +1134,6 @@
         </LinearLayout>
 
     </LinearLayout>
-
-
-    <ImageView
-        android:id="@+id/move_c1"
-        android:layout_width="@dimen/width_cards_play"
-        android:layout_height="@dimen/height_cards_play"
-        android:layout_marginStart="20dp"
-        />
 
     <FrameLayout
         android:id="@+id/splash_fragment"

@@ -1,6 +1,7 @@
 package com.example.paciencia_spider
 
 import android.annotation.SuppressLint
+import android.appwidget.AppWidgetHost
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.os.Handler
@@ -211,6 +212,17 @@ class GameFragment : Fragment() {
 
     private var stackOrigin: Int = 0
 
+    private var stacksCompleteds = 0
+
+    private lateinit var stack1: ImageView
+    private lateinit var stack2: ImageView
+    private lateinit var stack3: ImageView
+    private lateinit var stack4: ImageView
+    private lateinit var stack5: ImageView
+    private lateinit var stack6: ImageView
+    private lateinit var stack7: ImageView
+    private lateinit var stack8: ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -400,6 +412,15 @@ class GameFragment : Fragment() {
         p8 = view.findViewById(R.id.p8)
         p9 = view.findViewById(R.id.p9)
         p10 = view.findViewById(R.id.p10)
+
+        stack1 = view.findViewById(R.id.stack1)
+        stack2 = view.findViewById(R.id.stack2)
+        stack3 = view.findViewById(R.id.stack3)
+        stack4 = view.findViewById(R.id.stack4)
+        stack5 = view.findViewById(R.id.stack5)
+        stack6 = view.findViewById(R.id.stack6)
+        stack7 = view.findViewById(R.id.stack7)
+        stack8 = view.findViewById(R.id.stack8)
 
         initEventsOnImageViews()
 
@@ -1595,14 +1616,32 @@ class GameFragment : Fragment() {
                         game.foreground = null
 
                         if(moveElements[0].getValue() == stack[stack.lastIndex].getValue()-1) {
-                            applyModifierInStack(::insertCardsSelecteds, moveElements, numberStack)
-                            applyModifierInStack(::removeCardsSelecteds, moveElements, stackOrigin)
-                            stackOrigin = 0
+                            CoroutineScope(Dispatchers.Main).launch {
+                                applyModifierInStack(
+                                    ::insertCardsSelecteds,
+                                    moveElements,
+                                    numberStack
+                                )
+                                applyModifierInStack(
+                                    ::removeCardsSelecteds,
+                                    moveElements,
+                                    stackOrigin
+                                )
+                                stackOrigin = 0
+                                delay(50)
+                                Log.i("Pilha completada", checkStackCompleted().toString())
+                            }
                         } else {
                             Toast.makeText(context, "Não é possível inserir na pilha selecionada, tente outra pilha", Toast.LENGTH_LONG).show()
                         }
                     } else {
-                        quickPlay(it as ImageView)
+                        val numberStackComplete = checkStackCompleted()
+                        val stackComplete = getStack(numberStackComplete)
+                        CoroutineScope(Dispatchers.Main).launch {
+                            quickPlay(it as ImageView)
+                            delay(50)
+                            Log.i("Pilha completada", stackComplete.toString())
+                        }
                     }
                 }
 
@@ -1622,5 +1661,81 @@ class GameFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun checkStackCompleted(): Int {
+        var stack: MutableList<Card>
+        var result by Delegates.notNull<Int>()
+        for(x in 1..10) {
+            stack = getStack(x)
+            val size = stack.size
+            result = 0
+            if(size == 13) {
+                for (y in 0 until size - 1) {
+                    result = if(stack[y].getValue() - 1 != stack[y + 1].getValue()) {
+                        0
+                    } else {
+                        x
+                    }
+                }
+
+                if(result != 0) {
+                    CoroutineScope(Dispatchers.Default).launch {
+                        withContext(Dispatchers.Default) {
+                            clearStackImages(x)
+                        }
+                    }
+                    stacksCompleteds++
+                    setStackCompleteds(stack[x].getSuit())
+                    stack.clear()
+                    return result
+                }
+            }
+        }
+        return result
+    }
+
+    private fun getStack(numberStack: Int): MutableList<Card> {
+        return when(numberStack) {
+            1 -> stackOneCards
+            2 -> stackTwoCards
+            3 -> stackTreeCards
+            4 -> stackFourCards
+            5 -> stackFiveCards
+            6 -> stackSixCards
+            7 -> stackSevenCards
+            8 -> stackEightCards
+            9 -> stackNineCards
+            else -> stackTenCards
+        }
+    }
+
+    private fun clearStackImages(numberStack: Int) {
+        val stackFrame = mapNumberStackToStackFrame(numberStack)
+        for(x in 0..12) {
+            val imgview = stackFrame.getChildAt(x) as ImageView
+            imgview.setImageResource(0)
+        }
+    }
+
+    private fun setStackCompleteds(suit: String) {
+        val codeCard = when(suit.split('"')[1]) {
+            "HEARTS" -> "AH"
+            "SPADES" -> "AS"
+            "CLUBS" -> "AC"
+            else -> "AH"
+        }
+        val imgview = when(stacksCompleteds) {
+            1 -> stack1
+            2 -> stack2
+            3 -> stack3
+            4 -> stack4
+            5 -> stack5
+            6 -> stack6
+            7 -> stack7
+            else -> stack8
+        }
+
+        Glide.with(this).load("$urlAPI/$codeCard.png").into(imgview)
     }
 }
