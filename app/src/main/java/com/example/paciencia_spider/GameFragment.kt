@@ -1,7 +1,10 @@
 package com.example.paciencia_spider
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.appwidget.AppWidgetHost
+import android.content.Intent
+import android.content.Intent.getIntent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.os.Handler
@@ -212,7 +215,7 @@ class GameFragment : Fragment() {
 
     private var stackOrigin: Int = 0
 
-    private var stacksCompleteds = 0
+    private var stacksCompleteds = 7
 
     private lateinit var stack1: ImageView
     private lateinit var stack2: ImageView
@@ -1640,11 +1643,7 @@ class GameFragment : Fragment() {
                         CoroutineScope(Dispatchers.Main).launch {
                             quickPlay(it as ImageView)
                             delay(50)
-                            val numberStackComplete = checkStackCompleted()
-                            delay(50)
-                            val stackComplete = getStack(numberStackComplete)
-                            delay(50)
-                            Log.i("Pilha completada", stackComplete.toString())
+                            checkStackCompleted()
                         }
                     }
                 }
@@ -1673,7 +1672,7 @@ class GameFragment : Fragment() {
         }
     }
 
-    private fun checkStackCompleted(): Int {
+    private fun checkStackCompleted() {
         var stack: MutableList<Card>
         var result by Delegates.notNull<Int>()
         for(x in 1..10) {
@@ -1714,11 +1713,11 @@ class GameFragment : Fragment() {
                             stack.clear()
                         }.await()
                     }
-                    return result
+                    return
                 }
             }
         }
-        return 0
+        return
     }
 
     private fun getStack(numberStack: Int): MutableList<Card> {
@@ -1764,5 +1763,29 @@ class GameFragment : Fragment() {
         }
 
         Glide.with(this).load("$urlAPI/$codeCard.png").into(imgview)
+
+        if(stacksCompleteds == 8) {
+            finishGameDialog()
+        }
     }
+
+    private fun finishGameDialog() {
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle("PARABÉNS! Você conseguiu uma vitória!")
+
+        builder.setCancelable(false)
+
+        builder.setMessage("Para continuar jogando inicie outra partida")
+            builder.setPositiveButton("OK") {
+                    dialog, which ->
+                        activity?.finish()
+            }
+
+        val dialog = builder.create()
+        dialog.show()
+    }
+
+
+
+
 }

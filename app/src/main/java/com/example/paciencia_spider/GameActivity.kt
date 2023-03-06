@@ -66,7 +66,7 @@ class GameActivity : AppCompatActivity() {
         fragmentLoad.commit()
     }
 
-    private fun reloadFragment(fragment: Fragment) {
+    fun reloadFragment(fragment: Fragment) {
         val fragmentLoad = supportFragmentManager.beginTransaction()
         fragmentLoad.remove(fragment)
         fragmentLoad.commit()
@@ -82,7 +82,7 @@ class GameActivity : AppCompatActivity() {
         builder.setCancelable(false)
 
         if(type == "RELOAD") {
-            builder.setMessage("Tem certeza que deseja reiniciar o jogo?")
+            builder.setMessage("Tem certeza que deseja reiniciar? Essa partida será marcada como derrota!")
             builder.setPositiveButton("Sim") {
                     dialog, which ->
                 reloadFragment(fragment)
@@ -92,7 +92,7 @@ class GameActivity : AppCompatActivity() {
                     dialog, which ->
             }
         } else {
-            builder.setMessage("Tem certeza que deseja sair do jogo?")
+            builder.setMessage("Tem certeza que deseja sair? Essa partida será marcada como derrota!")
             builder.setPositiveButton("Sim") {
                     dialog, which ->
                 finish()
@@ -106,4 +106,5 @@ class GameActivity : AppCompatActivity() {
         val dialog = builder.create()
         dialog.show()
     }
+
 }
