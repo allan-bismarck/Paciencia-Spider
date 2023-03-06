@@ -1629,7 +1629,7 @@ class GameFragment : Fragment() {
                                         stackOrigin
                                     )
                                     stackOrigin = 0
-                                    delay(50)
+                                    delay(80)
                                     Log.i("Pilha completada", checkStackCompleted().toString())
                                 }
                             }
@@ -1637,10 +1637,12 @@ class GameFragment : Fragment() {
                             Toast.makeText(context, "Não é possível inserir na pilha selecionada, tente outra pilha", Toast.LENGTH_LONG).show()
                         }
                     } else {
-                        val numberStackComplete = checkStackCompleted()
-                        val stackComplete = getStack(numberStackComplete)
                         CoroutineScope(Dispatchers.Main).launch {
                             quickPlay(it as ImageView)
+                            delay(50)
+                            val numberStackComplete = checkStackCompleted()
+                            delay(50)
+                            val stackComplete = getStack(numberStackComplete)
                             delay(50)
                             Log.i("Pilha completada", stackComplete.toString())
                         }
@@ -1676,11 +1678,20 @@ class GameFragment : Fragment() {
         var result by Delegates.notNull<Int>()
         for(x in 1..10) {
             stack = getStack(x)
-            val size = stack.size
             result = x
+            val size = stack.size
             if(size == 13) {
+                stack.forEach {
+                    if(!it.getAvaiable()) {
+                        result = 0
+                    }
+                }
+
                 for (y in 12..1) {
                     if((stack[y].getValue() != stack[y-1].getValue()-1)) {
+                        result = 0
+                    }
+                    if(!stack[y].getShow()!! || !stack[y-1].getShow()!!) {
                         result = 0
                     }
                 }
@@ -1688,7 +1699,7 @@ class GameFragment : Fragment() {
                 if(result != 0) {
                     runBlocking {
                         async {
-                            delay(50)
+                            delay(80)
                             clearStackImages(x) }.await()
                         async {
                             delay(50)
@@ -1707,7 +1718,7 @@ class GameFragment : Fragment() {
                 }
             }
         }
-        return result
+        return 0
     }
 
     private fun getStack(numberStack: Int): MutableList<Card> {
