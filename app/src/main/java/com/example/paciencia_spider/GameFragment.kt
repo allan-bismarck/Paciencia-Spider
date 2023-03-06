@@ -1615,21 +1615,23 @@ class GameFragment : Fragment() {
                         longClick = false
                         game.foreground = null
 
-                        if(moveElements[0].getValue() == stack[stack.lastIndex].getValue()-1) {
+                        if((moveElements[0].getValue() == stack[stack.lastIndex].getValue()-1) && (moveElements.size + stack.size <=13)) {
                             CoroutineScope(Dispatchers.Main).launch {
-                                applyModifierInStack(
-                                    ::insertCardsSelecteds,
-                                    moveElements,
-                                    numberStack
-                                )
-                                applyModifierInStack(
-                                    ::removeCardsSelecteds,
-                                    moveElements,
-                                    stackOrigin
-                                )
-                                stackOrigin = 0
-                                delay(50)
-                                Log.i("Pilha completada", checkStackCompleted().toString())
+                                withContext(Dispatchers.Main) {
+                                    applyModifierInStack(
+                                        ::insertCardsSelecteds,
+                                        moveElements,
+                                        numberStack
+                                    )
+                                    applyModifierInStack(
+                                        ::removeCardsSelecteds,
+                                        moveElements,
+                                        stackOrigin
+                                    )
+                                    stackOrigin = 0
+                                    delay(50)
+                                    Log.i("Pilha completada", checkStackCompleted().toString())
+                                }
                             }
                         } else {
                             Toast.makeText(context, "Não é possível inserir na pilha selecionada, tente outra pilha", Toast.LENGTH_LONG).show()
@@ -1646,16 +1648,22 @@ class GameFragment : Fragment() {
                 }
 
                 imgview?.setOnLongClickListener {
-                    if(imgview.drawable != null ) {
+                    if(imgview.drawable != null) {
                         longClick = true
                         val stack = identifyStack(imgview)
                         val position = identifyPosition(imgview)
 
-                        moveElements = selectCards(stack, position)
-                        stackOrigin = identifyNumberStack(imgview)
+                        if(stack[position].getAvaiable()) {
+                            moveElements = selectCards(stack, position)
+                            stackOrigin = identifyNumberStack(imgview)
 
-                        Toast.makeText(context, "Clique na pilha que deseja inserir as cartas selecionadas", Toast.LENGTH_LONG).show()
-                        game.foreground = ColorDrawable(R.color.purple_200)
+                            Toast.makeText(
+                                context,
+                                "Clique na pilha que deseja inserir as cartas selecionadas",
+                                Toast.LENGTH_LONG
+                            ).show()
+                            game.foreground = ColorDrawable(R.color.purple_200)
+                        }
                     }
                     true
                 }
@@ -1669,25 +1677,32 @@ class GameFragment : Fragment() {
         for(x in 1..10) {
             stack = getStack(x)
             val size = stack.size
-            result = 0
+            result = x
             if(size == 13) {
-                for (y in 0 until size - 1) {
-                    result = if(stack[y].getValue() - 1 != stack[y + 1].getValue()) {
-                        0
-                    } else {
-                        x
+                for (y in 12..1) {
+                    if((stack[y].getValue() != stack[y-1].getValue()-1)) {
+                        result = 0
                     }
                 }
 
                 if(result != 0) {
-                    CoroutineScope(Dispatchers.Default).launch {
-                        withContext(Dispatchers.Default) {
-                            clearStackImages(x)
-                        }
+                    runBlocking {
+                        async {
+                            delay(50)
+                            clearStackImages(x) }.await()
+                        async {
+                            delay(50)
+                            stacksCompleteds++
+                        }.await()
+                        async {
+                            delay(50)
+                            setStackCompleteds(stack[x].getSuit())
+                        }.await()
+                        async {
+                            delay(50)
+                            stack.clear()
+                        }.await()
                     }
-                    stacksCompleteds++
-                    setStackCompleteds(stack[x].getSuit())
-                    stack.clear()
                     return result
                 }
             }
@@ -1715,6 +1730,7 @@ class GameFragment : Fragment() {
         for(x in 0..12) {
             val imgview = stackFrame.getChildAt(x) as ImageView
             imgview.setImageResource(0)
+            imgview.foreground = null
         }
     }
 
