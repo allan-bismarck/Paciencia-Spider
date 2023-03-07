@@ -3,21 +3,10 @@ import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.MotionEvent
-import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.google.gson.JsonObject
-import kotlinx.coroutines.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.create
-import java.lang.Thread.sleep
-import kotlin.coroutines.CoroutineContext
 import kotlin.properties.Delegates
 
 class GameActivity : AppCompatActivity() {
@@ -39,8 +28,8 @@ class GameActivity : AppCompatActivity() {
 
         if(intent != null) {
             b = intent.extras!!
-            userName = b?.getString("userName").toString()
-            qtdNaipes = b?.getInt("qtdNaipes")!!
+            userName = b.getString("userName").toString()
+            qtdNaipes = b.getInt("qtdNaipes")
             player.text = userName.uppercase()
         }
 
@@ -67,7 +56,7 @@ class GameActivity : AppCompatActivity() {
         fragmentLoad.commit()
     }
 
-    fun reloadFragment(fragment: Fragment) {
+    private fun reloadFragment(fragment: Fragment) {
         val fragmentLoad = supportFragmentManager.beginTransaction()
         fragmentLoad.remove(fragment)
         fragmentLoad.commit()
@@ -88,24 +77,24 @@ class GameActivity : AppCompatActivity() {
         if(type == "RELOAD") {
             builder.setMessage("Tem certeza que deseja reiniciar? Essa partida será marcada como derrota!")
             builder.setPositiveButton("Sim") {
-                    dialog, which ->
+                    _, _ ->
                 reloadFragment(fragment)
                 Toast.makeText(this, "Jogo reiniciado com sucesso!", Toast.LENGTH_LONG).show()
             }
             builder.setNegativeButton("Não") {
-                    dialog, which ->
+                    _, _ ->
             }
         } else {
             builder.setMessage("Tem certeza que deseja sair?")
             builder.setPositiveButton("Sim") {
-                    dialog, which ->
+                    _, _ ->
                 val intent = Intent(this, FirstActivity::class.java)
                 startActivity(intent)
                 finish()
                 Toast.makeText(this, "Jogo finalizado!", Toast.LENGTH_LONG).show()
             }
             builder.setNegativeButton("Não") {
-                    dialog, which ->
+                    _, _ ->
             }
         }
 

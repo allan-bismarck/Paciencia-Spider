@@ -1,4 +1,5 @@
 package com.example.paciencia_spider
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -20,13 +21,13 @@ class FirstActivity : AppCompatActivity() {
         setContentView(R.layout.activity_first)
 
         configDataBase = ConfigDataBaseUser(this)
-        var userName = configDataBase.getNameUser().toString().uppercase()
+        val userName = configDataBase.getNameUser().toString().uppercase()
 
         text = findViewById(R.id.textView)
         text.text = userName
 
-        var numberWins = configDataBase.getWins()
-        var numberDefeats = configDataBase.getDefeats()
+        val numberWins = configDataBase.getWins()
+        val numberDefeats = configDataBase.getDefeats()
 
         wins = findViewById(R.id.wins)
         defeats = findViewById(R.id.defeats)
@@ -58,10 +59,10 @@ class FirstActivity : AppCompatActivity() {
 
         btninitGame = findViewById(R.id.init_game)
         btninitGame.setOnClickListener {
-            var i = Intent(this, GameActivity::class.java)
-            var b = Bundle()
+            val i = Intent(this, GameActivity::class.java)
+            val b = Bundle()
             b.putString("userName", userName)
-            var qtdNaipes = spinner.selectedItem.toString().split(" ")
+            val qtdNaipes = spinner.selectedItem.toString().split(" ")
             b.putInt("qtdNaipes", qtdNaipes[0].toInt())
             i.putExtras(b)
             runIntent(i)
@@ -75,6 +76,7 @@ class FirstActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("QueryPermissionsNeeded")
     private fun runIntent(intent: Intent) {
         if (intent.resolveActivity(packageManager) != null) {
             startActivity(intent)
