@@ -2,9 +2,7 @@ package com.example.paciencia_spider
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
-import android.appwidget.AppWidgetHost
 import android.content.Intent
-import android.content.Intent.getIntent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.os.Handler
@@ -215,7 +213,7 @@ class GameFragment : Fragment() {
 
     private var stackOrigin: Int = 0
 
-    private var stacksCompleteds = 7
+    private var stacksCompleteds = 0
 
     private lateinit var stack1: ImageView
     private lateinit var stack2: ImageView
@@ -1633,7 +1631,7 @@ class GameFragment : Fragment() {
                                     )
                                     stackOrigin = 0
                                     delay(80)
-                                    Log.i("Pilha completada", checkStackCompleted().toString())
+                                    checkStackCompleted()
                                 }
                             }
                         } else {
@@ -1686,7 +1684,7 @@ class GameFragment : Fragment() {
                     }
                 }
 
-                for (y in 12..1) {
+                for (y in 12 .. 1) {
                     if((stack[y].getValue() != stack[y-1].getValue()-1)) {
                         result = 0
                     }
@@ -1778,8 +1776,14 @@ class GameFragment : Fragment() {
         builder.setMessage("Para continuar jogando inicie outra partida")
             builder.setPositiveButton("OK") {
                     dialog, which ->
+                        val intent = Intent(context, FirstActivity::class.java)
+                        startActivity(intent)
                         activity?.finish()
+
             }
+
+        val configDataBase = activity?.let { ConfigDataBaseUser(it) }
+        configDataBase?.setWins(1)
 
         val dialog = builder.create()
         dialog.show()

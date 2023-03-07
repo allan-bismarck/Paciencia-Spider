@@ -1,5 +1,6 @@
 package com.example.paciencia_spider
 import android.app.AlertDialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -76,6 +77,9 @@ class GameActivity : AppCompatActivity() {
     }
 
     private fun showDialog(type: String, fragment: GameFragment) {
+        val configDataBase = ConfigDataBaseUser(this)
+        configDataBase.setDefeats(1)
+
         val builder = AlertDialog.Builder(this)
         builder.setTitle("AVISO")
 
@@ -92,9 +96,11 @@ class GameActivity : AppCompatActivity() {
                     dialog, which ->
             }
         } else {
-            builder.setMessage("Tem certeza que deseja sair? Essa partida será marcada como derrota!")
+            builder.setMessage("Tem certeza que deseja sair?")
             builder.setPositiveButton("Sim") {
                     dialog, which ->
+                val intent = Intent(this, FirstActivity::class.java)
+                startActivity(intent)
                 finish()
                 Toast.makeText(this, "Jogo finalizado!", Toast.LENGTH_LONG).show()
             }

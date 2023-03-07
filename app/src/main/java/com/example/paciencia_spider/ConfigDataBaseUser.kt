@@ -2,7 +2,6 @@ package com.example.paciencia_spider
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.util.Log
 
 class ConfigDataBaseUser {
     private var dataBase: SharedPreferences
@@ -18,13 +17,13 @@ class ConfigDataBaseUser {
     }
 
     fun createDB(name: String) {
-        var editor = dataBase.edit()
+        val editor = dataBase.edit()
 
         editor.putString(context.resources.getString(R.string.db_user), name)
         editor.putInt(context.resources.getString(R.string.db_wins), 0)
         editor.putInt(context.resources.getString(R.string.db_defeats), 0)
 
-        editor.commit()
+        editor.apply()
     }
 
     fun existUser(): Boolean {
@@ -35,21 +34,35 @@ class ConfigDataBaseUser {
         return dataBase.getString(context.resources.getString(R.string.db_user), "")
     }
 
-    fun getWins(): Int? {
+    fun getWins(): Int {
         return dataBase.getInt(context.resources.getString(R.string.db_wins), 0)
     }
+    
+    fun setWins(win: Int) {
+        val editor = dataBase.edit()
+        val wins = dataBase.getInt(context.resources.getString(R.string.db_wins), 0)
+        editor.putInt(context.resources.getString(R.string.db_wins), wins + win)
+        editor.apply()
+    }
 
-    fun getDefeats(): Int? {
+    fun getDefeats(): Int {
         return dataBase.getInt(context.resources.getString(R.string.db_defeats), 0)
     }
 
+    fun setDefeats(defeat: Int) {
+        val editor = dataBase.edit()
+        val defeats = dataBase.getInt(context.resources.getString(R.string.db_defeats), 0)
+        editor.putInt(context.resources.getString(R.string.db_defeats), defeats + defeat)
+        editor.apply()
+    }
+
     fun deleteUser() {
-        var editor = dataBase.edit()
+        val editor = dataBase.edit()
 
         editor.putString(context.resources.getString(R.string.db_user), "")
         editor.putInt(context.resources.getString(R.string.db_wins), 0)
         editor.putInt(context.resources.getString(R.string.db_defeats), 0)
 
-        editor.commit()
+        editor.apply()
     }
 }

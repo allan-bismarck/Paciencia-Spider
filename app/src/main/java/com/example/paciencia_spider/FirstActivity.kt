@@ -3,6 +3,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
+import java.text.DecimalFormat
 
 class FirstActivity : AppCompatActivity() {
     private lateinit var configDataBase: ConfigDataBaseUser
@@ -36,10 +37,11 @@ class FirstActivity : AppCompatActivity() {
         if(numberWins == 0 && numberDefeats == 0) {
             performance.text = "Não houve jogadas"
         } else {
-            var percent: Float = (numberWins!!/(numberWins + numberDefeats!!)).toFloat()
-            performance.text = "$percent%"
+            val percent: Float = (numberWins.toFloat()/(numberWins.toFloat() + numberDefeats.toFloat()) * 100)
+            val df = DecimalFormat("#.##")
+            val dfPercent = df.format(percent)
+            performance.text = "$dfPercent%"
         }
-
 
         val spinner: Spinner = findViewById(R.id.spinner_number_naipes)
         // Create an ArrayAdapter using the string array and a default spinner layout
@@ -76,6 +78,7 @@ class FirstActivity : AppCompatActivity() {
     private fun runIntent(intent: Intent) {
         if (intent.resolveActivity(packageManager) != null) {
             startActivity(intent)
+            finish()
         } else {
             Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
         }
