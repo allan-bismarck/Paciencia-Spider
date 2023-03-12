@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="width_deck">40dp</dimen>
-    <dimen name="height_deck">54dp</dimen>
+    <dimen name="width_deck">35dp</dimen>
+    <dimen name="height_deck">49dp</dimen>
     <dimen name="space_cards_two">15dp</dimen>
     <dimen name="space_cards_tree">30dp</dimen>
     <dimen name="space_cards_four">45dp</dimen>

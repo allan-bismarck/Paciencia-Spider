@@ -15,7 +15,9 @@ class FirstActivity : AppCompatActivity() {
     private lateinit var performance: TextView
     private lateinit var btninitGame: Button
     private lateinit var btnDelete: Button
+    private lateinit var btnTutorial: Button
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_first)
@@ -73,6 +75,11 @@ class FirstActivity : AppCompatActivity() {
             configDataBase.deleteUser()
             runIntent(Intent(this, MainActivity::class.java))
             finish()
+        }
+
+        btnTutorial = findViewById(R.id.tutorial)
+        btnTutorial.setOnClickListener {
+            startActivity(Intent(this,TutorialScreen::class.java))
         }
     }
 

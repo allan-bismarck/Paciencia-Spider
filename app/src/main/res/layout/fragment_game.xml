@@ -63,22 +63,6 @@
 
             </FrameLayout>
 
-            <!--<FrameLayout
-                android:layout_width="@dimen/width_deck"
-                android:layout_height="@dimen/height_deck"
-                android:background="@color/white"
-                android:padding="1dp"
-                android:layout_marginHorizontal="5dp"
-                >
-
-                <ImageView
-                    android:id="@+id/stack1"
-                    android:layout_width="@dimen/width_deck"
-                    android:layout_height="@dimen/height_deck"
-                    android:layout_gravity="center"
-                    android:background="@color/teal_700" />
-            </FrameLayout>-->
-
             <ImageView
                 android:id="@+id/stack1"
                 android:layout_width="@dimen/width_deck"

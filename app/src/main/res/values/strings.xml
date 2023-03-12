@@ -12,4 +12,7 @@
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="rules">As pilhas de cartas podem conter no máximo 13 cartas, atenção ao clicar no baralho.</string>
+    <string name="tutorial1">Jogo rápido: Dê um clique na carta ou pilha de cartas que deseja mover e o jogo irá buscar automaticamente uma nova pilha para essa carta.</string>
+    <string name="tutorial2">Jogo comum: Dê um longo clique na carta ou pilha de cartas que deseja mover, a tela irá alterar a cor e então o usuário deve clicar na pilha que deseja inserir a(s) carta(s) selecionada(s).</string>
 </resources>
