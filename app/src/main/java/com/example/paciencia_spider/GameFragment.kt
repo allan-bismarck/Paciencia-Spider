@@ -13,11 +13,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.ProgressBar
-import android.widget.Toast
+import android.widget.*
 import androidx.core.animation.doOnEnd
 import androidx.fragment.app.Fragment
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
@@ -1783,24 +1779,35 @@ class GameFragment : Fragment() {
 
     private fun finishGameDialog() {
         val builder = AlertDialog.Builder(context)
-        builder.setTitle("PARABÉNS! Você conseguiu uma vitória!")
+        val view = layoutInflater.inflate(R.layout.finish_dialog, null)
+        val close = view.findViewById<Button>(R.id.close_dialog)
+        builder.setView(view)
+
+        //builder.setTitle("PARABÉNS! Você conseguiu uma vitória!")
 
         builder.setCancelable(false)
 
-        builder.setMessage("Para continuar jogando inicie outra partida")
+        /*builder.setMessage("Para continuar jogando inicie outra partida")
             builder.setPositiveButton("OK") {
                     dialog, which ->
                         val intent = Intent(context, FirstActivity::class.java)
                         startActivity(intent)
                         activity?.finish()
 
-            }
+            }*/
 
         val configDataBase = activity?.let { ConfigDataBaseUser(it) }
         configDataBase?.setWins(1)
 
         val dialog = builder.create()
         dialog.show()
+
+        close.setOnClickListener {
+            dialog.dismiss()
+            val intent = Intent(context, FirstActivity::class.java)
+            startActivity(intent)
+            activity?.finish()
+        }
     }
 
 
