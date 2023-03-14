@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Paciencia-Spider</string>
+    <string name="app_name">Paciência Spider</string>
     <string name="initial_title">Paciência Spider </string>
     <string name="user_name">Digite seu nome</string>
     <string name="db_user">NAME_USER</string>

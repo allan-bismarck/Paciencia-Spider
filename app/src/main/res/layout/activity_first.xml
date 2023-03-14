@@ -16,7 +16,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="First Activity"
+            android:text=""
+            android:textStyle="bold"
             android:textAlignment="center" />
 
         <LinearLayout
@@ -39,6 +40,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:text=""
+                android:textStyle="bold"
                 android:textAlignment="center" />
 
         </LinearLayout>
@@ -63,6 +65,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:text=""
+                android:textStyle="bold"
                 android:textAlignment="center" />
 
         </LinearLayout>
@@ -87,6 +90,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:text=""
+                android:textStyle="bold"
                 android:textAlignment="center" />
 
         </LinearLayout>
@@ -102,26 +106,35 @@
         <Button
             android:id="@+id/init_game"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:paddingHorizontal="10dp"
+            android:background="@drawable/gradient_button"
+            android:textColor="@color/white"
             android:text="Iniciar jogo"
-            tools:layout_editor_absoluteX="77dp"
-            tools:layout_editor_absoluteY="76dp" />
+            android:textStyle="bold"
+            android:layout_marginVertical="5dp"/>
 
         <Button
             android:id="@+id/delete_user"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:paddingHorizontal="10dp"
+            android:textColor="@color/white"
             android:text="Apagar Usuário"
-            tools:layout_editor_absoluteX="77dp"
-            tools:layout_editor_absoluteY="76dp" />
+            android:textStyle="bold"
+            android:background="@drawable/gradient_button"
+            android:layout_marginVertical="5dp"/>
 
         <Button
             android:id="@+id/tutorial"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:paddingHorizontal="10dp"
+            android:background="@drawable/gradient_button"
             android:text="Tutorial e regras"
-            tools:layout_editor_absoluteX="77dp"
-            tools:layout_editor_absoluteY="76dp" />
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:layout_marginVertical="5dp"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

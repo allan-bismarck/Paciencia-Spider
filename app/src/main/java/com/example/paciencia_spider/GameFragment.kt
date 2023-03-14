@@ -18,6 +18,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.core.animation.doOnEnd
 import androidx.fragment.app.Fragment
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import com.bumptech.glide.Glide
@@ -1457,6 +1458,7 @@ class GameFragment : Fragment() {
         }
     }
 
+    @SuppressLint("ObjectAnimatorBinding")
     private fun animationDeck() {
         when(numberCardsDeck) {
             1 -> deckC1.setImageResource(0)
@@ -1465,8 +1467,6 @@ class GameFragment : Fragment() {
             4 -> deckC4.setImageResource(0)
             5 -> deckC5.setImageResource(0)
         }
-
-
     }
 
     private fun selectCards(stack: MutableList<Card>, position: Int): MutableList<Card> {

@@ -38,10 +38,14 @@
         <Button
             android:id="@+id/play"
             android:layout_gravity="center"
-            android:layout_width="200sp"
+            android:layout_width="wrap_content"
+            android:paddingHorizontal="10dp"
+            android:textColor="@color/white"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20sp"
-            android:text="Jogar" />
+            android:layout_marginTop="10sp"
+            android:text="Jogar"
+            android:textStyle="bold"
+            android:background="@drawable/gradient_button"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
