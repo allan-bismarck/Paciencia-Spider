@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/bg_app">
 
 
     <LinearLayout
@@ -19,6 +20,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/initial_title"
+            android:textColor="@color/black"
+            android:textStyle="bold"
             android:textAlignment="center"
             android:layout_marginTop="50sp"
             android:textSize="36sp"
@@ -45,7 +48,7 @@
             android:layout_marginTop="10sp"
             android:text="Jogar"
             android:textStyle="bold"
-            android:background="@drawable/gradient_button"/>
+            android:background="@drawable/gradient_button_menu"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

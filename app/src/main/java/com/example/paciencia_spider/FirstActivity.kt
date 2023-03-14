@@ -9,7 +9,6 @@ import java.text.DecimalFormat
 class FirstActivity : AppCompatActivity() {
     private lateinit var configDataBase: ConfigDataBaseUser
 
-    private lateinit var text: TextView
     private lateinit var wins: TextView
     private lateinit var defeats: TextView
     private lateinit var performance: TextView
@@ -25,8 +24,7 @@ class FirstActivity : AppCompatActivity() {
         configDataBase = ConfigDataBaseUser(this)
         val userName = configDataBase.getNameUser().toString().uppercase()
 
-        text = findViewById(R.id.textView)
-        text.text = userName
+        supportActionBar?.title = "Bem vindo(a), $userName"
 
         val numberWins = configDataBase.getWins()
         val numberDefeats = configDataBase.getDefeats()

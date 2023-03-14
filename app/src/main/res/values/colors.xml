@@ -10,8 +10,14 @@
     <color name="grey31">#4F4F4F</color>
     <color name="blue">#0000FF</color>
     <color name="lime_green">#32CD32</color>
-    <color name="red">#FF0000</color>
-    <color name="dark_orange">#FF8C00</color>
     <color name="black_transparent">#77000000</color>
     <color name="black_total_transparent">#00000000</color>
+    <color name="light_green">#19E64C</color>
+    <color name="dark_green">#029927</color>
+    <color name="purple">#7D30E6</color>
+    <color name="light_orange">#E68302</color>
+    <color name="dark_orange">#995B09</color>
+    <color name="red">#FF0000</color>
+    <color name="light_blue">#B2E7EB</color>
+    <color name="dark_blue">#011752</color>
 </resources>

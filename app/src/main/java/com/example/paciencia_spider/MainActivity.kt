@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var userName: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -28,15 +29,19 @@ class MainActivity : AppCompatActivity() {
 
         btnPlay = findViewById(R.id.play)
         btnPlay.setOnClickListener {
-            val i = Intent(this, FirstActivity::class.java)
-            val name = userName.text.toString()
+            if(userName.text.isEmpty()) {
+                Toast.makeText(this,"Digite seu nome para começar a jogar.",Toast.LENGTH_SHORT).show()
+            } else {
+                val i = Intent(this, FirstActivity::class.java)
+                val name = userName.text.toString()
 
-            configDataBase.createDB(name)
+                configDataBase.createDB(name)
 
-            i.putExtra("userName", name)
-            userName.text.clear()
-            runIntent(i)
-            finish()
+                i.putExtra("userName", name)
+                userName.text.clear()
+                runIntent(i)
+                finish()
+            }
         }
     }
 
