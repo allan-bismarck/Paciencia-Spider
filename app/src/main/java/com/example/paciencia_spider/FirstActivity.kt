@@ -1,14 +1,16 @@
 package com.example.paciencia_spider
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import java.text.DecimalFormat
 
 class FirstActivity : AppCompatActivity() {
     private lateinit var configDataBase: ConfigDataBaseUser
 
+    private lateinit var title: TextView
     private lateinit var wins: TextView
     private lateinit var defeats: TextView
     private lateinit var performance: TextView
@@ -16,7 +18,7 @@ class FirstActivity : AppCompatActivity() {
     private lateinit var btnDelete: Button
     private lateinit var btnTutorial: Button
 
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint("MissingInflatedId", "ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_first)
@@ -24,7 +26,8 @@ class FirstActivity : AppCompatActivity() {
         configDataBase = ConfigDataBaseUser(this)
         val userName = configDataBase.getNameUser().toString().uppercase()
 
-        supportActionBar?.title = "Bem vindo(a), $userName"
+        title = findViewById(R.id.title)
+        title.text = "Bem vindo(a), $userName"
 
         val numberWins = configDataBase.getWins()
         val numberDefeats = configDataBase.getDefeats()
