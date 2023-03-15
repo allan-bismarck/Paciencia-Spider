@@ -970,7 +970,7 @@ class GameFragment : Fragment() {
             stack.indices.forEach {
                 val imgView = identifyImgView(numberStack, it+1)
                 if(!stack[it].getAvaiable() || stack[it].getShow() == false) {
-                    imgView?.foreground = ColorDrawable(R.color.black_transparent)
+                    imgView?.foreground = ColorDrawable(R.color.dark_green_transparent)
                     imgView?.isClickable = false
                 } else {
                     imgView?.foreground = null
