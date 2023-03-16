@@ -14,6 +14,6 @@
 #### Download Application: [Paciência Spider](https://github.com/AllanBismarck123/Paciencia-Spider/raw/main/paciencia-spider.apk)
 
 #### Application screens:
-<img height="480" width="270" src="assets/screenshot1.PNG" target="_blank"> <img height="480" width="270" src="assets/screenshot2.PNG" target="_blank"> 
+<img height="480" width="270" src="assets/Screenshot_20230315_221654.png" target="_blank"> <img height="480" width="270" src="assets/screenshot2.PNG" target="_blank"> 
  <img height="480" width="270" src="assets/screenshot3.PNG" target="_blank"> <img height="480" width="270" src="assets/screenshot4.PNG" target="_blank">
  <img height="480" width="270" src="assets/screenshot12.PNG" target="_blank">
