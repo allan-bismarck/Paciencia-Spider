@@ -9,7 +9,7 @@
 ### The app stores data locally on the device itself.
 
 #### Technologies used:
-<a target="_blank"><img height="40" width="120" src="https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white" target="_blank"></a> <a target="_blank"><img height="40" width="150" src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white" target="_blank"></a>
+<a target="_blank"><img height="40" width="150" src="https://img.shields.io/badge/Kotlin-049DD9?style=for-the-badge&logo=kotlin&logoColor=orange" target="_blank"></a> <img height="40" width="260" src="https://img.shields.io/badge/Android%20Studio-3DDC84.svg?style=for-the-badge&logo=android-studio&logoColor=white" target="_blank"></a>
 
 #### Download Application: [Paciência Spider](https://github.com/AllanBismarck123/Paciencia-Spider/raw/main/paciencia-spider.apk)
 
