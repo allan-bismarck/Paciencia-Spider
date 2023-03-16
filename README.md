@@ -15,4 +15,4 @@
 
 #### Application screens:
 <img height="480" width="270" src="assets/Screenshot_20230315_221654.png" target="_blank"> <img height="480" width="270" src="assets/Screenshot_20230315_221741.png" target="_blank"> 
- <img height="480" width="270" src="assets/Screenshot_20230315_221756.png" target="_blank"> <img height="270" width="480" src="assets/Screenshot_20230315_222510.png" target="_blank">
+ <img height="480" width="270" src="assets/Screenshot_20230315_221756.png" target="_blank"> <img height="540" width="960" src="assets/Screenshot_20230315_222510.png" target="_blank">
