@@ -4,9 +4,9 @@
 
 <img height="200" width="200" src="/app/src/main/res/drawable/icon_app.png" target="_blank">
 
-### It is an application developed to help Brazilian adults better select the foods that make up their diet and the regularity of the practice of physical activity.
+### It is an application to play the Spider Solitaire card game, the user can select 1, 2 or 4 suits to play, the application makes use of an API called Deck of Cards, in which it is possible to generate personalized decks, shuffle, distribute and return the cards to the deck.
 
-### The app stores data locally on the device itself.
+### Data is saved locally using SharedPreferences.
 
 #### Technologies used:
 <a target="_blank"><img height="40" width="150" src="https://img.shields.io/badge/Kotlin-049DD9?style=for-the-badge&logo=kotlin&logoColor=orange" target="_blank"></a> <img height="40" width="260" src="https://img.shields.io/badge/Android%20Studio-3DDC84.svg?style=for-the-badge&logo=android-studio&logoColor=white" target="_blank"></a>
