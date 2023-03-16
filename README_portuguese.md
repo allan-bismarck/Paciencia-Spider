@@ -8,11 +8,11 @@
 
 ### Os dados são salvos localmente utilizando SharedPreferences.
 
-#### Technologies used:
+#### Tecnologias usadas:
 <a target="_blank"><img height="40" width="150" src="https://img.shields.io/badge/Kotlin-049DD9?style=for-the-badge&logo=kotlin&logoColor=orange" target="_blank"></a> <img height="40" width="260" src="https://img.shields.io/badge/Android%20Studio-3DDC84.svg?style=for-the-badge&logo=android-studio&logoColor=white" target="_blank"></a>
 
 #### Download Application: [Paciência Spider](https://github.com/AllanBismarck123/Paciencia-Spider/raw/main/paciencia-spider.apk)
 
-#### Application screens:
+#### Telas do aplicativo:
 <img height="480" width="270" src="assets/Screenshot_20230315_221654.png" target="_blank"> <img height="480" width="270" src="assets/Screenshot_20230315_221741.png" target="_blank"> 
  <img height="480" width="270" src="assets/Screenshot_20230315_221756.png" target="_blank"> <img height="400" width="820" src="assets/Screenshot_20230315_222510.png" target="_blank">
