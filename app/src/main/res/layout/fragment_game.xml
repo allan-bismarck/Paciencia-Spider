@@ -18,7 +18,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_marginBottom="10dp">
 
             <FrameLayout
                 android:id="@+id/deck"
@@ -63,9 +64,9 @@
             </FrameLayout>
 
             <ImageView
+                android:id="@+id/spider"
                 android:layout_width="80dp"
                 android:layout_height="50dp"
-                android:src="@drawable/spider"
                 android:layout_marginHorizontal="10dp"/>
 
             <ImageView
@@ -1130,12 +1131,12 @@
         android:layout_height="match_parent"
         android:background="@drawable/bg_app">
 
-        <ProgressBar
+        <ImageView
             android:id="@+id/progress"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_gravity="center"
-            android:indeterminateDrawable="@drawable/icon_app_transparent" />
+            />
 
     </FrameLayout>
 

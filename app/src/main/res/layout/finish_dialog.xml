@@ -15,7 +15,6 @@
             android:id="@+id/img_dialog"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/trophy"
             android:background="@drawable/bg_trophy"
             android:layout_gravity="center_horizontal"
             android:layout_marginVertical="10dp"
