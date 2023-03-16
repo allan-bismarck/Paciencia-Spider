@@ -2,7 +2,7 @@
 
 # Paciência Spider
 
-<img height="200" width="200" src="res/drawable/icon_app.png" target="_blank">
+<img height="200" width="200" src="/app/src/main/res/drawable/icon_app.png" target="_blank">
 
 ### It is an application developed to help Brazilian adults better select the foods that make up their diet and the regularity of the practice of physical activity.
 
