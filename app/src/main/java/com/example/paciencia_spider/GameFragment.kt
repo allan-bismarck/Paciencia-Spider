@@ -7,6 +7,7 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
+import android.media.Image
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -226,7 +227,9 @@ class GameFragment : Fragment() {
     private lateinit var stack7: ImageView
     private lateinit var stack8: ImageView
 
-    private lateinit var progress: ProgressBar
+    private lateinit var progress: ImageView
+
+    private lateinit var spider: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -428,6 +431,12 @@ class GameFragment : Fragment() {
         stack8 = view.findViewById(R.id.stack8)
 
         progress = view.findViewById(R.id.progress)
+
+        spider = view.findViewById(R.id.spider)
+
+        Glide.with(this).load(R.drawable.icon_app_transparent).into(progress)
+
+        Glide.with(this).load(R.drawable.spider).into(spider)
 
         var animation = ObjectAnimator.ofFloat(progress, "rotation", 0f, 720f)
         animation.duration = 1000
@@ -1783,6 +1792,8 @@ class GameFragment : Fragment() {
         val view = layoutInflater.inflate(R.layout.finish_dialog, null)
         val close = view.findViewById<Button>(R.id.close_dialog)
         val imgDialog = view.findViewById<ImageView>(R.id.img_dialog)
+        Glide.with(this).load(R.drawable.trophy).into(imgDialog)
+
         builder.setView(view)
         builder.setCancelable(false)
 

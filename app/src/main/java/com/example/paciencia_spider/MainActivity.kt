@@ -20,11 +20,6 @@ class MainActivity : AppCompatActivity() {
 
         configDataBase = ConfigDataBaseUser(this)
 
-        if(configDataBase.existUser()) {
-            runIntent(Intent(this, FirstActivity::class.java))
-            finish()
-        }
-
         userName = findViewById(R.id.editTextPersonName)
 
         btnPlay = findViewById(R.id.play)
