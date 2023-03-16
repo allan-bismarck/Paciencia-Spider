@@ -248,14 +248,20 @@ class GameFragment : Fragment() {
 
         deck = view.findViewById(R.id.deck)
         deck.setOnClickListener {
-            if(avaliableSizeOfStacks()) {
+            if(avaliableSizeOfStacks() && !longClick) {
                 CoroutineScope(Dispatchers.Main).launch {
                     val cardFalse = mutableListOf(Card("", false, 0, ""))
                     distributeCards(deckId, 10, cardFalse)
                     animationDeck()
                 }
             } else {
-                Toast.makeText(this.context,"Uma das pilhas atingiu 15 cartas",Toast.LENGTH_SHORT).show()
+                if(!longClick) {
+                    Toast.makeText(
+                        this.context,
+                        "Uma das pilhas atingiu 15 cartas",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
         }
 
