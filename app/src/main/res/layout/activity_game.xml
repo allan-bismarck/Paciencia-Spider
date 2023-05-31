@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GameActivity"
+    tools:context="com.app.paciencia_spider.GameActivity"
     >
 
     <LinearLayout
@@ -17,7 +17,7 @@
             android:gravity="center"
             android:layout_gravity="clip_horizontal"
             android:orientation="horizontal"
-            android:paddingRight="10dp"
+            android:paddingEnd="10dp"
             android:background="@color/dark_blue">
 
             <TextView
@@ -33,6 +33,7 @@
                 />
 
             <ImageButton
+                android:contentDescription="reload"
                 android:id="@+id/button_reload"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -44,6 +45,7 @@
                 />
 
             <ImageButton
+                android:contentDescription="exit"
                 android:id="@+id/button_exit"
                 android:layout_width="0dp"
                 android:layout_weight="1"

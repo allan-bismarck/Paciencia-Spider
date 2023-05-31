@@ -1,4 +1,4 @@
-package com.example.paciencia_spider
+package com.app.paciencia_spider
 
 class Card {
     private var code: String

@@ -1,4 +1,4 @@
-package com.example.paciencia_spider
+package com.app.paciencia_spider
 import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         btnPlay = findViewById(R.id.play)
         btnPlay.setOnClickListener {
             if(userName.text.isEmpty()) {
-                Toast.makeText(this,"Digite seu nome para começar a jogar.",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"${resources.getString(R.string.input_name_to_play)}",Toast.LENGTH_SHORT).show()
             } else {
                 val i = Intent(this, FirstActivity::class.java)
                 val name = userName.text.toString()

@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.paciencia_spider'
+    namespace 'com.app.paciencia_spider'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.paciencia_spider"
+        applicationId "com.app.paciencia_spider"
         minSdk 26
         targetSdk 33
         versionCode 1

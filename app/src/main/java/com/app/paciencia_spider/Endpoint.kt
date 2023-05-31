@@ -1,4 +1,4 @@
-package com.example.paciencia_spider
+package com.app.paciencia_spider
 
 import com.google.gson.JsonObject
 import retrofit2.Call

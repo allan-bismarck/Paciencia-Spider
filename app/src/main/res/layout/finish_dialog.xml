@@ -23,7 +23,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="PARABÉNS! Você conseguiu uma vitória!"
+            android:text="@string/congratulations"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:textSize="20sp"
@@ -33,7 +33,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Para continuar jogando inicie outra partida"
+            android:text="@string/continue_playing"
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textAlignment="center"

@@ -1,4 +1,4 @@
-package com.example.paciencia_spider
+package com.app.paciencia_spider
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

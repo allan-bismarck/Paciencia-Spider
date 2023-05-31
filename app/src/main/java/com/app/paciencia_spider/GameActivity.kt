@@ -1,4 +1,4 @@
-package com.example.paciencia_spider
+package com.app.paciencia_spider
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Intent
@@ -9,7 +9,6 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import org.w3c.dom.Text
 import kotlin.properties.Delegates
 
 class GameActivity : AppCompatActivity() {
@@ -84,24 +83,24 @@ class GameActivity : AppCompatActivity() {
         val dialog = builder.create()
 
         if(type == "RELOAD") {
-            message.text = "Tem certeza que deseja reiniciar? Essa partida será marcada como derrota!"
+            message.text = "${resources.getString(R.string.to_restart)}"
             yes.setOnClickListener {
                 dialog.dismiss()
                 reloadFragment(fragment)
-                Toast.makeText(this, "Jogo reiniciado com sucesso!", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "${resources.getString(R.string.game_restarted)}", Toast.LENGTH_LONG).show()
             }
 
             no.setOnClickListener {
                 dialog.dismiss()
             }
         } else {
-            message.text = "Tem certeza que deseja sair?"
+            message.text = "${resources.getString(R.string.to_quit)}"
             yes.setOnClickListener {
                 dialog.dismiss()
                 val intent = Intent(this, FirstActivity::class.java)
                 startActivity(intent)
                 finish()
-                Toast.makeText(this, "Jogo finalizado!", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "${resources.getString(R.string.finished_game)}", Toast.LENGTH_LONG).show()
             }
 
             no.setOnClickListener {

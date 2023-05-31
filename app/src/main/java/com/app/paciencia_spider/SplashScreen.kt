@@ -1,7 +1,6 @@
-package com.example.paciencia_spider
+package com.app.paciencia_spider
 
 import android.animation.ObjectAnimator
-import android.animation.TimeInterpolator
 import android.animation.ValueAnimator
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -9,16 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.animation.AccelerateInterpolator
-import android.view.animation.LinearInterpolator
 import android.widget.ImageView
-import androidx.core.animation.doOnEnd
-import androidx.core.animation.doOnRepeat
-import androidx.interpolator.view.animation.FastOutLinearInInterpolator
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
-import androidx.interpolator.view.animation.LinearOutSlowInInterpolator
 import com.bumptech.glide.Glide
-import kotlinx.coroutines.delay
 
 class SplashScreen : AppCompatActivity() {
 

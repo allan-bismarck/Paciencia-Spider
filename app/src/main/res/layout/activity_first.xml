@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_app"
-    tools:context=".FirstActivity">
+    tools:context="com.app.paciencia_spider.FirstActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -38,7 +38,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:paddingTop="20dp">
+        android:paddingTop="40dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -51,7 +51,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="Número de Vitórias: "
+                android:text="@string/number_wins"
                 android:textAlignment="center"
                 android:textSize="20sp"
                 android:textColor="@color/black" />
@@ -80,7 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="Número de Derrotas: "
+                android:text="@string/number_defeats"
                 android:textSize="20sp"
                 android:textAlignment="center"
                 android:textColor="@color/black" />
@@ -109,7 +109,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="Aproveitamento: "
+                android:text="@string/performance"
                 android:textSize="20sp"
                 android:textAlignment="center"
                 android:textColor="@color/black" />
@@ -130,40 +130,41 @@
         <Spinner
             android:id="@+id/spinner_number_naipes"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:padding="20dp"
+            android:contentDescription="spinner_naipes"
             android:spinnerMode="dropdown" />
 
         <Button
             android:id="@+id/init_game"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="50dp"
             android:layout_marginVertical="5dp"
             android:background="@drawable/gradient_button_menu"
             android:paddingHorizontal="10dp"
-            android:text="Iniciar jogo"
+            android:text="@string/init_game"
             android:textColor="@color/white"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/delete_user"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="50dp"
             android:layout_marginVertical="5dp"
             android:background="@drawable/gradient_button_menu"
             android:paddingHorizontal="10dp"
-            android:text="Apagar Usuário"
+            android:text="@string/delete_user"
             android:textColor="@color/white"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/tutorial"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="50dp"
             android:layout_marginVertical="5dp"
             android:background="@drawable/gradient_button_menu"
             android:paddingHorizontal="10dp"
-            android:text="Tutorial e regras"
+            android:text="@string/title_rules"
             android:textColor="@color/white"
             android:textStyle="bold" />
 

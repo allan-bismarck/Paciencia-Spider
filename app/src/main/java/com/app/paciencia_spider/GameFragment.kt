@@ -1,4 +1,4 @@
-package com.example.paciencia_spider
+package com.app.paciencia_spider
 
 import android.animation.ObjectAnimator
 import android.animation.PropertyValuesHolder
@@ -7,7 +7,6 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
-import android.media.Image
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -258,7 +257,7 @@ class GameFragment : Fragment() {
                 if(!longClick) {
                     Toast.makeText(
                         this.context,
-                        "Uma das pilhas atingiu 15 cartas",
+                        "${resources.getString(R.string.max_lenght_stack)}",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -482,6 +481,11 @@ class GameFragment : Fragment() {
 
                         override fun onFailure(call: Call<JsonObject>, t: Throwable) {
                             Log.i("Falha", "Não foi possível obter nenhuma resposta da API")
+                            Toast.makeText(
+                                context,
+                                "${resources.getString(R.string.conection)}",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
 
                     })
@@ -502,6 +506,11 @@ class GameFragment : Fragment() {
 
                         override fun onFailure(call: Call<JsonObject>, t: Throwable) {
                             Log.i("Falha", "Não foi possível obter nenhuma resposta da API")
+                            Toast.makeText(
+                                context,
+                                "${resources.getString(R.string.conection)}",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
 
                     })
@@ -522,6 +531,11 @@ class GameFragment : Fragment() {
 
                         override fun onFailure(call: Call<JsonObject>, t: Throwable) {
                             Log.i("Falha", "Não foi possível obter nenhuma resposta da API")
+                            Toast.makeText(
+                                context,
+                                "${resources.getString(R.string.conection)}",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
 
                     })
@@ -555,6 +569,11 @@ class GameFragment : Fragment() {
 
                     override fun onFailure(call: Call<JsonObject>, t: Throwable) {
                         Log.i("Falha", "Não foi possível obter nenhuma resposta da API")
+                        Toast.makeText(
+                            context,
+                            "${resources.getString(R.string.conection)}",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
 
                 })
@@ -570,6 +589,11 @@ class GameFragment : Fragment() {
 
                     override fun onFailure(call: Call<JsonObject>, t: Throwable) {
                         Log.i("Falha", "Não foi possível obter nenhuma resposta da API")
+                        Toast.makeText(
+                            context,
+                            "${resources.getString(R.string.conection)}",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
 
                 })
@@ -587,6 +611,11 @@ class GameFragment : Fragment() {
 
                     override fun onFailure(call: Call<JsonObject>, t: Throwable) {
                         Log.i("Falha", "Não foi possível obter nenhuma resposta da API")
+                        Toast.makeText(
+                            context,
+                            "${resources.getString(R.string.conection)}",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
 
                 })
@@ -1661,7 +1690,7 @@ class GameFragment : Fragment() {
                                 }
                             }
                         } else {
-                            Toast.makeText(context, "Não é possível inserir na pilha selecionada, tente outra pilha", Toast.LENGTH_LONG).show()
+                            Toast.makeText(context, "${resources.getString(R.string.cannot_insert_selected_stack)}", Toast.LENGTH_LONG).show()
                         }
                     } else {
                         CoroutineScope(Dispatchers.Main).launch {
@@ -1684,7 +1713,7 @@ class GameFragment : Fragment() {
 
                             Toast.makeText(
                                 context,
-                                "Clique na pilha que deseja inserir as cartas selecionadas",
+                                "${resources.getString(R.string.click_into_destiny_stack)}",
                                 Toast.LENGTH_LONG
                             ).show()
                             game.foreground = ColorDrawable(R.color.purple_200)
