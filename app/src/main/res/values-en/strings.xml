@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">Spider Solitaire</string>
+    <string name="user_name">Enter your name</string>
+    <string name="db_user">NAME_USER</string>
+    <string name="db_wins">NUMBER_WINS</string>
+    <string name="db_defeats">NUMBER_DEFEATS</string>
+    <string-array name="number_naipes">
+        <item>1 suit</item>
+        <item>2 suits</item>
+        <item>4 suits</item>
+    </string-array>
+    <string name="rules">The card stacks can contain a maximum of 13 cards. Be careful when clicking on the deck.</string>
+    <string name="tutorial1">Quick game: Click on the card or stack of cards you want to move, and the game will automatically find a new stack for that card.</string>
+    <string name="tutorial2">Standard game: Long press on the card or stack of cards you want to move, the screen will change color, and then the user must click on the stack where they want to place the selected card(s).</string>
+    <string name="title_rules">Tutorial and Rules</string>
+    <string name="keyword_rules">Rules</string>
+    <string name="keyword_tutorial">Tutorial</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="congratulations">CONGRATULATIONS! You achieved a victory!</string>
+    <string name="continue_playing">To continue playing, start another game</string>
+    <string name="number_wins">Number of Wins:</string>
+    <string name="number_defeats">Number of Defeats:</string>
+    <string name="performance">Success Rate:</string>
+    <string name="init_game">Start Game</string>
+    <string name="delete_user">Delete User</string>
+    <string name="welcome">Welcome, </string>
+    <string name="no_moves"> No moves were made</string>
+    <string name="to_restart">Are you sure you want to restart? This game will be marked as a defeat!</string>
+    <string name="game_restarted">Game successfully restarted!</string>
+    <string name="to_quit">Are you sure you want to quit?</string>
+    <string name="finished_game">Game finished!</string>
+    <string name="max_lenght_stack">One of the stacks reached 15 cards</string>
+    <string name="conection">Failure! Check your internet connection.</string>
+    <string name="cannot_insert_selected_stack">Cannot insert into the selected stack, try another stack</string>
+    <string name="click_into_destiny_stack">Click on the stack where you want to insert the selected cards</string>
+    <string name="input_name_to_play">Enter your name to start playing.</string>
+    <string name="play">Play</string>
+    <string name="select_size">Select the number of suits</string>
+</resources>
